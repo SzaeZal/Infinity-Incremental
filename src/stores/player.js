@@ -2,11 +2,16 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const usePlayerStore = defineStore('player', () => {
-  const realm1=ref({
+  const prestigeRealm=ref({
     points:{
       amount: 0
     }
   })
+  const navigation=ref({
+    realm:"prestige",
+    positionX: 0,
+    positionY: 0
+  })
 
-  return {realm1}
+  return {prestigeRealm, navigation}
 })
