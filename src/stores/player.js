@@ -15,8 +15,8 @@ export const usePlayerStore = defineStore('player', () => {
     points:{
       gain:{
         challengeNerfs: {
-          multiplier: 1,
-          exponent: 1
+          divider: 1,
+          root: 1
         },
         multiplier: 1,
         exponent: 1

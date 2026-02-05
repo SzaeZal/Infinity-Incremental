@@ -4,18 +4,25 @@
     v-show="UIShown.prestigeRealm.points"
     class="element prestigeRealmLayer points"
     :style="UIPositions.prestigeRealm.points"
-    :points="playerStore.prestigeRealm.points"
-    :points-stats-calculated="playerStore.prestigeRealmStatsCalculated.points"
   />
 </template>
 
 <script setup>
 import Positions from './components/Positions.vue'
 import Points from './components/Points.vue'
+import GainPoints from './components/Scripts/GainPoints'
 import { usePlayerStore } from './stores/player'
 import { reactive, ref } from 'vue'
 
 const playerStore = usePlayerStore()
+
+const Tick=()=>{
+  if(playerStore.prestigeRealm.points.amount!=Infinity){
+    GainPoints(playerStore)
+  }
+}
+
+let ticker=setInterval(Tick, 25)
 
 const UIShown = ref({
   prestigeRealm: {
@@ -39,7 +46,7 @@ const UpdateUIPositions = () => {
   }
   if (playerStore.navigation.realm == 'prestige') {
     let pointsPosition = {
-      x: 0 - playerStore.navigation.positionX,
+      x: -25 - playerStore.navigation.positionX,
       y: -250 - playerStore.navigation.positionY,
     }
 
@@ -50,8 +57,8 @@ const UpdateUIPositions = () => {
       UIShown.value.prestigeRealm.points = false
     } else {
       UIShown.value.prestigeRealm.points = true
-      UIPositions.value.prestigeRealm.points.left = screen.availWidth / 2 + pointsPosition.x + 'px'
-      UIPositions.value.prestigeRealm.points.top = screen.availHeight / 2 + pointsPosition.y + 'px'
+      UIPositions.value.prestigeRealm.points.left = screen.width / 2 + pointsPosition.x + 'px'
+      UIPositions.value.prestigeRealm.points.top = screen.height / 2 + pointsPosition.y + 'px'
     }
   } else {
     UIShown.value.prestigeRealm.points = false
