@@ -11,12 +11,15 @@
     overflow: hidden;
     position: relative;
     background-color: black;
+    color: white;
 }
 
 .coords{
-    position: absolute;
     right: 5px;
     bottom: 5px;
     width: 60px;
     color: gray;
+}
+.element{
+    position: absolute;
 }

@@ -1,16 +1,52 @@
 <template>
-  <Positions />
+  <Positions class="element"/>
+  <Points v-show="UIShown.prestigeRealm.points" class="element" :style="UIPositions.prestigeRealm.points"/>
 </template>
 
 <script setup>
 import Positions from './components/Positions.vue'
+import Points from './components/Points.vue'
 import { usePlayerStore } from './stores/player'
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 
 const playerStore = usePlayerStore()
 
+const UIShown=ref({
+  prestigeRealm:{
+    points: true
+  }
+})
+
+const UIPositions=ref({
+  prestigeRealm:{
+    points: reactive({
+      left: 0,
+      top: 0
+    })
+  }
+})
+
 const UpdateUIPositions = () => {
-  if (playerStore.navigation.currentRealm == 'prestige') {
+  let loadedUIBorders={
+    x:playerStore.UISettings.screenSizeX/2,
+    y:playerStore.UISettings.screenSizeY/2
+  }
+  if (playerStore.navigation.realm == 'prestige') {
+    let pointsPosition={
+      x: 0 - playerStore.navigation.positionX,
+      y: 0 - playerStore.navigation.positionY
+    }
+    
+    if(Math.abs(pointsPosition.x)> loadedUIBorders.x|| Math.abs(pointsPosition.y)>loadedUIBorders.y){
+      UIShown.value.prestigeRealm.points=false
+    }
+    else{
+      UIShown.value.prestigeRealm.points=true
+      UIPositions.value.prestigeRealm.points.left=(loadedUIBorders.x + pointsPosition.x) +"px"
+      UIPositions.value.prestigeRealm.points.top=(loadedUIBorders.y + pointsPosition.y) +"px"
+      console.log(UIPositions.value.prestigeRealm.points);
+      
+    }
   }
 }
 
@@ -35,7 +71,7 @@ const DecodePartialJwt = () => {
   return null
 }
 
-let autoSaveInterval
+let autoSaveInterval=setInterval(Save, 5000)
 const Load = () => {
   let playerSaveJson = DecodePartialJwt()
   try {
@@ -44,6 +80,9 @@ const Load = () => {
     if(playerStore.saveSettings.autoSaveInterval!=0){
       autoSaveInterval = setInterval(Save, playerStore.saveSettings.autoSaveInterval)
     }    
+    else{
+      clearInterval(autoSaveInterval)
+    }
   
   } catch (e) {
     console.log(e)
@@ -65,7 +104,7 @@ const MouseDown = (e) => {
   container.on('mousemove', MouseMove)
 }
 
-const MouseMove = (e) => {
+const MouseMove = (e) => {  
   playerStore.navigation.positionX += startX - e.clientX
   playerStore.navigation.positionY += startY - e.clientY
   startX = e.clientX

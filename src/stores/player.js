@@ -8,6 +8,8 @@ export const usePlayerStore = defineStore('player', () => {
     }
   })
   const UISettings=ref({
+    screenSizeX: screen.width,
+    screenSizeY: screen.height,
     UIUpdateRateInMs:25,
   })
   const saveSettings=ref({
