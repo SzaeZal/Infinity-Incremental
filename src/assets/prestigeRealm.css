@@ -3,7 +3,13 @@
     border-radius: 10px;
     width: 1150px;
     height: 750px;
-
+}
+.prestigeLayerConnector{
+    position: absolute;
+}
+.prestigeLayerConnector>line{
+    stroke: white;
+    stroke-width: 5px;
 }
 .layerMenu{
     display: flex;

@@ -5,6 +5,17 @@
     class="element prestigeRealmLayer points"
     :style="UIPositions.prestigeRealm.points"
   />
+  <svg width="10px" height="250px"
+    class="element prestigeLayerConnector"
+    :style="UIPositions.prestigeRealm.pointsPrestigeConnector"
+  >
+    <line x1="5" y1="0" x2="5" y2="250" />
+  </svg>
+  <Prestige 
+    v-show="UIShown.prestigeRealm.prestige"
+    class="element prestigeRealmLayer prestige"
+    :style="UIPositions.prestigeRealm.prestige"
+  />
 </template>
 
 <script setup>
@@ -13,6 +24,7 @@ import Points from './components/Points.vue'
 import GainPoints from './components/Scripts/GainPoints'
 import { usePlayerStore } from './stores/player'
 import { reactive, ref } from 'vue'
+import Prestige from './components/Prestige.vue'
 
 const playerStore = usePlayerStore()
 
@@ -27,12 +39,21 @@ let ticker=setInterval(Tick, 25)
 const UIShown = ref({
   prestigeRealm: {
     points: true,
+    prestige: false
   },
 })
 
 const UIPositions = ref({
   prestigeRealm: {
     points: reactive({
+      left: 0,
+      top: 0,
+    }),
+    pointsPrestigeConnector: reactive({
+      left: 0,
+      top: 0,
+    }),
+    prestige: reactive({
       left: 0,
       top: 0,
     }),
@@ -51,8 +72,8 @@ const UpdateUIPositions = () => {
     }
 
     if (
-      Math.abs(pointsPosition.x) > loadedUIBorders.x ||
-      Math.abs(pointsPosition.y) > loadedUIBorders.y
+      Math.abs(pointsPosition.x)-200 > loadedUIBorders.x ||
+      Math.abs(pointsPosition.y)-200 > loadedUIBorders.y
     ) {
       UIShown.value.prestigeRealm.points = false
     } else {
@@ -60,8 +81,32 @@ const UpdateUIPositions = () => {
       UIPositions.value.prestigeRealm.points.left = screen.width / 2 + pointsPosition.x + 'px'
       UIPositions.value.prestigeRealm.points.top = screen.height / 2 + pointsPosition.y + 'px'
     }
+
+    let pointsPrestigeConnectorPosition = {
+      x: -25 - playerStore.navigation.positionX,
+      y: 250 - playerStore.navigation.positionY,
+    }
+    UIPositions.value.prestigeRealm.pointsPrestigeConnector.left = screen.width / 2 + pointsPrestigeConnectorPosition.x + 'px'
+    UIPositions.value.prestigeRealm.pointsPrestigeConnector.top = screen.height / 2 + pointsPrestigeConnectorPosition.y + 'px'
+
+    let prestigePosition = {
+      x: -25 - playerStore.navigation.positionX,
+      y: 750 - playerStore.navigation.positionY,
+    }
+
+    if (
+      Math.abs(prestigePosition.x)-200 > loadedUIBorders.x ||
+      Math.abs(prestigePosition.y)-200 > loadedUIBorders.y
+    ) {
+      UIShown.value.prestigeRealm.prestige = false
+    } else {
+      UIShown.value.prestigeRealm.prestige = true
+      UIPositions.value.prestigeRealm.prestige.left = screen.width / 2 + prestigePosition.x + 'px'
+      UIPositions.value.prestigeRealm.prestige.top = screen.height / 2 + prestigePosition.y + 'px'
+    }
   } else {
     UIShown.value.prestigeRealm.points = false
+    UIShown.value.prestigeRealm.prestige = false
   }
 }
 
