@@ -1,10 +1,40 @@
 .prestigeRealmLayer{
     border: 2px solid;
     border-radius: 10px;
-    width: 1000px;
-    max-height: 750px;
+    width: 1150px;
+    height: 750px;
+
+}
+.layerMenu{
+    display: flex;
+    height: 725px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+.subMenu{
+    width: 150px;
+    height: 705px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid white;
+}
+.subMenuItem{
+    border-bottom: 1px solid white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+.subMenuItem:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.selectedSubMenuItem{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.main{
+    width: 1000px;
 }
 .infinityReached{
     background-color: rgba(255, 165,0, 0.65);
@@ -14,6 +44,7 @@
 }
 .mainCurrencyDisplay{
     padding: 10px;   
+    height: 25px;
     text-align: center;
     border-bottom: 2px solid white;
 }
