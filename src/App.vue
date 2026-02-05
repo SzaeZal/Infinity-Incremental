@@ -8,6 +8,52 @@ import { usePlayerStore } from './stores/player'
 import { ref } from 'vue'
 
 const playerStore = usePlayerStore()
+
+const UpdateUIPositions = () => {
+  if (playerStore.navigation.currentRealm == 'prestige') {
+  }
+}
+
+//#region saving and loading
+const Save = () => {
+  const playerParsedToJson = playerStore.CreateJson()
+  let jwt = CreatePartialJWT(playerParsedToJson)
+  localStorage.setItem('InfinityIncSave', jwt)
+}
+
+const CreatePartialJWT = (payloadInJson) => {
+  let payloadInBase64 = btoa(payloadInJson)
+  let jwt = payloadInBase64
+  return jwt
+}
+
+const DecodePartialJwt = () => {
+  let jwt = localStorage.getItem('InfinityIncSave')
+  if (jwt != null) {
+    return atob(jwt)
+  }
+  return null
+}
+
+let autoSaveInterval
+const Load = () => {
+  let playerSaveJson = DecodePartialJwt()
+  try {
+    playerStore.Load(playerSaveJson)
+    
+    if(playerStore.saveSettings.autoSaveInterval!=0){
+      autoSaveInterval = setInterval(Save, playerStore.saveSettings.autoSaveInterval)
+    }    
+  
+  } catch (e) {
+    console.log(e)
+  }
+}
+//Load()
+UpdateUIPositions()
+//#endregion
+
+//#region navigation
 let startX = 0,
   startY = 0,
   container = $('#app')
@@ -22,8 +68,8 @@ const MouseDown = (e) => {
 const MouseMove = (e) => {
   playerStore.navigation.positionX += startX - e.clientX
   playerStore.navigation.positionY += startY - e.clientY
-  startX=e.clientX
-  startY=e.clientY
+  startX = e.clientX
+  startY = e.clientY
   UpdateUIPositions()
 }
 
@@ -56,7 +102,7 @@ const activeMoveDirections = ref({
   Right: false,
 })
 
-$(document).keydown((e) => {
+$(document).on('keydown', (e) => {
   if (e.originalEvent.code == 'KeyS' || e.originalEvent.code == 'ArrowDown') {
     activeMoveDirections.Down = true
   }
@@ -74,7 +120,7 @@ $(document).keydown((e) => {
   }
 })
 
-$(document).keyup((e) => {
+$(document).on('keyup', (e) => {
   if (e.originalEvent.code == 'KeyS' || e.originalEvent.code == 'ArrowDown') {
     activeMoveDirections.Down = false
   }
@@ -106,9 +152,5 @@ setInterval(() => {
     UpdateUIPositions()
   }
 }, 25)
-
-const UpdateUIPositions = () => {
-  if (playerStore.navigation.currentRealm == 'prestige') {
-  }
-}
+//#endregion
 </script>
