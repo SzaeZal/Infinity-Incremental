@@ -1,11 +1,11 @@
 <template>
-    <div class="coords">
-        <p>X: {{ playerStore.navigation.positionX }}</p>
-        <p>Y: {{ playerStore.navigation.positionY }}</p>
+    <div>
+        <p>X: {{ Math.floor(navigation.positionX /20) }}</p>
+        <p>Y: {{ Math.floor(navigation.positionY /20) }}</p>
     </div>
 </template>
 <script setup>
-import { usePlayerStore } from '@/stores/player';
-
-const playerStore = usePlayerStore()
+defineProps({
+    navigation: Object
+})
 </script>

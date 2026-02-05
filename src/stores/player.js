@@ -4,12 +4,48 @@ import { defineStore } from 'pinia'
 export const usePlayerStore = defineStore('player', () => {
   const prestigeRealm=ref({
     points:{
-      amount: 0
+      amount: 0,
+      buyables:{
+        buyable1Amount: 0,
+        buyable2Amount: 0
+      }
+    }
+  })
+  const prestigeRealmStatsCalculated=ref({
+    points:{
+      gain:{
+        challengeNerfs: {
+          multiplier: 1,
+          exponent: 1
+        },
+        multiplier: 1,
+        exponent: 1
+      },
+      buyables:{
+        buyable1:{
+          cost: 10,
+          maxAmount: 50,
+          effects:{
+            effectOnPoints:{
+              multiplier: 1
+            }
+          }
+        },
+        buyable2:{
+          cost: 25,
+          maxAmount: 250,
+          effects:{
+            effectOnPoints:{
+              multiplier: 1
+            }
+          }
+        },
+      }
     }
   })
   const UISettings=ref({
-    screenSizeX: screen.width,
-    screenSizeY: screen.height,
+    screenSizeX: 2000,
+    screenSizeY: 2000,
     UIUpdateRateInMs:25,
   })
   const saveSettings=ref({
@@ -44,5 +80,5 @@ export const usePlayerStore = defineStore('player', () => {
     navigation.value=playerSaveParsed.navigation
   }
 
-  return {prestigeRealm, navigation, UISettings, saveSettings, CreateJson, Load}
+  return {prestigeRealm, prestigeRealmStatsCalculated, navigation, UISettings, saveSettings, CreateJson, Load}
 })

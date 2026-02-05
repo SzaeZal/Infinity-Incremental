@@ -1,0 +1,77 @@
+.prestigeRealmLayer{
+    border: 2px solid;
+    border-radius: 10px;
+}
+.infinityReached{
+    background-color: rgba(255, 165,0, 0.65);
+}
+.points{
+    border-color: white;
+}
+.mainCurrencyDisplay{
+    padding: 10px;   
+    text-align: center;
+    border-bottom: 2px solid white;
+}
+.buyables{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.buyable{
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+.maxedBuyable{
+    border-color: green;
+}
+.buyableAmount{
+    width: 100%;
+    border-bottom: 1px solid white;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px 7px 0 0;
+}
+.buyableBuyers{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid white;
+}
+.buyableBuyOne{
+    border-right: 1px solid white;
+    flex: 1;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.3s;
+}
+.buyableBuyMax{
+    flex: 1;
+    height: 33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.3s;
+}
+.buyablePurchaseable{
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+.buyablePurchaseable:hover{
+    background-color: lightgreen;
+    color: white;
+}

@@ -1,6 +1,12 @@
 <template>
-  <Positions class="element"/>
-  <Points v-show="UIShown.prestigeRealm.points" class="element" :style="UIPositions.prestigeRealm.points"/>
+  <Positions class="coords" :navigation="playerStore.navigation" />
+  <Points
+    v-show="UIShown.prestigeRealm.points"
+    class="element prestigeRealmLayer points"
+    :style="UIPositions.prestigeRealm.points"
+    :points="playerStore.prestigeRealm.points"
+    :points-stats-calculated="playerStore.prestigeRealmStatsCalculated.points"
+  />
 </template>
 
 <script setup>
@@ -11,42 +17,44 @@ import { reactive, ref } from 'vue'
 
 const playerStore = usePlayerStore()
 
-const UIShown=ref({
-  prestigeRealm:{
-    points: true
-  }
+const UIShown = ref({
+  prestigeRealm: {
+    points: true,
+  },
 })
 
-const UIPositions=ref({
-  prestigeRealm:{
+const UIPositions = ref({
+  prestigeRealm: {
     points: reactive({
       left: 0,
-      top: 0
-    })
-  }
+      top: 0,
+    }),
+  },
 })
 
 const UpdateUIPositions = () => {
-  let loadedUIBorders={
-    x:playerStore.UISettings.screenSizeX/2,
-    y:playerStore.UISettings.screenSizeY/2
+  let loadedUIBorders = {
+    x: playerStore.UISettings.screenSizeX / 2,
+    y: playerStore.UISettings.screenSizeY / 2,
   }
   if (playerStore.navigation.realm == 'prestige') {
-    let pointsPosition={
+    let pointsPosition = {
       x: 0 - playerStore.navigation.positionX,
-      y: 0 - playerStore.navigation.positionY
+      y: -250 - playerStore.navigation.positionY,
     }
-    
-    if(Math.abs(pointsPosition.x)> loadedUIBorders.x|| Math.abs(pointsPosition.y)>loadedUIBorders.y){
-      UIShown.value.prestigeRealm.points=false
+
+    if (
+      Math.abs(pointsPosition.x) > loadedUIBorders.x ||
+      Math.abs(pointsPosition.y) > loadedUIBorders.y
+    ) {
+      UIShown.value.prestigeRealm.points = false
+    } else {
+      UIShown.value.prestigeRealm.points = true
+      UIPositions.value.prestigeRealm.points.left = screen.availWidth / 2 + pointsPosition.x + 'px'
+      UIPositions.value.prestigeRealm.points.top = screen.availHeight / 2 + pointsPosition.y + 'px'
     }
-    else{
-      UIShown.value.prestigeRealm.points=true
-      UIPositions.value.prestigeRealm.points.left=(loadedUIBorders.x + pointsPosition.x) +"px"
-      UIPositions.value.prestigeRealm.points.top=(loadedUIBorders.y + pointsPosition.y) +"px"
-      console.log(UIPositions.value.prestigeRealm.points);
-      
-    }
+  } else {
+    UIShown.value.prestigeRealm.points = false
   }
 }
 
@@ -71,19 +79,17 @@ const DecodePartialJwt = () => {
   return null
 }
 
-let autoSaveInterval=setInterval(Save, 5000)
+let autoSaveInterval = setInterval(Save, 5000)
 const Load = () => {
   let playerSaveJson = DecodePartialJwt()
   try {
     playerStore.Load(playerSaveJson)
-    
-    if(playerStore.saveSettings.autoSaveInterval!=0){
+
+    if (playerStore.saveSettings.autoSaveInterval != 0) {
       autoSaveInterval = setInterval(Save, playerStore.saveSettings.autoSaveInterval)
-    }    
-    else{
+    } else {
       clearInterval(autoSaveInterval)
     }
-  
   } catch (e) {
     console.log(e)
   }
@@ -104,7 +110,7 @@ const MouseDown = (e) => {
   container.on('mousemove', MouseMove)
 }
 
-const MouseMove = (e) => {  
+const MouseMove = (e) => {
   playerStore.navigation.positionX += startX - e.clientX
   playerStore.navigation.positionY += startY - e.clientY
   startX = e.clientX

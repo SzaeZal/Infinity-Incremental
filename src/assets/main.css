@@ -4,7 +4,9 @@
     outline: 0;
     user-select: none;
 }
-
+h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
 #app{
     width: 100vw;
     height: 100vh;
@@ -12,9 +14,11 @@
     position: relative;
     background-color: black;
     color: white;
+    cursor: grab;
 }
 
 .coords{
+    position: absolute;
     right: 5px;
     bottom: 5px;
     width: 60px;
@@ -22,4 +26,5 @@
 }
 .element{
     position: absolute;
+    translate: -50% -50%;
 }
