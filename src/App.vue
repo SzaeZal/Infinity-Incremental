@@ -1,5 +1,6 @@
 <template>
   <Positions class="coords" :navigation="playerStore.navigation" />
+  <MenuAndMap />
   <Points
     v-show="UIShown.prestigeRealm.points"
     class="element prestigeRealmLayer points"
@@ -22,6 +23,7 @@
 
 <script setup>
 import Positions from './components/Positions.vue'
+import MenuAndMap from './components/MenuAndMap.vue'
 import Points from './components/Points.vue'
 import GainPoints from './components/Scripts/GainPoints'
 import { usePlayerStore } from './stores/player'
