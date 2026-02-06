@@ -1,0 +1,150 @@
+.mainMenu{
+    background-color: gray;
+    border-color: rgb(55, 55, 55);
+}
+.mainMenuButtons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 5px;
+}
+.mainMenuButton{
+    position: relative;
+    border: 3px solid;
+    border-radius: 10px;
+    min-width: 150px;
+    min-height: 75px;
+    width: 25%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    font-size: 30px;
+    text-align: center;
+}
+
+.mainMenuButtonStory{
+    background-color: rgb(50, 158, 50);
+    border-color: rgb(50, 100, 50);
+}
+.mainMenuButtonStory:hover{
+    background-color: rgb(50, 125, 50);
+}
+.mainMenuButtonStory::before{
+    content: url('../components/icons/story.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}
+
+.mainMenuButtonStats{
+    background-color: rgb(200, 50, 50);
+    border-color: rgb(125, 50, 50);
+}
+.mainMenuButtonStats:hover{
+    background-color: rgb(150, 25, 25);
+}
+.mainMenuButtonStats::before{
+    content: url('../components/icons/stats.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}
+
+.mainMenuButtonLevels{
+    background-color: rgb(50, 50, 200);
+    border-color: rgb(50, 50, 100);
+}
+.mainMenuButtonLevels:hover{
+    background-color: rgb(50, 50, 150);
+}
+.mainMenuButtonLevels::before{
+    content: url('../components/icons/levels.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}
+
+.mainMenuButtonInfinities{
+    background-color: rgb(255, 150, 0);
+    border-color: rgb(255, 100, 50);
+}
+.mainMenuButtonInfinities:hover{
+    background-color: rgb(255, 125, 0);
+}
+.mainMenuButtonInfinities::before{
+    content: url('../components/icons/infinity.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}
+
+.mainMenuButtonUISettings{
+    background-color: rgb(100, 100, 100);
+    border-color: rgb(64, 64, 64);
+}
+.mainMenuButtonUISettings:hover{
+    background-color: rgb(80, 80, 80);
+}
+.mainMenuButtonUISettings::before{
+    content: url('../components/icons/settings.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}
+
+.mainMenuButtonSaveSettings{
+    background-color: rgb(100, 100, 100);
+    border-color: rgb(64, 64, 64);
+}
+.mainMenuButtonSaveSettings:hover{
+    background-color: rgb(80, 80, 80);
+}
+.mainMenuButtonSaveSettings::before{
+    content: url('../components/icons/save.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}
+
+.mainMenuButtonInformation{
+    background-color: rgb(100, 100, 100);
+    border-color: rgb(64, 64, 64);
+}
+.mainMenuButtonInformation:hover{
+    background-color: rgb(80, 80, 80);
+}
+.mainMenuButtonInformation::before{
+    content: url('../components/icons/information.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}
+
+.mainMenuButtonChangelog{
+    background-color: rgb(100, 100, 100);
+    border-color: rgb(64, 64, 64);
+}
+.mainMenuButtonChangelog:hover{
+    background-color: rgb(80, 80, 80);
+}
+.mainMenuButtonChangelog::before{
+    content: url('../components/icons/changelog.png');
+    position: absolute;
+    top: 1px;
+    opacity: 0.35;
+    color: white;
+}

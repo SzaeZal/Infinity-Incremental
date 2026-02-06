@@ -77,3 +77,19 @@
     color: white;
     font-size: 14px;
 }
+
+.mainMenuBase{
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: calc(80% - 100px);
+    border-radius: 25px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+}

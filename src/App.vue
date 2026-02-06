@@ -11,6 +11,7 @@
     height="250px"
     class="element prestigeLayerConnector"
     :style="UIPositions.prestigeRealm.pointsPrestigeConnector"
+    v-show="UIShown.prestigeRealm.points || UIShown.prestigeRealm.prestige"
   >
     <line x1="5" y1="0" x2="5" y2="250" />
   </svg>

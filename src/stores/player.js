@@ -43,9 +43,14 @@ export const usePlayerStore = defineStore('player', () => {
       }
     }
   })
+  const prestigeRealmMapPins=ref({
+    points: false,
+    prestige: false
+  })
   const UISettings=ref({
     screenSizeX: 2000,
     screenSizeY: 2000,
+    controllerEnabled: false
   })
   const saveSettings=ref({
     autoSaveInterval: 5000
@@ -79,5 +84,5 @@ export const usePlayerStore = defineStore('player', () => {
     navigation.value=playerSaveParsed.navigation
   }
 
-  return {prestigeRealm, prestigeRealmStatsCalculated, navigation, UISettings, saveSettings, CreateJson, Load}
+  return {prestigeRealm, prestigeRealmStatsCalculated, prestigeRealmMapPins, navigation, UISettings, saveSettings, CreateJson, Load}
 })
