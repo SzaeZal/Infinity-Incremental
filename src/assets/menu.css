@@ -37,7 +37,7 @@
     background-color: rgb(50, 125, 50);
 }
 .mainMenuButtonStory::before{
-    content: url('../components/icons/story.png');
+    content: url('../components/icons/MainMenuIcons/story.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;
@@ -52,7 +52,7 @@
     background-color: rgb(150, 25, 25);
 }
 .mainMenuButtonStats::before{
-    content: url('../components/icons/stats.png');
+    content: url('../components/icons/MainMenuIcons/stats.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;
@@ -67,7 +67,7 @@
     background-color: rgb(50, 50, 150);
 }
 .mainMenuButtonLevels::before{
-    content: url('../components/icons/levels.png');
+    content: url('../components/icons/MainMenuIcons/levels.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;
@@ -82,7 +82,7 @@
     background-color: rgb(255, 125, 0);
 }
 .mainMenuButtonInfinities::before{
-    content: url('../components/icons/infinity.png');
+    content: url('../components/icons/MainMenuIcons/infinity.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;
@@ -97,7 +97,7 @@
     background-color: rgb(80, 80, 80);
 }
 .mainMenuButtonUISettings::before{
-    content: url('../components/icons/settings.png');
+    content: url('../components/icons/MainMenuIcons/settings.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;
@@ -112,7 +112,7 @@
     background-color: rgb(80, 80, 80);
 }
 .mainMenuButtonSaveSettings::before{
-    content: url('../components/icons/save.png');
+    content: url('../components/icons/MainMenuIcons/save.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;
@@ -127,7 +127,7 @@
     background-color: rgb(80, 80, 80);
 }
 .mainMenuButtonInformation::before{
-    content: url('../components/icons/information.png');
+    content: url('../components/icons/MainMenuIcons/information.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;
@@ -142,7 +142,7 @@
     background-color: rgb(80, 80, 80);
 }
 .mainMenuButtonChangelog::before{
-    content: url('../components/icons/changelog.png');
+    content: url('../components/icons/MainMenuIcons/changelog.png');
     position: absolute;
     top: 1px;
     opacity: 0.35;

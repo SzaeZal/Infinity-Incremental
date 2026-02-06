@@ -3,7 +3,7 @@
         <p v-if="isMenuOpen">Close</p>
         <p v-else>Menu</p>
     </div>
-    <div class="mapButton" :class="{'closeButton': isMapOpen}" @click="ToggleMap">
+    <div class="openMapButton" :class="{'closeButton': isMapOpen}" @click="ToggleMap">
         <p v-if="isMapOpen">Close</p>
         <p v-else>Map</p>
     </div>
@@ -32,6 +32,22 @@
             </div>
             <div class="mainMenuButton mainMenuButtonChangelog">
                 Changelog
+            </div>
+        </div>
+        <div class="mapButtons" v-show="isMapOpen">
+            <div class="mapButton pointsMapButton">
+                <img src="./icons/" alt="P" class="mapButtonIcon">
+                <div class="mapButtonPin">
+                    <img src="./icons/MapIcons/pin.png" alt="pin" v-show="!playerStore.prestigeRealmMapPins.points">
+                    <img src="./icons/MapIcons/pinOff.png" alt="pinOff" v-show="playerStore.prestigeRealmMapPins.points">
+                </div>
+            </div>
+            <div class="mapButton prestigeMapButton">
+                <img src="./icons/" alt="PP" class="mapButtonIcon">
+                <div class="mapButtonPin">
+                    <img src="./icons/MapIcons/pin.png" alt="pin" v-show="!playerStore.prestigeRealmMapPins.prestige">
+                    <img src="./icons/MapIcons/pinOff.png" alt="pinOff" v-show="playerStore.prestigeRealmMapPins.prestige">
+                </div>
             </div>
         </div>
     </div>
