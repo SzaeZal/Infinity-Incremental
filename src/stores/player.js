@@ -46,7 +46,6 @@ export const usePlayerStore = defineStore('player', () => {
   const UISettings=ref({
     screenSizeX: 2000,
     screenSizeY: 2000,
-    UIUpdateRateInMs:25,
   })
   const saveSettings=ref({
     autoSaveInterval: 5000

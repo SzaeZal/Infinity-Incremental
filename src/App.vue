@@ -5,13 +5,15 @@
     class="element prestigeRealmLayer points"
     :style="UIPositions.prestigeRealm.points"
   />
-  <svg width="10px" height="250px"
+  <svg
+    width="10px"
+    height="250px"
     class="element prestigeLayerConnector"
     :style="UIPositions.prestigeRealm.pointsPrestigeConnector"
   >
     <line x1="5" y1="0" x2="5" y2="250" />
   </svg>
-  <Prestige 
+  <Prestige
     v-show="UIShown.prestigeRealm.prestige"
     class="element prestigeRealmLayer prestige"
     :style="UIPositions.prestigeRealm.prestige"
@@ -28,18 +30,18 @@ import Prestige from './components/Prestige.vue'
 
 const playerStore = usePlayerStore()
 
-const Tick=()=>{
-  if(playerStore.prestigeRealm.points.amount!=Infinity){
-    GainPoints(playerStore)
+const Tick = (ms) => {
+  if (playerStore.prestigeRealm.points.amount != Infinity) {
+    GainPoints(playerStore, ms)
   }
 }
 
-let ticker=setInterval(Tick, 25)
+let ticker = setInterval(Tick, 25, 25)
 
 const UIShown = ref({
   prestigeRealm: {
     points: true,
-    prestige: false
+    prestige: false,
   },
 })
 
@@ -68,12 +70,12 @@ const UpdateUIPositions = () => {
   if (playerStore.navigation.realm == 'prestige') {
     let pointsPosition = {
       x: -25 - playerStore.navigation.positionX,
-      y: -250 - playerStore.navigation.positionY,
+      y: -150 - playerStore.navigation.positionY,
     }
 
     if (
-      Math.abs(pointsPosition.x)-200 > loadedUIBorders.x ||
-      Math.abs(pointsPosition.y)-200 > loadedUIBorders.y
+      Math.abs(pointsPosition.x) - 200 > loadedUIBorders.x ||
+      Math.abs(pointsPosition.y) - 200 > loadedUIBorders.y
     ) {
       UIShown.value.prestigeRealm.points = false
     } else {
@@ -84,19 +86,21 @@ const UpdateUIPositions = () => {
 
     let pointsPrestigeConnectorPosition = {
       x: -25 - playerStore.navigation.positionX,
-      y: 250 - playerStore.navigation.positionY,
+      y: 350 - playerStore.navigation.positionY,
     }
-    UIPositions.value.prestigeRealm.pointsPrestigeConnector.left = screen.width / 2 + pointsPrestigeConnectorPosition.x + 'px'
-    UIPositions.value.prestigeRealm.pointsPrestigeConnector.top = screen.height / 2 + pointsPrestigeConnectorPosition.y + 'px'
+    UIPositions.value.prestigeRealm.pointsPrestigeConnector.left =
+      screen.width / 2 + pointsPrestigeConnectorPosition.x + 'px'
+    UIPositions.value.prestigeRealm.pointsPrestigeConnector.top =
+      screen.height / 2 + pointsPrestigeConnectorPosition.y + 'px'
 
     let prestigePosition = {
       x: -25 - playerStore.navigation.positionX,
-      y: 750 - playerStore.navigation.positionY,
+      y: 850 - playerStore.navigation.positionY,
     }
 
     if (
-      Math.abs(prestigePosition.x)-200 > loadedUIBorders.x ||
-      Math.abs(prestigePosition.y)-200 > loadedUIBorders.y
+      Math.abs(prestigePosition.x) - 200 > loadedUIBorders.x ||
+      Math.abs(prestigePosition.y) - 200 > loadedUIBorders.y
     ) {
       UIShown.value.prestigeRealm.prestige = false
     } else {
@@ -109,7 +113,30 @@ const UpdateUIPositions = () => {
     UIShown.value.prestigeRealm.prestige = false
   }
 }
+//#region blurstuff
+let windowFocused = true
+let timeWhenBlurred = 0
 
+$(window).on('blur', () => {
+  windowFocused = false
+  timeWhenBlurred = Date.now()
+  clearInterval(ticker)
+  clearInterval(autoSaveInterval)  
+})
+
+$(window).on('focus', () => {
+  if (windowFocused == false) {
+    windowFocused = true
+    let timeWhenFocused = Date.now()
+    let timeDiff = timeWhenFocused - timeWhenBlurred
+    Tick(timeDiff)
+    ticker = setInterval(Tick, 25, 25)
+    if (playerStore.saveSettings.saveIntervalInMs != 0) {
+      autoSaveInterval = setInterval(Save, playerStore.saveSettings.saveIntervalInMs)
+    }
+  }
+})
+//#endregion
 //#region saving and loading
 const Save = () => {
   const playerParsedToJson = playerStore.CreateJson()
