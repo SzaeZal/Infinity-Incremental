@@ -31,7 +31,8 @@
             <p class="menuButtonText">Close Menu</p>
         </div>
     </div>
-    <div class="menu" :class="{'mainMap' : isMapToggled}">
+    <div class="menu" :class="{'mainMap' : isMapToggled, 'mainSettings' : isSettingsToggled}">
+        <SettingsMain v-show="isSettingsToggled" />
         <Map v-show="isMapToggled" />
     </div>
 </template>
@@ -39,23 +40,34 @@
 <script setup>
 import { usePlayerStore } from '@/stores/player';
 import { ref } from 'vue';
-import Map from './Map.vue';
+import Map from '../MenuComponents/Map.vue';
+import SettingsMain from '@/MenuComponents/SettingsMain.vue';
 
 
 const playerStore = usePlayerStore()
 const isMenuOpen=ref(false)
+const isSettingsToggled=ref(false)
 const isMapToggled=ref(false)
 
 const ToggleMenu=()=>{
     if(isMenuOpen.value==true){
         isMapToggled.value=false
+        isSettingsToggled.value=false
     }
     isMenuOpen.value=!isMenuOpen.value
 }
 
+const ToggleSettings=()=>{
+    if(isSettingsToggled.value==false){
+        isMapToggled.value=false
+    }
+    isSettingsToggled.value=!isSettingsToggled.value
+    
+}
+
 const ToggleMap=()=>{
-    if(isMapToggled.value==true){
-        
+    if(isMapToggled.value==false){
+        isSettingsToggled.value=false
     }
     isMapToggled.value=!isMapToggled.value
     

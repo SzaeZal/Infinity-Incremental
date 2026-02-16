@@ -1,6 +1,7 @@
 import './assets/main.css'
-import './assets/map.css'
 import './assets/mainMenu.css'
+import './assets/map.css'
+import './assets/settings.css'
 import './assets/prestigeRealm.css'
 
 import { createApp } from 'vue'
