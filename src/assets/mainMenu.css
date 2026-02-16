@@ -143,3 +143,45 @@
     border-radius: 15px;
     z-index: 1;
 }
+.subMenu{
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    height: 50px;
+    margin-top: 25px;
+}
+.subMenuButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 33px;
+    position: relative;
+}
+.subMenuSvg{
+    transition-duration: 0.3s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.subMenuSvg{
+    path{
+        stroke-width: 2px;
+        fill: none;
+        stroke: rgb(25, 25, 25);
+        transition-duration: 0.3s;
+    }
+    text{
+        font-size: 20px;
+        fill: black;
+    }
+}
+.subMenuButton:hover{
+    .subMenuSvg{
+        scale: 1.05;
+        path{
+            fill: rgba(0,0,0,0.05);
+        }
+    }
+    
+}

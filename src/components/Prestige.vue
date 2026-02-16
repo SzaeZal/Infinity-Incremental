@@ -2,7 +2,7 @@
   <div>
     <h2 class="mainCurrencyDisplay">You have {{ FormatNumber(0) }} Prestige Points</h2>
     <div class="layerMenu">
-      <div class="subMenu">
+      <div class="layerSubMenu">
         <div class="subMenuItem selectedSubMenuItem">
           <h2>Upgrades</h2>
         </div>

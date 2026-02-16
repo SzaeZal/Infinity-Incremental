@@ -17,7 +17,7 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
-.subMenu{
+.layerSubMenu{
     width: 150px;
     height: 705px;
     display: flex;
