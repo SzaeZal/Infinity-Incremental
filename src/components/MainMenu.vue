@@ -14,7 +14,7 @@
             <img src="./icons/MainMenuIcons/information.png" alt="information" class="menuIcon openInformation">
             <p class="menuButtonText">Information</p>
         </div>
-        <div class="menuButton"  @click="ToggleInformation">
+        <div class="menuButton"  @click="ToggleStory">
             <img src="./icons/MainMenuIcons/story.png" alt="story" class="menuIcon openStory">
             <p class="menuButtonText">Story</p>
         </div>
@@ -31,19 +31,34 @@
             <p class="menuButtonText">Close Menu</p>
         </div>
     </div>
-    
+    <div class="menu" :class="{'mainMap' : isMapToggled}">
+        <Map v-show="isMapToggled" />
+    </div>
 </template>
 
 <script setup>
 import { usePlayerStore } from '@/stores/player';
 import { ref } from 'vue';
+import Map from './Map.vue';
 
 
 const playerStore = usePlayerStore()
 const isMenuOpen=ref(false)
+const isMapToggled=ref(false)
 
 const ToggleMenu=()=>{
+    if(isMenuOpen.value==true){
+        isMapToggled.value=false
+    }
     isMenuOpen.value=!isMenuOpen.value
+}
+
+const ToggleMap=()=>{
+    if(isMapToggled.value==true){
+        
+    }
+    isMapToggled.value=!isMapToggled.value
+    
 }
 
 
