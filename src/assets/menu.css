@@ -1,150 +1,56 @@
-.mainMenu{
-    background-color: gray;
-    border-color: rgb(55, 55, 55);
-}
-.mainMenuButtons{
+.menuButtons{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 100vh;
+    min-width: 500px;
+    max-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    gap: 25px;
-    max-height: 100%;
+    flex-direction: column;
     overflow-y: auto;
-    padding: 5px;
-}
-.mainMenuButton{
-    position: relative;
-    border: 3px solid;
-    border-radius: 10px;
-    min-width: 150px;
-    min-height: 75px;
-    width: 25%;
-    height: 10%;
-    display: flex;
+    gap: 10px;
     justify-content: center;
+}
+.menuButton{
+    display: flex;
     align-items: center;
-    cursor: pointer;
+    justify-content: center;
+    width: fit-content;
+    min-width: 50px;
+    height: 50px;
+    position: relative;
     transition-duration: 0.3s;
-    font-size: 30px;
-    text-align: center;
 }
-
-.mainMenuButtonStory{
-    background-color: rgb(50, 158, 50);
-    border-color: rgb(50, 100, 50);
-}
-.mainMenuButtonStory:hover{
-    background-color: rgb(50, 125, 50);
-}
-.mainMenuButtonStory::before{
-    content: url('../components/icons/MainMenuIcons/story.png');
+.menuIcon{
+    z-index: 2;
+    border-radius: 4px;
+    border-width: 3px;
+    border-style: solid;
     position: absolute;
-    top: 1px;
-    opacity: 0.35;
-    color: white;
+    width: 45px;
+    height: 45px;
 }
-
-.mainMenuButtonStats{
-    background-color: rgb(200, 50, 50);
-    border-color: rgb(125, 50, 50);
+.menuButton:hover{
+    .menuButtonText{
+        left: 60px;
+        opacity: 1;
+    }
 }
-.mainMenuButtonStats:hover{
-    background-color: rgb(150, 25, 25);
-}
-.mainMenuButtonStats::before{
-    content: url('../components/icons/MainMenuIcons/stats.png');
+.menuButtonText{
     position: absolute;
-    top: 1px;
-    opacity: 0.35;
+    transition-duration: 0.3s;
+    width: fit-content;
+    min-width: 100px;
+    font-size: larger;
+    left: 0;
+    opacity: 0;
     color: white;
+    z-index: 1;
 }
-
-.mainMenuButtonLevels{
-    background-color: rgb(50, 50, 200);
-    border-color: rgb(50, 50, 100);
+.openMenu{
+    background-color: blue;
+    border-color: rgb(0,0, 128);
 }
-.mainMenuButtonLevels:hover{
-    background-color: rgb(50, 50, 150);
-}
-.mainMenuButtonLevels::before{
-    content: url('../components/icons/MainMenuIcons/levels.png');
-    position: absolute;
-    top: 1px;
-    opacity: 0.35;
-    color: white;
-}
-
-.mainMenuButtonInfinities{
-    background-color: rgb(255, 150, 0);
-    border-color: rgb(255, 100, 50);
-}
-.mainMenuButtonInfinities:hover{
-    background-color: rgb(255, 125, 0);
-}
-.mainMenuButtonInfinities::before{
-    content: url('../components/icons/MainMenuIcons/infinity.png');
-    position: absolute;
-    top: 1px;
-    opacity: 0.35;
-    color: white;
-}
-
-.mainMenuButtonUISettings{
-    background-color: rgb(100, 100, 100);
-    border-color: rgb(64, 64, 64);
-}
-.mainMenuButtonUISettings:hover{
-    background-color: rgb(80, 80, 80);
-}
-.mainMenuButtonUISettings::before{
-    content: url('../components/icons/MainMenuIcons/settings.png');
-    position: absolute;
-    top: 1px;
-    opacity: 0.35;
-    color: white;
-}
-
-.mainMenuButtonSaveSettings{
-    background-color: rgb(100, 100, 100);
-    border-color: rgb(64, 64, 64);
-}
-.mainMenuButtonSaveSettings:hover{
-    background-color: rgb(80, 80, 80);
-}
-.mainMenuButtonSaveSettings::before{
-    content: url('../components/icons/MainMenuIcons/save.png');
-    position: absolute;
-    top: 1px;
-    opacity: 0.35;
-    color: white;
-}
-
-.mainMenuButtonInformation{
-    background-color: rgb(100, 100, 100);
-    border-color: rgb(64, 64, 64);
-}
-.mainMenuButtonInformation:hover{
-    background-color: rgb(80, 80, 80);
-}
-.mainMenuButtonInformation::before{
-    content: url('../components/icons/MainMenuIcons/information.png');
-    position: absolute;
-    top: 1px;
-    opacity: 0.35;
-    color: white;
-}
-
-.mainMenuButtonChangelog{
-    background-color: rgb(100, 100, 100);
-    border-color: rgb(64, 64, 64);
-}
-.mainMenuButtonChangelog:hover{
-    background-color: rgb(80, 80, 80);
-}
-.mainMenuButtonChangelog::before{
-    content: url('../components/icons/MainMenuIcons/changelog.png');
-    position: absolute;
-    top: 1px;
-    opacity: 0.35;
-    color: white;
+.openMenu:hover{
+    background-color: rgb(0,0, 128);
 }

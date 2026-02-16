@@ -1,5 +1,4 @@
 import './assets/main.css'
-import './assets/toggleMenuButtons.css'
 import './assets/map.css'
 import './assets/menu.css'
 import './assets/prestigeRealm.css'
