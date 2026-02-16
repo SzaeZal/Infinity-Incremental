@@ -1,15 +1,17 @@
 .menuButtons{
     position: absolute;
-    left: 10px;
+    left: 20px;
     top: 0;
     height: 100vh;
-    min-width: 500px;
+    min-width: 100px;
+    max-width: fit-content;
     max-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow: visible;
     gap: 10px;
     justify-content: center;
+    align-items: center;
 }
 .menuButton{
     display: flex;
@@ -50,7 +52,37 @@
 .openMenu{
     background-color: blue;
     border-color: rgb(0,0, 128);
+    transition-duration: 0.3s;
 }
 .openMenu:hover{
     background-color: rgb(0,0, 128);
+}
+
+@keyframes menuButtonDisappear {
+    from{
+        left: 0;
+        opacity: 1;
+    }
+    to{
+        left: -100px;
+        opacity: 0;
+    }
+}
+@keyframes menuButtonAppear {
+    from{
+        left: -100px;
+        opacity: 0;
+    }
+    to{
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.menuButtonDisappear{
+    animation: menuButtonDisappear 0.5s forwards;
+}
+
+.menuButtonAppear{
+    animation: menuButtonAppear 0.5s forwards;
 }
