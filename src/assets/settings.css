@@ -4,3 +4,14 @@
     width: 80%;
     height: 80%;
 }
+.settings{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.setting{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
