@@ -6,6 +6,18 @@
         </div>
     </div>
     <div class="menuButtons" :class="{'menuButtonDisappear': !isMenuOpen, 'menuButtonAppear' : isMenuOpen}">
+        <div class="menuButton"  @click="ToggleSettings">
+            <img src="./icons/MainMenuIcons/settings.png" alt="settings" class="menuIcon openSettings">
+            <p class="menuButtonText">Settings</p>
+        </div>
+        <div class="menuButton"  @click="ToggleInformation">
+            <img src="./icons/MainMenuIcons/information.png" alt="information" class="menuIcon openInformation">
+            <p class="menuButtonText">Information</p>
+        </div>
+        <div class="menuButton"  @click="ToggleInformation">
+            <img src="./icons/MainMenuIcons/story.png" alt="story" class="menuIcon openStory">
+            <p class="menuButtonText">Story</p>
+        </div>
         <div class="menuButton"  @click="ToggleMap">
             <img src="./icons/MainMenuIcons/map.png" alt="map" class="menuIcon openMap">
             <p class="menuButtonText">Map</p>

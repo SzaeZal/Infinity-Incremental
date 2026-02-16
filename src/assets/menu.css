@@ -31,6 +31,7 @@
     position: absolute;
     width: 45px;
     height: 45px;
+    transition-duration: 0.3s;
 }
 .menuButton:hover{
     .menuButtonText{
@@ -52,10 +53,57 @@
 .openMenu{
     background-color: blue;
     border-color: rgb(0,0, 128);
-    transition-duration: 0.3s;
 }
 .openMenu:hover{
     background-color: rgb(0,0, 128);
+}
+
+.openInformation{
+    background-color: rgb(255, 128,0);
+    border-color: rgb(128,64, 0);
+}
+.openInformation:hover{
+    background-color: rgb(128,64, 0);
+}
+
+.openSettings{
+    background-color: rgb(128, 128, 128);
+    border-color: rgb(64,64,64);
+}
+.openSettings:hover{
+    background-color: rgb(64,64,64);
+}
+
+.openStory{
+    background-color: rgb(128, 128, 64);
+    border-color: rgb(64, 64, 32);
+}
+.openStory:hover{
+    background-color: rgb(64, 64, 32);
+}
+
+.openMap{
+    background-color: rgb(0, 64, 255);
+    border-color: rgb(0, 32,128);
+}
+.openMap:hover{
+    background-color: rgb(0, 32,128);
+}
+
+.openStats{
+    background-color: rgb(0, 128, 0);
+    border-color: rgb(0,96,0);
+}
+.openStats:hover{
+    background-color: rgb(0,96,0);
+}
+
+.closeMenu{
+    background-color: rgb(255,0,0);
+    border-color: rgb(128,0,0);
+}
+.closeMenu:hover{
+    background-color: rgb(128,0,0);
 }
 
 @keyframes menuButtonDisappear {
