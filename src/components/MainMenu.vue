@@ -18,6 +18,10 @@
             <img src="./icons/MainMenuIcons/story.png" alt="story" class="menuIcon openStory">
             <p class="menuButtonText">Story</p>
         </div>
+        <div class="menuButton"  @click="ToggleInfinities">
+            <img src="./icons/MainMenuIcons/infinity.png" alt="story" class="menuIcon openInfinities">
+            <p class="menuButtonText">Infinities</p>
+        </div>
         <div class="menuButton"  @click="ToggleMap">
             <img src="./icons/MainMenuIcons/map.png" alt="map" class="menuIcon openMap">
             <p class="menuButtonText">Map</p>
@@ -31,9 +35,16 @@
             <p class="menuButtonText">Close Menu</p>
         </div>
     </div>
-    <div class="menu" :class="{'mainMap' : isMapToggled, 'mainSettings' : isSettingsToggled}">
+    <div class="menu" :class="{'mainMap' : isMapToggled,
+         'mainSettings' : isSettingsToggled,
+         'mainInformation': isInformationToggled,
+         'mainStory' : isStoryToggled,
+         'mainInfinities' : isInfinitiesToggled}">
         <SettingsMain v-show="isSettingsToggled" />
         <Map v-show="isMapToggled" />
+        <InformationMain v-show="isInformationToggled" />
+        <StoryMain v-show="isStoryToggled" />
+        <InfinitiesMain v-show="isInfinitiesToggled" />
     </div>
 </template>
 
@@ -42,17 +53,26 @@ import { usePlayerStore } from '@/stores/player';
 import { ref } from 'vue';
 import Map from '../MenuComponents/Map.vue';
 import SettingsMain from '@/MenuComponents/SettingsMain.vue';
+import InformationMain from '@/MenuComponents/InformationMain.vue';
+import StoryMain from '@/MenuComponents/StoryMain.vue';
+import InfinitiesMain from '@/MenuComponents/InfinitiesMain.vue';
 
 
 const playerStore = usePlayerStore()
 const isMenuOpen=ref(false)
 const isSettingsToggled=ref(false)
 const isMapToggled=ref(false)
+const isInformationToggled=ref(false)
+const isStoryToggled=ref(false)
+const isInfinitiesToggled=ref(false)
 
 const ToggleMenu=()=>{
     if(isMenuOpen.value==true){
         isMapToggled.value=false
         isSettingsToggled.value=false
+        isInformationToggled.value=false
+        isStoryToggled.value=false
+        isInfinitiesToggled.value=false
     }
     isMenuOpen.value=!isMenuOpen.value
 }
@@ -60,6 +80,9 @@ const ToggleMenu=()=>{
 const ToggleSettings=()=>{
     if(isSettingsToggled.value==false){
         isMapToggled.value=false
+        isInformationToggled.value=false
+        isStoryToggled.value=false
+        isInfinitiesToggled.value=false
     }
     isSettingsToggled.value=!isSettingsToggled.value
     
@@ -68,11 +91,41 @@ const ToggleSettings=()=>{
 const ToggleMap=()=>{
     if(isMapToggled.value==false){
         isSettingsToggled.value=false
+        isInformationToggled.value=false
+        isStoryToggled.value=false
+        isInfinitiesToggled.value=false
     }
     isMapToggled.value=!isMapToggled.value
-    
 }
 
+const ToggleInformation=()=>{
+    if(isInformationToggled.value==false){
+        isSettingsToggled.value=false
+        isMapToggled.value=false
+        isStoryToggled.value=false
+        isInfinitiesToggled.value=false
+    }
+    isInformationToggled.value=!isInformationToggled.value
+}
 
+const ToggleStory=()=>{
+    if(isStoryToggled.value==false){
+        isSettingsToggled.value=false
+        isMapToggled.value=false
+        isInformationToggled.value=false
+        isInfinitiesToggled.value=false
+    }
+    isStoryToggled.value=!isStoryToggled.value
+}
+
+const ToggleInfinities=()=>{
+    if(isInfinitiesToggled.value==false){
+        isSettingsToggled.value=false
+        isMapToggled.value=false
+        isInformationToggled.value=false
+        isStoryToggled.value=false
+    }
+    isInfinitiesToggled.value=!isInfinitiesToggled.value
+}
 
 </script>

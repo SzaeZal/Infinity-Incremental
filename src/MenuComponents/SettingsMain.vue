@@ -34,7 +34,7 @@ import { ref } from 'vue';
 import SaveSettings from './SettingsMenuComponents/SaveSettings.vue';
 import UISettings from './SettingsMenuComponents/UISettings.vue';
 
-const isSaveSettingsToggled=ref(false)
+const isSaveSettingsToggled=ref(true)
 const isUISettingsToggled=ref(false)
 
 const ToggleSaveSettings=()=>{

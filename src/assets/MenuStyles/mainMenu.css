@@ -61,11 +61,11 @@
 }
 
 .openInformation{
-    background-color: rgb(255, 128,0);
-    border-color: rgb(128,64, 0);
+    background-color: rgb(64, 64,128);
+    border-color: rgb(32,32, 64);
 }
 .openInformation:hover{
-    background-color: rgb(128,64, 0);
+    background-color: rgb(32,32, 64);
 }
 
 .openSettings{
@@ -74,6 +74,14 @@
 }
 .openSettings:hover{
     background-color: rgb(64,64,64);
+}
+
+.openInfinities{
+    background-color: rgb(255, 128,0);
+    border-color: rgb(128,64, 0);
+}
+.openInfinities:hover{
+    background-color: rgb(128, 64, 0);
 }
 
 .openStory{
