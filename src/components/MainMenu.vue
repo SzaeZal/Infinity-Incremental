@@ -39,12 +39,14 @@
          'mainSettings' : isSettingsToggled,
          'mainInformation': isInformationToggled,
          'mainStory' : isStoryToggled,
-         'mainInfinities' : isInfinitiesToggled}">
+         'mainInfinities' : isInfinitiesToggled,
+         'mainStats' : isStatsToggled}">
         <SettingsMain v-show="isSettingsToggled" />
         <Map v-show="isMapToggled" />
         <InformationMain v-show="isInformationToggled" />
         <StoryMain v-show="isStoryToggled" />
         <InfinitiesMain v-show="isInfinitiesToggled" />
+        <StatsMain v-show="isStatsToggled" />
     </div>
 </template>
 
@@ -56,6 +58,7 @@ import SettingsMain from '@/MenuComponents/SettingsMain.vue';
 import InformationMain from '@/MenuComponents/InformationMain.vue';
 import StoryMain from '@/MenuComponents/StoryMain.vue';
 import InfinitiesMain from '@/MenuComponents/InfinitiesMain.vue';
+import StatsMain from '@/MenuComponents/StatsMain.vue';
 
 
 const playerStore = usePlayerStore()
@@ -65,6 +68,7 @@ const isMapToggled=ref(false)
 const isInformationToggled=ref(false)
 const isStoryToggled=ref(false)
 const isInfinitiesToggled=ref(false)
+const isStatsToggled=ref(false)
 
 const ToggleMenu=()=>{
     if(isMenuOpen.value==true){
@@ -73,6 +77,7 @@ const ToggleMenu=()=>{
         isInformationToggled.value=false
         isStoryToggled.value=false
         isInfinitiesToggled.value=false
+        isStatsToggled.value=false
     }
     isMenuOpen.value=!isMenuOpen.value
 }
@@ -83,6 +88,7 @@ const ToggleSettings=()=>{
         isInformationToggled.value=false
         isStoryToggled.value=false
         isInfinitiesToggled.value=false
+        isStatsToggled.value=false
     }
     isSettingsToggled.value=!isSettingsToggled.value
     
@@ -94,6 +100,7 @@ const ToggleMap=()=>{
         isInformationToggled.value=false
         isStoryToggled.value=false
         isInfinitiesToggled.value=false
+        isStatsToggled.value=false
     }
     isMapToggled.value=!isMapToggled.value
 }
@@ -104,6 +111,7 @@ const ToggleInformation=()=>{
         isMapToggled.value=false
         isStoryToggled.value=false
         isInfinitiesToggled.value=false
+        isStatsToggled.value=false
     }
     isInformationToggled.value=!isInformationToggled.value
 }
@@ -114,6 +122,7 @@ const ToggleStory=()=>{
         isMapToggled.value=false
         isInformationToggled.value=false
         isInfinitiesToggled.value=false
+        isStatsToggled.value=false
     }
     isStoryToggled.value=!isStoryToggled.value
 }
@@ -124,8 +133,20 @@ const ToggleInfinities=()=>{
         isMapToggled.value=false
         isInformationToggled.value=false
         isStoryToggled.value=false
+        isStatsToggled.value=false
     }
     isInfinitiesToggled.value=!isInfinitiesToggled.value
+}
+
+const ToggleStats=()=>{
+    if(isStatsToggled.value==false){
+        isSettingsToggled.value=false
+        isMapToggled.value=false
+        isInformationToggled.value=false
+        isStoryToggled.value=false
+        isInfinitiesToggled.value=false
+    }
+    isStatsToggled.value=!isStatsToggled.value
 }
 
 </script>

@@ -4,6 +4,7 @@ import './assets/MenuStyles/map.css'
 import './assets/MenuStyles/settings.css'
 import './assets/MenuStyles/information.css'
 import './assets/MenuStyles/infinities.css'
+import './assets/MenuStyles/stats.css'
 import './assets/MenuStyles/story.css'
 import './assets/prestigeRealm.css'
 

@@ -46,7 +46,7 @@ const ToggleSaveSettings=()=>{
 
 const ToggleUISettings=()=>{
     if(isUISettingsToggled.value==false){
-        isSaveSettingsToggled=false
+        isSaveSettingsToggled.value=false
     }
     isUISettingsToggled.value=!isUISettingsToggled.value
 }
