@@ -156,4 +156,26 @@ const ToggleStats=()=>{
     isStatsToggled.value=!isStatsToggled.value
 }
 
+$(document).on("keypress", (e)=>{
+    if (e.originalEvent.code == 'KeyE') {
+        ToggleStats()
+    }
+    else if(e.originalEvent.code == 'KeyQ') {
+        ToggleMap()
+    }
+    else if(e.originalEvent.code == 'KeyR') {
+        ToggleStory()
+    }
+    else if(e.originalEvent.code == 'KeyF') {
+        ToggleSettings()
+    }
+    else if(e.originalEvent.code == 'KeyX') {
+        ToggleInformation()
+    }
+    else if(e.originalEvent.code == 'KeyC') {
+        ToggleInfinities()
+    }
+})
+
+
 </script>
