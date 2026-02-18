@@ -53,12 +53,12 @@
 <script setup>
 import { usePlayerStore } from '@/stores/player';
 import { ref } from 'vue';
-import Map from '../MenuComponents/Map.vue';
-import SettingsMain from '@/MenuComponents/SettingsMain.vue';
-import InformationMain from '@/MenuComponents/InformationMain.vue';
-import StoryMain from '@/MenuComponents/StoryMain.vue';
-import InfinitiesMain from '@/MenuComponents/InfinitiesMain.vue';
-import StatsMain from '@/MenuComponents/StatsMain.vue';
+import Map from './MenuComponents/Map.vue';
+import SettingsMain from './MenuComponents/SettingsMain.vue';
+import InformationMain from './MenuComponents/InformationMain.vue';
+import StoryMain from './MenuComponents/StoryMain.vue';
+import InfinitiesMain from './MenuComponents/InfinitiesMain.vue';
+import StatsMain from './MenuComponents/StatsMain.vue';
 
 
 const playerStore = usePlayerStore()

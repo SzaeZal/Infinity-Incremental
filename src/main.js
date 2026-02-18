@@ -1,4 +1,5 @@
 import './assets/main.css'
+import './assets/dialogBox.css'
 import './assets/MenuStyles/mainMenu.css'
 import './assets/MenuStyles/map.css'
 import './assets/MenuStyles/settings.css'
