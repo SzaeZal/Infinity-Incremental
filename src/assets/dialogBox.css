@@ -2,7 +2,63 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    transform: translate(-50% -50%);
     z-index: 999;
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dialogBoxMain{
+    height: fit-content;
+    width: fit-content;
+    max-width: 90%;
+    max-height: 90%;
+    min-width: 40%;
+    min-height: 40%;
+    border-radius: 10px;
+    border-width: 4px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+}
+.dialogBoxMain>*{
+    padding: 10px;
+}
+.dialogBoxHeader, .dialogBoxActions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 33px;
+    transition-duration: 0.3s;
+    border-bottom: 2px solid rgb(128,0,0);
+    border-radius: 7px 7px 0 0;
+    cursor: pointer;
+}
+.dialogBoxHeader:hover{
+    background-color: rgb(164,0,0);
+}
+.dialogBoxTitle{
+    font-size: x-large;
+}
+.dialogBoxHeader>img{
+    width: 50px;
+    height: 50px;
+}
+.dialogBoxContent{
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.dialogBoxActions{
+    border-bottom: none;
+    border-top: 2px solid rgb(128,0,0);
+    border-radius: 0 0 7px 7px;
+}
+
+
+.dialogBoxDanger{
+    background-color: rgb(255,0,0);
+    border-color: rgb(128,0,0);
+    color: white;
 }

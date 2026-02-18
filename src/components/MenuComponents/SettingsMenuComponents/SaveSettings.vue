@@ -55,35 +55,23 @@
             Hard Reset
         </div>
     </div>
-    <div class="dialogBoxContainer" v-show="isDialogBoxShown">
-        <div class="dialogBoxHeader">
-            <h3 class="dialogBoxTitle"> {{ dialogBoxTitle }} </h3>
-            <img src="../../components/icons/menuClose.png" alt="close" class="dialogBoxClose">
-        </div>
-        <div class="dialogBoxContent">    
-            {{ dialogBoxContent }}
-        </div>
-        <div class="dialogBoxActions">
-            {{ dialogBoxActions }}
-        </div>
-    </div>
 </template>
 <script setup>
+import { useDialogBoxStore } from '@/stores/dialogBox';
 import { usePlayerStore } from '@/stores/player';
 import { ref } from 'vue';
 
 const playerStore=usePlayerStore()
-const isDialogBoxShown=ref(false)
-const dialogBoxTitle=ref("")
-const dialogBoxContent=ref(``)
-const dialogBoxActions=ref(``)
+const dialogBoxStore=useDialogBoxStore()
 
 const SetAutoSaveInterval=(newms)=>{
     playerStore.saveSettings.autoSaveInterval=newms
 }
 
-const ShowHardResetDialogBox =()=>{
-    isDialogBoxShown.value=true
+const ShowHardResetDialogBox=()=>{
+    dialogBoxStore.isDialogBoxShown=true
+    dialogBoxStore.dialogBoxType="Danger"
+    dialogBoxStore.dialogBoxTitle="Hard Reset"
+    dialogBoxStore.dialogBoxContent=`Are you sure`
 }
-
 </script>
