@@ -8,7 +8,7 @@
                     class="element subMenuSvg"
                 >
                     <path d="M20 2 L140 2 L130 33  L10 33 Z"  />
-                    <text x="30" y="23">UI Settings</text>
+                    <text x="30" y="24">UI Settings</text>
                 </svg>
             </div>
             <div class="subMenuButton" @click="ToggleSaveSettings">
@@ -18,7 +18,7 @@
                     class="element subMenuSvg"
                 >
                     <path d="M20 2 L140 2 L130 33  L10 33 Z"  />
-                    <text x="20" y="23">Save Settings</text>
+                    <text x="20" y="24">Save Settings</text>
                 </svg>
             </div>
         </div>
@@ -51,3 +51,25 @@ const ToggleUISettings=()=>{
     isUISettingsToggled.value=!isUISettingsToggled.value
 }
 </script>
+
+<style scoped>
+.subMenuSvg{
+    path{
+        stroke-width: 2px;
+        fill: none;
+        stroke: rgb(25, 25, 25);
+    }
+    text{
+        font-size: 20px;
+        fill: black;
+    }
+}
+.subMenuButton:hover{
+    .subMenuSvg{
+        scale: 1.05;
+        path{
+            fill: rgba(0,0,0,0.05);
+        }
+    }
+}
+</style>

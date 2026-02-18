@@ -4,3 +4,60 @@
     width: 80%;
     height: 80%;
 }
+
+.statGroup{
+    max-height: calc(100% - 100px);
+    overflow-y: auto;
+    width: 95%;
+    height: fit-content;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 2px solid rgb(0,96,0);
+}
+@keyframes openStatGroup {
+    from{
+        max-height: 50px;
+        overflow: hidden;
+    }
+    to{
+        max-height: fit-content;
+    }
+}
+.openStatGroup{
+    animation: openStatGroup 0.3s forwards;
+}
+@keyframes closeStatGroup {
+    from{
+        max-height: fit-content;
+    }
+    to{
+        max-height: 50px;
+    }
+}
+.closedStatGroup{
+    animation: closeStatGroup 0.3s forwards;
+    overflow: hidden;
+}
+.statGroupTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    height: 40px;
+}
+.stat{
+    width: calc(100% - 10px);
+    padding: 5px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.statName{
+    flex: 1;
+}
+.statAmount{
+    flex: 1;
+}

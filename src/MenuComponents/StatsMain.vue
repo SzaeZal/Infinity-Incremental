@@ -3,32 +3,32 @@
         <div class="subMenu">
             <div class="subMenuButton" @click="ToggleCurrencies">
                 <svg
-                    width="150px"
+                    width="175px"
                     height="35px"
                     class="element subMenuSvg"
                 >
-                    <path d="M20 2 L140 2 L130 33  L10 33 Z"  />
-                    <text x="30" y="23">Main currencies</text>
+                    <path d="M20 2 L170 2 L160 33  L10 33 Z"  />
+                    <text x="25" y="24">Main currencies</text>
                 </svg>
             </div>
             <div class="subMenuButton" @click="ToggleLevels">
                 <svg
-                    width="150px"
+                    width="175px"
                     height="35px"
                     class="element subMenuSvg"
                 >
-                    <path d="M20 2 L140 2 L130 33  L10 33 Z"  />
-                    <text x="20" y="23">Levels</text>
+                    <path d="M20 2 L170 2 L160 33  L10 33 Z"  />
+                    <text x="60" y="24">Levels</text>
                 </svg>
             </div>
             <div class="subMenuButton" @click="ToggleOtherStats">
                 <svg
-                    width="150px"
+                    width="175px"
                     height="35px"
                     class="element subMenuSvg"
                 >
-                    <path d="M20 2 L140 2 L130 33  L10 33 Z"  />
-                    <text x="20" y="23">Other</text>
+                    <path d="M20 2 L170 2 L160 33  L10 33 Z"  />
+                    <text x="66" y="24">Other</text>
                 </svg>
             </div>
         </div>
@@ -76,3 +76,25 @@ const ToggleOtherStats=()=>{
 }
 
 </script>
+
+<style scoped>
+.subMenuSvg{
+    path{
+        stroke-width: 2px;
+        fill: none;
+        stroke: rgb(0,96,0);
+    }
+    text{
+        font-size: 20px;
+        fill: black;
+    }
+}
+.subMenuButton:hover{
+    .subMenuSvg{
+        scale: 1.05;
+        path{
+            fill: rgba(0,0,0,0.05);
+        }
+    }
+}
+</style>

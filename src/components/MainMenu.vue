@@ -1,11 +1,5 @@
 <template>
-    <div class="menuButtons" :class="{'menuButtonDisappear': isMenuOpen, 'menuButtonAppear' : !isMenuOpen}">
-        <div class="menuButton"  @click="ToggleMenu">
-            <img src="./icons/menuOpen.png" alt="menu open" class="menuIcon openMenu">
-            <p class="menuButtonText">Open Menu</p>
-        </div>
-    </div>
-    <div class="menuButtons" :class="{'menuButtonDisappear': !isMenuOpen, 'menuButtonAppear' : isMenuOpen}">
+    <div class="menuButtons mainMenuButtons" :class="{'menuButtonDisappear': isMenuClosed, 'menuButtonAppear' : isMenuOpen}">
         <div class="menuButton"  @click="ToggleSettings">
             <img src="./icons/MainMenuIcons/settings.png" alt="settings" class="menuIcon openSettings">
             <p class="menuButtonText">Settings</p>
@@ -30,9 +24,15 @@
             <img src="./icons/MainMenuIcons/stats.png" alt="menu close" class="menuIcon openStats">
             <p class="menuButtonText">Stats</p>
         </div>
-        <div class="menuButton" @click="ToggleMenu">
+        <div class="menuButton" @click="CloseMenu">
             <img src="./icons/menuClose.png" alt="menu close" class="menuIcon closeMenu">
             <p class="menuButtonText">Close Menu</p>
+        </div>
+    </div>
+    <div class="menuButtons" :class="{'menuButtonDisappear': isMenuOpen, 'menuButtonAppear' : isMenuClosed}">
+        <div class="menuButton"  @click="OpenMenu">
+            <img src="./icons/menuOpen.png" alt="menu open" class="menuIcon openMenu">
+            <p class="menuButtonText">Open Menu</p>
         </div>
     </div>
     <div class="menu" :class="{'mainMap' : isMapToggled,
@@ -63,6 +63,7 @@ import StatsMain from '@/MenuComponents/StatsMain.vue';
 
 const playerStore = usePlayerStore()
 const isMenuOpen=ref(false)
+const isMenuClosed=ref(false)
 const isSettingsToggled=ref(false)
 const isMapToggled=ref(false)
 const isInformationToggled=ref(false)
@@ -70,16 +71,22 @@ const isStoryToggled=ref(false)
 const isInfinitiesToggled=ref(false)
 const isStatsToggled=ref(false)
 
-const ToggleMenu=()=>{
-    if(isMenuOpen.value==true){
+const OpenMenu=()=>{
+    isMenuOpen.value=true
+    isMenuClosed.value=false
+}
+
+const CloseMenu=()=>{
+    if(isSettingsToggled.value==false){
         isMapToggled.value=false
-        isSettingsToggled.value=false
         isInformationToggled.value=false
         isStoryToggled.value=false
         isInfinitiesToggled.value=false
         isStatsToggled.value=false
+        isSettingsToggled.value=false
     }
-    isMenuOpen.value=!isMenuOpen.value
+    isMenuOpen.value=false
+    isMenuClosed.value=true    
 }
 
 const ToggleSettings=()=>{
