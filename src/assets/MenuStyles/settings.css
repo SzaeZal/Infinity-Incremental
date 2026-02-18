@@ -11,7 +11,62 @@
     gap: 10px;
 }
 .setting{
+    width: 95%;
+    margin: auto;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+}
+.settingName{
+    flex: 1;
+    font-size: larger;
+}
+.settingOptions{
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: larger;
+    border: 1px solid black;
+    transition-duration: 0.3s;
+}
+.option:first-of-type{
+    border-radius: 10px 0 0 10px;
+}
+.option:last-of-type{
+    border-radius: 0 10px 10px 0;
+}
+.option:hover{
+    border-color: rgb(96,96,96);
+    background-color: rgb(96,96,96);
+    scale: 1.02;
+}
+.selectedOption{
+    border-color: green;
+    background-color: rgba(0, 128, 0, 0.15);
+}
+.selectedOption:hover{
+    border-color: green;
+    background-color: rgba(0, 128, 0, 0.25);
+}
+.hardReset{
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: fit-content;
+    margin: auto;
+    margin-top: 40px;
+    color: red;
+    transition-duration: 0.3s;
+}
+.hardReset:hover{
+    background-color: rgba(255,0,0, 0.15);
+    scale: 1.05;
 }

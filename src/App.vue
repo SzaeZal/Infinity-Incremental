@@ -134,18 +134,34 @@ $(window).on('focus', () => {
     let timeDiff = timeWhenFocused - timeWhenBlurred
     Tick(timeDiff)
     ticker = setInterval(Tick, 25, 25)
-    if (playerStore.saveSettings.saveIntervalInMs != 0) {
-      autoSaveInterval = setInterval(Save, playerStore.saveSettings.saveIntervalInMs)
-    }
+    autoSaveInterval=setInterval(SaveChecker, 25)
   }
 })
 //#endregion
 //#region saving and loading
+let currentAutoSaveInterval=ref(5000)
+let msSinceSave=0
+
 const Save = () => {
   const playerParsedToJson = playerStore.CreateJson()
   let jwt = CreatePartialJWT(playerParsedToJson)
   localStorage.setItem('InfinityIncSave', jwt)
 }
+
+const SaveChecker=()=>{
+  msSinceSave+= currentAutoSaveInterval.value==0 ? 0 : 25
+  if(currentAutoSaveInterval.value!=playerStore.saveSettings.autoSaveInterval){
+    currentAutoSaveInterval.value=playerStore.saveSettings.autoSaveInterval
+    msSinceSave=0
+    Save()
+  }
+  else if(msSinceSave>=currentAutoSaveInterval.value && currentAutoSaveInterval.value!=0){
+    Save()
+    msSinceSave-=currentAutoSaveInterval.value
+  }
+}
+
+let autoSaveInterval = setInterval(SaveChecker, 25)
 
 const CreatePartialJWT = (payloadInJson) => {
   let payloadInBase64 = btoa(payloadInJson)
@@ -160,18 +176,10 @@ const DecodePartialJwt = () => {
   }
   return null
 }
-
-let autoSaveInterval = setInterval(Save, 5000)
 const Load = () => {
   let playerSaveJson = DecodePartialJwt()
   try {
     playerStore.Load(playerSaveJson)
-
-    if (playerStore.saveSettings.autoSaveInterval != 0) {
-      autoSaveInterval = setInterval(Save, playerStore.saveSettings.autoSaveInterval)
-    } else {
-      clearInterval(autoSaveInterval)
-    }
   } catch (e) {
     console.log(e)
   }
