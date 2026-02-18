@@ -23,8 +23,8 @@
             </div>
         </div>
         <div class="subContent">
-            <Information v-show="isInformationToggled"/>
-            <Changelog v-show="isChangelogToggled"/>
+            <Information v-show="isInformationToggled" />
+            <Changelog v-show="isChangelogToggled" />
         </div>
     </div>
 </template>
@@ -61,7 +61,7 @@ const ToggleChangelog=()=>{
     }
     text{
         font-size: 20px;
-        fill: black;
+        fill: white;
     }
 }
 .subMenuButton:hover{

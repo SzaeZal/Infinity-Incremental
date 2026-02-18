@@ -4,3 +4,29 @@
     width: 80%;
     height: 80%;
 }
+
+.gameTitle{
+    font-size: x-large;
+    text-align: center;
+}
+.gameVersion, .gameAuthor{
+    font-size: large;
+    text-align: center;
+}
+
+.changelog{
+    padding: 15px;
+    text-align: center;
+}
+.versionTitle{
+    font-size: larger;
+}
+.versionDate{
+    font-size: large;
+}
+.changes{
+    list-style-type: none;
+}
+.changes>li::before{
+    content: '-';
+}

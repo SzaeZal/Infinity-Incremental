@@ -6,10 +6,8 @@
 }
 
 .statGroup{
-    max-height: calc(100% - 100px);
-    overflow-y: auto;
     width: 95%;
-    height: fit-content;
+    max-height: fit-content;
     margin: auto;
     margin-bottom: 10px;
     border-radius: 15px;
