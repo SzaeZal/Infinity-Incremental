@@ -51,7 +51,6 @@
 </template>
 
 <script setup>
-import { usePlayerStore } from '@/stores/player';
 import { ref } from 'vue';
 import Map from './MenuComponents/Map.vue';
 import SettingsMain from './MenuComponents/SettingsMain.vue';
@@ -60,8 +59,6 @@ import StoryMain from './MenuComponents/StoryMain.vue';
 import InfinitiesMain from './MenuComponents/InfinitiesMain.vue';
 import StatsMain from './MenuComponents/StatsMain.vue';
 
-
-const playerStore = usePlayerStore()
 const isMenuOpen=ref(false)
 const isMenuClosed=ref(false)
 const isSettingsToggled=ref(false)

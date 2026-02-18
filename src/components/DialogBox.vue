@@ -7,12 +7,8 @@
                 <h3 class="dialogBoxTitle"> {{ dialogBoxStore.dialogBoxTitle }} </h3>
                 <img src="./icons/menuClose.png" alt="close dialog box" >
             </div>
-            <div class="dialogBoxContent">
-                {{ dialogBoxStore.dialogBoxContent }}
-            </div>
-            <div class="dialogBoxActions">
-                {{ dialogBoxStore.dialogBoxActions }}
-            </div>
+            <div class="dialogBoxContent" v-html="dialogBoxStore.dialogBoxContent"></div>
+            <div class="dialogBoxActions" v-html="dialogBoxStore.dialogBoxActions"></div>
         </div>
     </div>
 </template>

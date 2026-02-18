@@ -72,6 +72,6 @@ const ShowHardResetDialogBox=()=>{
     dialogBoxStore.isDialogBoxShown=true
     dialogBoxStore.dialogBoxType="Danger"
     dialogBoxStore.dialogBoxTitle="Hard Reset"
-    dialogBoxStore.dialogBoxContent=`Are you sure`
+    dialogBoxStore.dialogBoxContent=`<p>Are you sure</p>`
 }
 </script>
