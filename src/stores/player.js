@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import LoadBuyables from '@/components/Scripts/LoadBuyableStuff'
 
 export const usePlayerStore = defineStore('player', () => {
   const prestigeRealm=ref({
@@ -126,6 +127,8 @@ export const usePlayerStore = defineStore('player', () => {
     UISettings.value=playerSaveParsed.settings.UISettings
     saveSettings.value=playerSaveParsed.settings.saveSettings
     navigation.value=playerSaveParsed.navigation
+    
+    LoadBuyables(prestigeRealm, prestigeRealmStatsCalculated)
   }
 
   return {prestigeRealm, prestigeRealmStatsCalculated, prestigeRealmMapPins, navigation, UISettings, saveSettings, CreateJson, Load}
