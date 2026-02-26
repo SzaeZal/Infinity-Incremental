@@ -1,0 +1,12 @@
+.points{
+    border-color: white;
+    .mainCurrencyDisplay{
+        border-color: white;
+    }
+    .layerSubMenu{
+        border-color: white;
+    }
+    .subMenuItem{
+        border-color: white;
+    }
+}

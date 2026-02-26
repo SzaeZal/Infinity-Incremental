@@ -16,19 +16,65 @@
     </div>
     <div class="upgradeRow">
         <div class="upgrade">
-
+            <div class="upgradeTitle">
+                Point doubler
+            </div>
+            <div class="upgradeDescription">
+                x2 points
+            </div>
+            <div class="upgradeCost">
+                
+            </div>
         </div>
         <div class="upgrade">
+            <div class="upgradeTitle">
 
+            </div>
+            <div class="upgradeDescription">
+
+            </div>
+            <div class="upgradeCost">
+
+            </div>
         </div>
         <div class="upgrade">
+            <div class="upgradeTitle">
 
+            </div>
+            <div class="upgradeDescription">
+
+            </div>
+            <div class="upgradeCost">
+
+            </div>
         </div>
         <div class="upgrade">
+            <div class="upgradeTitle">
 
+            </div>
+            <div class="upgradeDescription">
+
+            </div>
+            <div class="upgradeCost">
+
+            </div>
         </div>
         <div class="upgrade">
+            <div class="upgradeTitle">
 
+            </div>
+            <div class="upgradeDescription">
+
+            </div>
+            <div class="upgradeFormula">
+
+            </div>
+            <div class="upgradeEffect">
+
+            </div>
+            <div class="upgradeCost">
+                
+            </div>
         </div>
     </div>
 </template>
