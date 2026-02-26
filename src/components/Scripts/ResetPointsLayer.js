@@ -18,4 +18,3 @@ const ResetPointBuyables=(pointBuyables, pointBuyableStatsCalculated)=>{
 }
 
 export default ResetPointsLayer
-

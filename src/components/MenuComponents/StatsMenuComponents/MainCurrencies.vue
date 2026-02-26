@@ -25,7 +25,7 @@
                 Prestige Points
             </h4>
             <h4 class="statAmount">
-                {{ FormatNumber(playerStore.prestigeRealm.points.amount) }}
+                {{ FormatNumber(playerStore.prestigeRealm.prestige.amount) }}
             </h4>
             <div class="automationToggler">
 

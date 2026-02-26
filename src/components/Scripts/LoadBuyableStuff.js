@@ -1,4 +1,5 @@
 const LoadBuyables=(prestigeRealm, prestigeRealmStatsCalculated)=>{
+    
     LoadPrestigeRealmBuyables(prestigeRealm.value, prestigeRealmStatsCalculated.value)
 }
 
@@ -8,10 +9,10 @@ const LoadPrestigeRealmBuyables =(prestigeRealm, prestigeRealmStatsCalculated)=>
 
 }
 
-const LoadPointsLayerBuyables=(points, pointsStatsCalculated)=>{    
+const LoadPointsLayerBuyables=(points, pointsStatsCalculated)=>{        
     pointsStatsCalculated.buyables.buyable1.cost =
       10 *
-      Math.pow(2, points.buyables.buyable1Amount * (1 + Math.log2(points.buyables.buyable1Amount)))
+      Math.pow(2, points.buyables.buyable1Amount * Math.log2(points.buyables.buyable1Amount + 2))
 
     pointsStatsCalculated.buyables.buyable1.effects.effectOnPoints.multiplier = Math.pow(
       2,
@@ -22,7 +23,7 @@ const LoadPointsLayerBuyables=(points, pointsStatsCalculated)=>{
       25 *
       Math.pow(
         1.35,
-        points.buyables.buyable2Amount * (1 + Math.log2(points.buyables.buyable2Amount)),
+        points.buyables.buyable2Amount * Math.log2(points.buyables.buyable2Amount+2),
       )
 
     pointsStatsCalculated.buyables.buyable2.effects.effectOnPoints.multiplier =

@@ -1,7 +1,16 @@
 const CalculatePointGain =(player)=>{
+    player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints =
+        player.prestigeRealm.prestige.upgrades.row1.upgrade5Bought==true
+        ? Math.log10(player.prestigeRealm.points.amount)
+        : 1
+
     player.prestigeRealmStatsCalculated.points.gain.multiplier = 1 
         * player.prestigeRealmStatsCalculated.points.buyables.buyable1.effects.effectOnPoints.multiplier
         * player.prestigeRealmStatsCalculated.points.buyables.buyable2.effects.effectOnPoints.multiplier
+        * player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade1Effects.effectOnPoints
+        * player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade2Effects.effectOnPoints
+        * player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade4Effects.effectOnPoints
+        * player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints
     
     player.prestigeRealmStatsCalculated.points.gain.exponent = 1 
 }

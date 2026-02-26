@@ -131,7 +131,7 @@ const Buyable1BuyOnce = () => {
     points.buyables.buyable1Amount++
     pointsStatsCalculated.buyables.buyable1.cost =
       10 *
-      Math.pow(2, points.buyables.buyable1Amount * (1 + Math.log2(points.buyables.buyable1Amount)))
+      Math.pow(2, points.buyables.buyable1Amount * Math.log2(points.buyables.buyable1Amount+2))
     pointsStatsCalculated.buyables.buyable1.effects.effectOnPoints.multiplier = Math.pow(
       2,
       points.buyables.buyable1Amount,
@@ -145,7 +145,7 @@ const Buyable1BuyMax = () => {
     points.buyables.buyable1Amount++
     pointsStatsCalculated.buyables.buyable1.cost =
       10 *
-      Math.pow(2, points.buyables.buyable1Amount * (1 + Math.log2(points.buyables.buyable1Amount)))
+      Math.pow(2, points.buyables.buyable1Amount * Math.log2(points.buyables.buyable1Amount+2))
     pointsStatsCalculated.buyables.buyable1.effects.effectOnPoints.multiplier = Math.pow(
       2,
       points.buyables.buyable1Amount,

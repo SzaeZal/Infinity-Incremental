@@ -27,17 +27,19 @@
 import Positions from './components/Positions.vue'
 import MainMenu from './components/MainMenu.vue'
 import Points from './components/PrestigeRealmComponents/PointsMain.vue'
-import GainPoints from './components/Scripts/GainPoints'
+import GainPoints from './components/Scripts/PrestigeRealmGains/GainPoints'
 import { usePlayerStore } from './stores/player'
 import { reactive, ref } from 'vue'
 import Prestige from './components/PrestigeRealmComponents/PrestigeMain.vue'
 import DialogBox from './components/DialogBox.vue'
+import GainPrestigePoints from './components/Scripts/PrestigeRealmGains/GainPrestigePoints'
 
 const playerStore = usePlayerStore()
 
 const Tick = (ms) => {
   if (playerStore.prestigeRealm.points.amount != Infinity) {
     GainPoints(playerStore, ms)
+    GainPrestigePoints(playerStore, ms)
   }
 }
 
