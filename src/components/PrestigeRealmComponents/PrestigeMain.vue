@@ -6,9 +6,12 @@
         <div class="subMenuItem selectedSubMenuItem">
           <h2>Upgrades</h2>
         </div>
+        <div class="subMenuItem">
+          <h2>Milestones</h2>
+        </div>
       </div>
       <div class="main">
-        
+          <PrestigeUpgrades />
       </div>
     </div>
   </div>
@@ -18,6 +21,7 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
+import PrestigeUpgrades from './PrestigeComponents/PrestigeUpgrades.vue';
 
 const playerStore = usePlayerStore()
 

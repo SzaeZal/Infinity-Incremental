@@ -26,11 +26,11 @@
 <script setup>
 import Positions from './components/Positions.vue'
 import MainMenu from './components/MainMenu.vue'
-import Points from './components/Points.vue'
+import Points from './components/PrestigeRealmComponents/PointsMain.vue'
 import GainPoints from './components/Scripts/GainPoints'
 import { usePlayerStore } from './stores/player'
 import { reactive, ref } from 'vue'
-import Prestige from './components/Prestige.vue'
+import Prestige from './components/PrestigeRealmComponents/PrestigeMain.vue'
 import DialogBox from './components/DialogBox.vue'
 
 const playerStore = usePlayerStore()
@@ -122,14 +122,14 @@ const UpdateUIPositions = () => {
 let windowFocused = true
 let timeWhenBlurred = 0
 
-$(window).on('blur', () => {
+$(document).on('blur', () => {
   windowFocused = false
   timeWhenBlurred = Date.now()
   clearInterval(ticker)
   clearInterval(autoSaveInterval)  
 })
 
-$(window).on('focus', () => {
+$(document).on('focus', () => {
   if (windowFocused == false) {
     windowFocused = true
     let timeWhenFocused = Date.now()
@@ -186,7 +186,7 @@ const Load = () => {
     console.log(e)
   }
 }
-//Load()
+Load()
 UpdateUIPositions()
 //#endregion
 

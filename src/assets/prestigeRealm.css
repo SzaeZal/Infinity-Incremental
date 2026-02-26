@@ -117,3 +117,39 @@
 .buyablePurchaseable:hover{
     background-color: darkgreen;
 }
+
+.layerResetButton{
+    border: 4px solid rgb(64, 64, 64);
+    border-radius: 10px;
+    width: 150px;
+    height: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    background-color: gray;
+}
+.currencyOnReset{
+    font-size: x-large  ;
+    margin: 5px;
+    text-align: center;
+}
+.plusOneAt{
+    font-size: smaller;
+    text-align: center;
+}
+
+.prestigeResetButton{
+    border: 4px solid rgb(0, 0, 128, 0.8);
+    background-color: blue;
+}
+.prestigeResetButton:hover{
+    background-color: rgb(0, 0, 196);
+    box-shadow: 0 0 10px rgb(0, 0, 128);
+}
+.prestigeResetButton:active{
+    background-color: rgb(0, 0, 128);
+    box-shadow: 0 0 20px rgb(0, 0, 128);
+}

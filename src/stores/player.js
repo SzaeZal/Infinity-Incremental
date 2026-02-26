@@ -9,6 +9,21 @@ export const usePlayerStore = defineStore('player', () => {
         buyable1Amount: 0,
         buyable2Amount: 0
       }
+    },
+    prestige:{
+      amount: 0,
+      upgrades:{
+        row1:{
+          upgrade1Bought:false,
+          upgrade2Bought:false,
+          upgrade3Bought:false,
+          upgrade4Bought:false,
+          upgrade5Bought:false
+        }
+      },
+      milestones:{
+        milestone1Unlocked: false,
+      }
     }
   })
   const prestigeRealmStatsCalculated=ref({
@@ -40,6 +55,35 @@ export const usePlayerStore = defineStore('player', () => {
             }
           }
         },
+      }
+    },
+    prestige:{
+      gain:{
+        challengeNerfs: {
+          divider: 1,
+          root: 1
+        },
+        multiplier: 1,
+        exponent: 1
+      },
+      upgrades:{
+        row1:{
+          upgrade1Effects:{
+            effectOnPoints: 1
+          },
+          upgrade2Effects:{
+            effectOnPoints: 1
+          },
+          upgrade3Effects:{
+            effectOnPrestigePoints: 1
+          },
+          upgrade4Effects:{
+            effectOnPoints: 1
+          },
+          upgrade5Effects:{
+            effectOnPoints: 1
+          }
+        }
       }
     }
   })
