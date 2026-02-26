@@ -14,14 +14,35 @@
             </h3>
         </span>
     </div>
+    <div class="upgradeRow">
+        <div class="upgrade">
+
+        </div>
+        <div class="upgrade">
+
+        </div>
+        <div class="upgrade">
+
+        </div>
+        <div class="upgrade">
+
+        </div>
+        <div class="upgrade">
+
+        </div>
+    </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
+import ResetPointsLayer from '@/components/Scripts/ResetPointsLayer'
 
 const playerStore = usePlayerStore()
+let prestige= playerStore.prestigeRealm.prestige
+let prestigeStatsCalculated=playerStore.prestigeRealmStatsCalculated.prestige
+
 const prestigePointsOnReset=ref(
     Math.floor(
         Math.pow(
@@ -49,7 +70,8 @@ const pointsToPlusOnePrestigePointOnReset=ref(
 
 const PrestigeReset=()=>{
     if(prestigePointsOnReset.value>0){
-        
+        prestige.amount+=prestigePointsOnReset.value
+        ResetPointsLayer()
     }
 }
 

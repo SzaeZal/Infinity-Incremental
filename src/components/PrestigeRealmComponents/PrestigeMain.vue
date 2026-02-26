@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="mainCurrencyDisplay">You have {{ FormatNumber(0) }} Prestige Points</h2>
+    <h2 class="mainCurrencyDisplay">You have {{ FormatNumber(playerStore.prestigeRealm.prestige.amount) }} Prestige Points</h2>
     <div class="layerMenu">
       <div class="layerSubMenu">
         <div class="subMenuItem selectedSubMenuItem">

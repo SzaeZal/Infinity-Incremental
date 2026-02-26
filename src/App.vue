@@ -122,14 +122,14 @@ const UpdateUIPositions = () => {
 let windowFocused = true
 let timeWhenBlurred = 0
 
-$(document).on('blur', () => {
+$(window).on('blur', () => {
   windowFocused = false
   timeWhenBlurred = Date.now()
   clearInterval(ticker)
   clearInterval(autoSaveInterval)  
 })
 
-$(document).on('focus', () => {
+$(window).on('focus', () => {
   if (windowFocused == false) {
     windowFocused = true
     let timeWhenFocused = Date.now()
@@ -186,6 +186,7 @@ const Load = () => {
     console.log(e)
   }
 }
+
 Load()
 UpdateUIPositions()
 //#endregion
