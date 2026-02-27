@@ -21,6 +21,17 @@
     text-align: center;
     animation: notificationAppear 0.5s forwards;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.notificationTitle{
+    font-size: 18px;
+    font-weight: bold;
+}
+.notificationDescription{
+    font-size: 14px;
 }
 
 @keyframes notificationAppear {
@@ -29,8 +40,8 @@
 }
 
 @keyframes fadeOut {
-    0% { opacity: 1; display: block; }
-    99% { opacity: 0; display: block; }
+    0% { opacity: 1; display: flex; }
+    99% { opacity: 0; display: flex; }
     100% { opacity: 0; display: none; }
 }
 .notificationDisappear{
