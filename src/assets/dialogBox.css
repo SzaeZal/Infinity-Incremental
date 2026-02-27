@@ -51,9 +51,25 @@
     flex: 1;
 }
 .dialogBoxActions{
+    cursor: auto;
     border-bottom: none;
     border-top: 2px solid rgb(128,0,0);
     border-radius: 0 0 7px 7px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.dialogBoxActions>button{
+    width: 100px;
+    height: 45px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    font-size: large;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+.dialogBoxActions>button:hover{
+    scale: 1.05;
 }
 
 
@@ -61,4 +77,15 @@
     background-color: rgb(255,0,0);
     border-color: rgb(128,0,0);
     color: white;
+    button{
+        background-color: rgb(255,0,0);
+        border-color: rgb(128,0,0);
+        color: white;
+    }
+    button:hover{
+        background-color: rgb(200,0,0);
+    }
+    button:active{
+        background-color: rgb(128,0,0);
+    }
 }

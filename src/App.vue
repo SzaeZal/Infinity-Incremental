@@ -175,7 +175,7 @@ const CreatePartialJWT = (payloadInJson) => {
 
 const DecodePartialJwt = () => {
   let jwt = localStorage.getItem('InfinityIncSave')
-  if (jwt != null) {
+  if (jwt != null || jwt!="") {
     return atob(jwt)
   }
   return null
@@ -192,5 +192,14 @@ const Load = () => {
 Load()
 setInterval(UpdateUIPositions, 15)
 //#endregion
+
+let hardResetChecker=setInterval(()=>{
+  if(playerStore.hardResetActivate==true){
+    clearInterval(autoSaveInterval)
+    localStorage.setItem('InfinityIncSave', "")
+    clearInterval(hardResetChecker)
+    location.reload()
+  }
+}, 25)
 
 </script>

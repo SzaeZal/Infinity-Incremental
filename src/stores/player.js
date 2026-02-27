@@ -124,15 +124,20 @@ export const usePlayerStore = defineStore('player', () => {
   }
 
   const Load = (json)=>{
-    let playerSaveParsed = JSON.parse(json);
-    prestigeRealm.value=playerSaveParsed.stats.prestigeRealm
-    UISettings.value=playerSaveParsed.settings.UISettings
-    saveSettings.value=playerSaveParsed.settings.saveSettings
-    navigation.value=playerSaveParsed.navigation
+    if(json!=""){
+      let playerSaveParsed = JSON.parse(json);
+      prestigeRealm.value=playerSaveParsed.stats.prestigeRealm
+      UISettings.value=playerSaveParsed.settings.UISettings
+      saveSettings.value=playerSaveParsed.settings.saveSettings
+      navigation.value=playerSaveParsed.navigation
 
-    LoadBuyables(prestigeRealm, prestigeRealmStatsCalculated)
-    LoadUpgrades(prestigeRealm, prestigeRealmStatsCalculated)
+      LoadBuyables(prestigeRealm, prestigeRealmStatsCalculated)
+      LoadUpgrades(prestigeRealm, prestigeRealmStatsCalculated)
+    }
+
   }
 
-  return {prestigeRealm, prestigeRealmStatsCalculated, prestigeRealmMapPins, navigation, UISettings, saveSettings, CreateJson, Load}
+  const hardResetActivate=ref(false)
+
+  return {prestigeRealm, prestigeRealmStatsCalculated, prestigeRealmMapPins, navigation, UISettings, saveSettings, CreateJson, Load, hardResetActivate}
 })

@@ -72,6 +72,9 @@ const ShowHardResetDialogBox=()=>{
     dialogBoxStore.isDialogBoxShown=true
     dialogBoxStore.dialogBoxType="Danger"
     dialogBoxStore.dialogBoxTitle="Hard Reset"
-    dialogBoxStore.dialogBoxContent=`<p>Are you sure</p>`
+    dialogBoxStore.dialogBoxContent=`<p>Are you sure you want to reset your save</p>
+                                    <p>This action is irreversible</p>
+                                    `
+    dialogBoxStore.dialogBoxActions="hardReset"
 }
 </script>
