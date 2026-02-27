@@ -1,15 +1,9 @@
 .prestige{
     border-color: blue;
-    .mainCurrencyDisplay{
+    .layerSubMenu, .subMenuItem, .mainCurrencyDisplay{
         border-color: blue;
     }
-    .layerSubMenu{
-        border-color: blue;
-    }
-    .subMenuItem{
-        border-color: blue;
-    }
-    .purchasedUpgrade{
+    .purchasedUpgrade, .unlockedMilestone{
         border-color: rgb(0, 0, 128);
         background-color: blue;
     }

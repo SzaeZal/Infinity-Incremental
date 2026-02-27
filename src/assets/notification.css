@@ -1,0 +1,38 @@
+.notifications{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1000;
+    width: 250px;
+    height: 90vh;
+    overflow: hidden;
+}
+.notification{
+    border: 4px solid white;
+    background-color: white;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    animation: notificationAppear 0.5s forwards;
+    cursor: pointer;
+}
+
+@keyframes notificationAppear {
+    0% { opacity: 0; }
+    100% { opacity: 1;}
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; display: block; }
+    99% { opacity: 0; display: block; }
+    100% { opacity: 0; display: none; }
+}
+.notificationDisappear{
+    animation: fadeOut 0.5s forwards;
+}

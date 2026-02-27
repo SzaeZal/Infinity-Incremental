@@ -2,6 +2,7 @@
   <Positions class="coords"/>
   <MainMenu />
   <DialogBox />
+  <Notifications />
   <Points
     v-show="UIShown.prestigeRealm.points"
     class="element prestigeRealmLayer points"
@@ -33,6 +34,7 @@ import { reactive, ref } from 'vue'
 import Prestige from './components/PrestigeRealmComponents/PrestigeMain.vue'
 import DialogBox from './components/DialogBox.vue'
 import GainPrestigePoints from './components/Scripts/PrestigeRealmGains/GainPrestigePoints'
+import Notifications from './components/Notifications.vue'
 
 const playerStore = usePlayerStore()
 
