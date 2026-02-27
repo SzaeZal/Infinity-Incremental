@@ -137,7 +137,7 @@ const PrestigeReset = () => {
     if (prestigePointsOnReset.value > 0 && playerStore.prestigeRealm.points.amount >= 500) {
         prestige.amount += prestigePointsOnReset.value
         CheckForPrestigeMilestones()
-        ResetPointsLayer()
+        ResetPointsLayer(1)
     }
 }
 

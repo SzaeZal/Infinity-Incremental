@@ -29,12 +29,9 @@ const isDialogBoxTypeDanger = ref()
 
 const CloseDialogBox = () => {
     dialogBoxStore.isDialogBoxShown = false
-    console.log('here')
 }
 
 const HardReset = () => {
-    console.log('here')
-
     playerStore.hardResetActivate = true
 }
 

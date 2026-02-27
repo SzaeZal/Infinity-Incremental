@@ -139,7 +139,9 @@ export const usePlayerStore = defineStore('player', () => {
             UISettings.value = playerSaveParsed.settings.UISettings
             saveSettings.value = playerSaveParsed.settings.saveSettings
             navigation.value = playerSaveParsed.navigation
-
+            if(prestigeRealm.value.points.amount==NaN){
+                prestigeRealm.value.points.amount=0
+            }
             LoadBuyables(prestigeRealm, prestigeRealmStatsCalculated)
             LoadUpgrades(prestigeRealm, prestigeRealmStatsCalculated)
         }

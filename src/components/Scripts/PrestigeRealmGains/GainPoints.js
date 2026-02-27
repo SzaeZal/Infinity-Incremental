@@ -1,9 +1,10 @@
 const CalculatePointGain = (player) => {
     player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints =
         player.prestigeRealm.prestige.upgrades.row1.upgrade5Bought == true
-            ? Math.log10(player.prestigeRealm.points.amount)
+            ? Math.max(1, 1 + Math.log10(player.prestigeRealm.points.amount)) 
             : 1
-
+    console.log(player.prestigeRealm.points.amount);
+    
     player.prestigeRealmStatsCalculated.points.gain.multiplier =
         1 *
         player.prestigeRealmStatsCalculated.points.buyables.buyable1.effects.effectOnPoints

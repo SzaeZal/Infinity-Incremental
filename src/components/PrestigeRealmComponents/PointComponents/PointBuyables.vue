@@ -107,7 +107,7 @@
         </div>
         <div
             class="buyable"
-            v-show="playerStore.prestigeRealm.prestige.milestones.milestone2Unlocked == true"
+            v-show="playerStore.prestigeRealm.prestige.milestones.milestone1Unlocked == true"
         >
             <h4 class="buyableAmount">
                 {{ points.buyables.buyable3Amount }} /
@@ -244,9 +244,9 @@ const Buyable3BuyOnce = () => {
         points.amount -= pointsStatsCalculated.buyables.buyable3.cost
         points.buyables.buyable3Amount++
         pointsStatsCalculated.buyables.buyable3.cost =
-            25 *
+            1000 *
             Math.pow(
-                1.35,
+                10,
                 points.buyables.buyable3Amount * Math.log2(points.buyables.buyable3Amount + 2),
             )
         pointsStatsCalculated.buyables.buyable3.effects.effectOnPrestigePoints.multiplier =

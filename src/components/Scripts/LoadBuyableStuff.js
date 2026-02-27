@@ -26,6 +26,16 @@ const LoadPointsLayerBuyables = (points, pointsStatsCalculated) => {
     pointsStatsCalculated.buyables.buyable2.effects.effectOnPoints.multiplier =
         (1 + points.buyables.buyable2Amount) *
         Math.max(1, 2 * Math.floor(points.buyables.buyable2Amount / 25))
+    
+    pointsStatsCalculated.buyables.buyable3.cost =
+        1000 *
+        Math.pow(
+            10,
+            points.buyables.buyable3Amount * Math.log2(points.buyables.buyable3Amount + 2),
+        )
+
+    pointsStatsCalculated.buyables.buyable3.effects.effectOnPrestigePoints.multiplier =
+        Math.pow(1.5, points.buyables.buyable3Amount)
 }
 
 export default LoadBuyables
