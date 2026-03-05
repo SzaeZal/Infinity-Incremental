@@ -36,7 +36,7 @@
             v-show="prestige.milestones.milestone5Unlocked != undefined"
             :class="{ unlockedMilestone: prestige.milestones.milestone5Unlocked }"
         >
-            <div class="milestoneRequirement">10000 Prestige Points</div>
+            <div class="milestoneRequirement">1e6 Prestige Points</div>
             <div class="milestoneEffect">Unlock the next primary prestige layer</div>
         </div>
     </div>

@@ -23,6 +23,13 @@ export const usePlayerStore = defineStore('player', () => {
                     upgrade4Bought: false,
                     upgrade5Bought: false,
                 },
+                row2: {
+                    upgrade1Bought: false,
+                    upgrade2Bought: false,
+                    upgrade3Bought: false,
+                    upgrade4Bought: false,
+                    upgrade5Bought: false,
+                },
             },
             milestones: {
                 milestone1Unlocked: false,
@@ -97,6 +104,24 @@ export const usePlayerStore = defineStore('player', () => {
                         effectOnPoints: 1,
                     },
                 },
+                row2: {
+                    upgrade1Effects: {
+                        effectOnPoints: 1,
+                    },
+                    upgrade2Effects: {
+                        effectOeffectOnPrestigePointsnPoints: 1,
+                    },
+                    upgrade3Effects: {
+                        effectOnPoints: 1,
+                        effectOnPrestigePoints: 1,
+                    },
+                    upgrade4Effects: {
+                        effectOnPoints: 1,
+                    },
+                    upgrade5Effects: {
+                        effectOnPrestigePoints: 1,
+                    },
+                },
             },
         },
     })
@@ -139,9 +164,6 @@ export const usePlayerStore = defineStore('player', () => {
             UISettings.value = playerSaveParsed.settings.UISettings
             saveSettings.value = playerSaveParsed.settings.saveSettings
             navigation.value = playerSaveParsed.navigation
-            if(prestigeRealm.value.points.amount==NaN){
-                prestigeRealm.value.points.amount=0
-            }
             LoadBuyables(prestigeRealm, prestigeRealmStatsCalculated)
             LoadUpgrades(prestigeRealm, prestigeRealmStatsCalculated)
         }
