@@ -35,6 +35,19 @@ export const usePlayerStore = defineStore('player', () => {
                 milestone1Unlocked: false,
             },
         },
+        superPrestige:{
+            unlocked:false,
+            amount:0,
+            challenges:{
+                challenge1:{
+                    unlocked:true,
+                    completed:false
+                },
+            },
+            milestones: {
+                milestone1Unlocked: false,
+            },
+        }
     })
     const prestigeRealmStatsCalculated = ref({
         points: {
@@ -109,7 +122,7 @@ export const usePlayerStore = defineStore('player', () => {
                         effectOnPoints: 1,
                     },
                     upgrade2Effects: {
-                        effectOeffectOnPrestigePointsnPoints: 1,
+                        effectOnPrestigePoints: 1,
                     },
                     upgrade3Effects: {
                         effectOnPoints: 1,
@@ -119,7 +132,7 @@ export const usePlayerStore = defineStore('player', () => {
                         effectOnPoints: 1,
                     },
                     upgrade5Effects: {
-                        effectOnPrestigePoints: 1,
+                        effectOnPoints: 1,
                     },
                 },
             },
@@ -160,12 +173,13 @@ export const usePlayerStore = defineStore('player', () => {
     const Load = (json) => {
         if (json != '') {
             let playerSaveParsed = JSON.parse(json)
-            prestigeRealm.value = playerSaveParsed.stats.prestigeRealm
-            UISettings.value = playerSaveParsed.settings.UISettings
-            saveSettings.value = playerSaveParsed.settings.saveSettings
-            navigation.value = playerSaveParsed.navigation
+            prestigeRealm.value = {...prestigeRealm.value,  ...playerSaveParsed.stats.prestigeRealm}
+            UISettings.value = {...UISettings.value, ...playerSaveParsed.settings.UISettings}
+            saveSettings.value = {...saveSettings.value, ...playerSaveParsed.settings.saveSettings}
+            navigation.value = {...navigation.value, ...playerSaveParsed.navigation}
             LoadBuyables(prestigeRealm, prestigeRealmStatsCalculated)
             LoadUpgrades(prestigeRealm, prestigeRealmStatsCalculated)
+            
         }
     }
 

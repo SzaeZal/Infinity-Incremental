@@ -22,19 +22,34 @@
         class="element prestigeRealmLayer prestige"
         :style="UIPositions.prestigeRealm.prestige"
     />
+    <svg
+        width="10px"
+        height="250px"
+        class="element prestigeLayerConnector"
+        :style="UIPositions.prestigeRealm.prestigeSuperPrestigeConnector"
+        v-show="UIShown.prestigeRealm.prestige || UIShown.prestigeRealm.superPrestige"
+    >
+        <line x1="5" y1="0" x2="5" y2="250" />
+    </svg>
+    <SuperPrestige
+        v-show="UIShown.prestigeRealm.superPrestige"
+        class="element prestigeRealmLayer superPrestige"
+        :style="UIPositions.prestigeRealm.superPrestige"
+    />
 </template>
 
 <script setup>
 import Positions from './components/Positions.vue'
 import MainMenu from './components/MainMenu.vue'
-import Points from './components/PrestigeRealmComponents/PointsMain.vue'
 import GainPoints from './components/Scripts/PrestigeRealmGains/GainPoints'
 import { usePlayerStore } from './stores/player'
 import { reactive, ref } from 'vue'
-import Prestige from './components/PrestigeRealmComponents/PrestigeMain.vue'
 import DialogBox from './components/DialogBox.vue'
 import GainPrestigePoints from './components/Scripts/PrestigeRealmGains/GainPrestigePoints'
 import Notifications from './components/Notifications.vue'
+import Points from './components/PrestigeRealmComponents/PointsMain.vue'
+import Prestige from './components/PrestigeRealmComponents/PrestigeMain.vue'
+import SuperPrestige from './components/PrestigeRealmComponents/SuperPrestigeMain.vue'
 
 const playerStore = usePlayerStore()
 
@@ -46,11 +61,12 @@ const Tick = (ms) => {
 }
 
 let ticker = setInterval(Tick, 25, 25)
-	
+
 const UIShown = ref({
     prestigeRealm: {
         points: true,
         prestige: false,
+        superPrestige: false,
     },
 })
 
@@ -65,6 +81,14 @@ const UIPositions = ref({
             top: 0,
         }),
         prestige: reactive({
+            left: 0,
+            top: 0,
+        }),
+        prestigeSuperPrestigeConnector: reactive({
+            left: 0,
+            top: 0,
+        }),
+        superPrestige: reactive({
             left: 0,
             top: 0,
         }),
@@ -119,9 +143,38 @@ const UpdateUIPositions = () => {
             UIPositions.value.prestigeRealm.prestige.top =
                 screen.height / 2 + prestigePosition.y + 'px'
         }
+
+        let prestigeSuperPrestigeConnectorPosition = {
+            x: -25 - playerStore.navigation.positionX,
+            y: 1350 - playerStore.navigation.positionY,
+        }
+        UIPositions.value.prestigeRealm.prestigeSuperPrestigeConnector.left =
+            screen.width / 2 + prestigeSuperPrestigeConnectorPosition.x + 'px'
+        UIPositions.value.prestigeRealm.prestigeSuperPrestigeConnector.top =
+            screen.height / 2 + prestigeSuperPrestigeConnectorPosition.y + 'px'
+
+        let superPrestigePosition = {
+            x: -25 - playerStore.navigation.positionX,
+            y: 1850 - playerStore.navigation.positionY,
+        }
+
+        if (
+            playerStore.prestigeRealm.superPrestige.unlocked == false ||
+            Math.abs(superPrestigePosition.x) - 200 > loadedUIBorders.x ||
+            Math.abs(superPrestigePosition.y) - 200 > loadedUIBorders.y
+        ) {
+            UIShown.value.prestigeRealm.superPrestige = false
+        } else {
+            UIShown.value.prestigeRealm.superPrestige = true
+            UIPositions.value.prestigeRealm.superPrestige.left =
+                screen.width / 2 + superPrestigePosition.x + 'px'
+            UIPositions.value.prestigeRealm.superPrestige.top =
+                screen.height / 2 + superPrestigePosition.y + 'px'
+        }
     } else {
         UIShown.value.prestigeRealm.points = false
         UIShown.value.prestigeRealm.prestige = false
+        UIShown.value.prestigeRealm.superPrestige = false
     }
 }
 //#region blurstuff

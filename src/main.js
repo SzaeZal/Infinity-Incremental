@@ -11,6 +11,7 @@ import './assets/MenuStyles/story.css'
 import './assets/PrestigeRealm/prestigeRealmLayerBase.css'
 import './assets/PrestigeRealm/pointsLayer.css'
 import './assets/PrestigeRealm/prestigeLayer.css'
+import './assets/PrestigeRealm/superPrestigeLayer.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
