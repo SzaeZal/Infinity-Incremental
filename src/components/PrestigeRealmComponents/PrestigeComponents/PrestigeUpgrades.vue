@@ -130,7 +130,7 @@
                 @click="PurchasePrestigeUpgradeR2C3"
             >
                 <div class="upgradeTitle">2 in 1 upgrade</div>
-                <div class="upgradeDescription">x3 points <br>x1.5 prestige points</div>
+                <div class="upgradeDescription">x3 points <br />x1.5 prestige points</div>
                 <div class="upgradeCost">Cost: 2500 prestige points</div>
                 <div class="upgradeNumber">2-3</div>
             </div>
@@ -177,7 +177,7 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
-import ResetPointsLayer from '@/components/Scripts/ResetPointsLayer'
+import ResetPointsLayer from '@/components/Scripts/PrestigeRealmResets/ResetPointsLayer'
 import { useNotificationStore } from '@/stores/notification'
 
 const playerStore = usePlayerStore()
@@ -240,7 +240,7 @@ const CheckForPrestigeMilestones = () => {
     }
     if (prestige.amount >= 1e5 && prestige.milestones.milestone5Unlocked == false) {
         prestige.milestones.milestone5Unlocked = true
-        playerStore.prestigeRealm.superPrestige.unlocked=true
+        playerStore.prestigeRealm.superPrestige.unlocked = true
         //prestige.milestones.milestone6Unlocked=false
         notificationStore.NewNotification('Milestone unlocked', '1e5 PP', 'prestigeMilestone')
     }
@@ -348,8 +348,10 @@ const PurchasePrestigeUpgradeR2C5 = () => {
     if (prestige.amount >= 5e4) {
         prestige.amount -= 5e4
         prestige.upgrades.row2.upgrade5Bought = true
-        prestigeStatsCalculated.upgrades.row2.upgrade5Effects.effectOnPrestigePoints =
-            Math.max(1 + Math.log10(prestige.amount),1)
+        prestigeStatsCalculated.upgrades.row2.upgrade5Effects.effectOnPrestigePoints = Math.max(
+            1 + Math.log10(prestige.amount),
+            1,
+        )
     }
 }
 </script>

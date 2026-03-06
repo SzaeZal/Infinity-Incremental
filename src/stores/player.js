@@ -137,6 +137,21 @@ export const usePlayerStore = defineStore('player', () => {
                 },
             },
         },
+        superPrestige:{
+            gain: {
+                challengeNerfs: {
+                    divider: 1,
+                    root: 1,
+                },
+                multiplier: 1,
+                exponent: 1,
+                passive: 0,
+            },
+            effects:{
+                effectOnPoints: 1,
+                effectOnPrestigePoints: 1
+            }
+        }
     })
     const prestigeRealmMapPins = ref({
         points: false,

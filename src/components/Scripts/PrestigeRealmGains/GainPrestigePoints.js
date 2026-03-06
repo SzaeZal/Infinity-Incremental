@@ -9,6 +9,7 @@ const CalculatePrestigePointGain = (player) => {
             .effectOnPrestigePoints
         * player.prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade3Effects
             .effectOnPrestigePoints
+        * player.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints
 
     player.prestigeRealmStatsCalculated.points.gain.exponent = 1
 }
