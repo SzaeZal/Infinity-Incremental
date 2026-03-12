@@ -2,9 +2,11 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import LoadBuyables from '@/components/Scripts/LoadBuyableStuff'
 import LoadUpgrades from '@/components/Scripts/LoadUpgradeStuff'
+import LoadChallenges from '@/components/Scripts/LoadChallengeStuff'
 
 export const usePlayerStore = defineStore('player', () => {
     const prestigeRealm = ref({
+        enteredChallenge: '',
         points: {
             amount: 0,
             buyables: {
@@ -35,19 +37,16 @@ export const usePlayerStore = defineStore('player', () => {
                 milestone1Unlocked: false,
             },
         },
-        superPrestige:{
-            unlocked:false,
-            amount:0,
-            challenges:{
-                challenge1:{
-                    unlocked:true,
-                    completed:false
-                },
+        superPrestige: {
+            unlocked: false,
+            amount: 0,
+            challenges: {
+                challenge1Completed: false,
             },
             milestones: {
                 milestone1Unlocked: false,
             },
-        }
+        },
     })
     const prestigeRealmStatsCalculated = ref({
         points: {
@@ -137,7 +136,7 @@ export const usePlayerStore = defineStore('player', () => {
                 },
             },
         },
-        superPrestige:{
+        superPrestige: {
             gain: {
                 challengeNerfs: {
                     divider: 1,
@@ -147,11 +146,11 @@ export const usePlayerStore = defineStore('player', () => {
                 exponent: 1,
                 passive: 0,
             },
-            effects:{
+            effects: {
                 effectOnPoints: 1,
-                effectOnPrestigePoints: 1
-            }
-        }
+                effectOnPrestigePoints: 1,
+            },
+        },
     })
     const prestigeRealmMapPins = ref({
         points: false,
@@ -188,13 +187,19 @@ export const usePlayerStore = defineStore('player', () => {
     const Load = (json) => {
         if (json != '') {
             let playerSaveParsed = JSON.parse(json)
-            prestigeRealm.value = {...prestigeRealm.value,  ...playerSaveParsed.stats.prestigeRealm}
-            UISettings.value = {...UISettings.value, ...playerSaveParsed.settings.UISettings}
-            saveSettings.value = {...saveSettings.value, ...playerSaveParsed.settings.saveSettings}
-            navigation.value = {...navigation.value, ...playerSaveParsed.navigation}
-            LoadBuyables(prestigeRealm, prestigeRealmStatsCalculated)
-            LoadUpgrades(prestigeRealm, prestigeRealmStatsCalculated)
-            
+            prestigeRealm.value = {
+                ...prestigeRealm.value,
+                ...playerSaveParsed.stats.prestigeRealm,
+            }
+            UISettings.value = { ...UISettings.value, ...playerSaveParsed.settings.UISettings }
+            saveSettings.value = {
+                ...saveSettings.value,
+                ...playerSaveParsed.settings.saveSettings,
+            }
+            navigation.value = { ...navigation.value, ...playerSaveParsed.navigation }
+            LoadBuyables(prestigeRealm.value, prestigeRealmStatsCalculated.value)
+            LoadUpgrades(prestigeRealm.value, prestigeRealmStatsCalculated.value)
+            LoadChallenges(prestigeRealm.value, prestigeRealmStatsCalculated.value)
         }
     }
 

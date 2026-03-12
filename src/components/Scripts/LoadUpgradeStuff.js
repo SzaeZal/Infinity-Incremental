@@ -1,5 +1,5 @@
 const LoadUpgrades = (prestigeRealm, prestigeRealmStatsCalculated) => {
-    LoadPrestigeRealmUpgrades(prestigeRealm.value, prestigeRealmStatsCalculated.value)
+    LoadPrestigeRealmUpgrades(prestigeRealm, prestigeRealmStatsCalculated)
 }
 
 const LoadPrestigeRealmUpgrades = (prestigeRealm, prestigeRealmStatsCalculated) => {

@@ -7,6 +7,7 @@
             :class="{
                 notificationDisappear: notification.hidden,
                 prestigeMilestone: notification.style == 'prestigeMilestone',
+                superPrestigeMilestone: notification.style == 'superPrestigeMilestone',
             }"
         >
             <div class="notificationTitle">

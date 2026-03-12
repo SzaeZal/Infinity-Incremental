@@ -9,6 +9,9 @@ const CalculatePointGain = (player) => {
             ? Math.max(1, 1 + Math.log10(player.prestigeRealm.prestige.amount)) 
             : 1
 
+    player.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints = 
+        1 + Math.pow(player.prestigeRealm.superPrestige.amount, 2)
+
     player.prestigeRealmStatsCalculated.points.gain.multiplier =
         1 *
         player.prestigeRealmStatsCalculated.points.buyables.buyable1.effects.effectOnPoints

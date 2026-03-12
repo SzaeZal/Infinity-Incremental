@@ -3,11 +3,11 @@
         <h2 class="mainCurrencyDisplay">
             You have {{ FormatNumber(playerStore.prestigeRealm.superPrestige.amount) }} Super
             Prestige Points 
-            <img src="../icons/Arrows/arrowRight.png" alt="->" >
+            <img src="../icons/Arrows/arrowRight.png" alt="->">
             x{{
-                playerStore.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints
+                FormatNumber(playerStore.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints)
             }}
-            points, x{{playerStore.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints}} prestige points
+            points, x{{FormatNumber(playerStore.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints)}} prestige points
         </h2>
         <div class="layerMenu">
             <div class="layerSubMenu">
