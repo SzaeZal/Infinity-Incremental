@@ -52,9 +52,9 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
-import SuperPrestigeMilestones from './SuperPrestigeComponents/SuperPrestigeMilestones.vue'
-import SuperPrestigeChallenges from './SuperPrestigeComponents/SuperPrestigeChallenges.vue'
-import PrestigePower from './SuperPrestigeComponents/PrestigePower.vue'
+import SuperPrestigeMilestones from './SuperPrestigeMilestones.vue'
+import SuperPrestigeChallenges from './SuperPrestigeChallenges.vue'
+import PrestigePower from './PrestigePower.vue'
 
 const playerStore = usePlayerStore()
 

@@ -32,8 +32,8 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
-import PrestigeUpgrades from './PrestigeComponents/PrestigeUpgrades.vue'
-import PrestigeMilestones from './PrestigeComponents/PrestigeMilestones.vue'
+import PrestigeUpgrades from './PrestigeUpgrades.vue'
+import PrestigeMilestones from './PrestigeMilestones.vue'
 
 const playerStore = usePlayerStore()
 

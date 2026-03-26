@@ -177,7 +177,7 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
-import ResetPointsLayer from '@/components/Scripts/PrestigeRealmResets/ResetPointsLayer'
+import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/PrestigeRealmResets/ResetPointsLayer'
 import { useNotificationStore } from '@/stores/notification'
 
 const playerStore = usePlayerStore()

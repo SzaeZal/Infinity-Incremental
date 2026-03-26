@@ -20,48 +20,41 @@
             </span>
         </div>
         <div class="challenges">
-            <div class="challenge"
-                :class="{completedChallenge : superPrestige.challenges.challenge1Completed}"
+            <div
+                class="challenge"
+                :class="{ completedChallenge: superPrestige.challenges.challenge1Completed }"
                 @click="ToggleSuperPrestigeChallenge1"
             >
-                <div class="challengeTitle">
-                    Slowed points
-                </div>
-                <div class="challengeEntered" v-show="playerStore.prestigeRealm.enteredChallenge=='SPC1'">
+                <div class="challengeTitle">Slowed points</div>
+                <div
+                    class="challengeEntered"
+                    v-show="playerStore.prestigeRealm.enteredChallenge == 'SPC1'"
+                >
                     (In Challenge)
                 </div>
                 <div class="challengeNerfs">
-                    <div class="challengeNerf">
-                        /100 points
-                    </div>
+                    <div class="challengeNerf">/100 points</div>
                 </div>
-                <div class="challengeGoal">
-                    Goal: 10000 points
-                </div>
+                <div class="challengeGoal">Goal: 10000 points</div>
                 <div class="challengeRewards">
                     <div class="challengeReward">
                         Reward: Square the effect of prestige upgrade 1-5
                     </div>
                 </div>
-                <div class="challengeBoxInfo">
-                    click to enter/exit challenge
-                </div>
+                <div class="challengeBoxInfo">click to enter/exit challenge</div>
             </div>
-            <div class="challenge"
-                v-show="superPrestige.challenges.challenge2Completed!=undefined"
-            >
-
-            </div>
-            <div class="challenge"
-                v-show="superPrestige.challenges.challenge3Completed!=undefined"
-            >
-
-            </div>
-            <div class="challenge"
-                v-show="superPrestige.challenges.challenge4Completed!=undefined"
-            >
-
-            </div>
+            <div
+                class="challenge"
+                v-show="superPrestige.challenges.challenge2Completed != undefined"
+            ></div>
+            <div
+                class="challenge"
+                v-show="superPrestige.challenges.challenge3Completed != undefined"
+            ></div>
+            <div
+                class="challenge"
+                v-show="superPrestige.challenges.challenge4Completed != undefined"
+            ></div>
         </div>
     </div>
 </template>
@@ -69,9 +62,9 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
-import ResetPointsLayer from '@/components/Scripts/PrestigeRealmResets/ResetPointsLayer'
+import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/PrestigeRealmResets/ResetPointsLayer'
 import { useNotificationStore } from '@/stores/notification'
-import ResetPrestigePointsLayer from '@/components/Scripts/PrestigeRealmResets/ResetPrestigeLayer'
+import ResetPrestigePointsLayer from '@/components/Scripts/PrestigeRealm/PrestigeRealmResets/ResetPrestigeLayer'
 
 const playerStore = usePlayerStore()
 const notificationStore = useNotificationStore()
@@ -144,16 +137,15 @@ setInterval(() => {
         ) * 1e5
 }, 25)
 
-const ToggleSuperPrestigeChallenge1=()=>{
-    if(playerStore.prestigeRealm.enteredChallenge!="SPC1"){
+const ToggleSuperPrestigeChallenge1 = () => {
+    if (playerStore.prestigeRealm.enteredChallenge != 'SPC1') {
         ResetPrestigePointsLayer(2)
         ResetPointsLayer(2)
-        playerStore.prestigeRealm.enteredChallenge="SPC1"
-        playerStore.prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=100
-    }
-    else{
-        playerStore.prestigeRealm.enteredChallenge=""
-        playerStore.prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=1
+        playerStore.prestigeRealm.enteredChallenge = 'SPC1'
+        playerStore.prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 100
+    } else {
+        playerStore.prestigeRealm.enteredChallenge = ''
+        playerStore.prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1
     }
 }
 </script>

@@ -18,7 +18,7 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
-import PointBuyables from './PointComponents/PointBuyables.vue'
+import PointBuyables from './PointBuyables.vue'
 
 const playerStore = usePlayerStore()
 let points = playerStore.prestigeRealm.points
