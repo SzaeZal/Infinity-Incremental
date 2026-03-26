@@ -1,11 +1,10 @@
-import { usePlayerStore } from '@/stores/player'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 
 const ResetPointsLayer = (rowReset) => {
     const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
     const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
-    prestigeRealm.points.amount = 0
+    prestigeRealmStatsStore.points.amount = 0
     ResetPointBuyables(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, rowReset)
 }
 

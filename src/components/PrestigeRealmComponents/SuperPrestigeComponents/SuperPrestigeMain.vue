@@ -1,13 +1,13 @@
 <template>
     <div>
         <h2 class="mainCurrencyDisplay">
-            You have {{ FormatNumber(playerStore.prestigeRealm.superPrestige.amount) }} Super
+            You have {{ FormatNumber(prestigeRealm.superPrestige.amount) }} Super
             Prestige Points 
             <img src="../icons/Arrows/arrowRight.png" alt="->">
             x{{
-                FormatNumber(playerStore.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints)
+                FormatNumber(prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints)
             }}
-            points, x{{FormatNumber(playerStore.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints)}} prestige points
+            points, x{{FormatNumber(prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints)}} prestige points
         </h2>
         <div class="layerMenu">
             <div class="layerSubMenu">
@@ -30,9 +30,9 @@
                     :class="{ selectedSubMenuItem: isPrestigePowerToggled }"
                     @click="TogglePrestigePower"
                     v-show="
-                        playerStore.prestigeRealm.superPrestige.challenges.challenge3 !=
+                        prestigeRealm.superPrestige.challenges.challenge3 !=
                             undefined &&
-                        playerStore.prestigeRealm.superPrestige.challenges.challenge3.completed ==
+                        prestigeRealm.superPrestige.challenges.challenge3.completed ==
                             true
                     "
                 >
@@ -51,12 +51,16 @@
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
-import { usePlayerStore } from '@/stores/player'
+
 import SuperPrestigeMilestones from './SuperPrestigeMilestones.vue'
 import SuperPrestigeChallenges from './SuperPrestigeChallenges.vue'
 import PrestigePower from './PrestigePower.vue'
 
-const playerStore = usePlayerStore()
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
+import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
+
+const prestigeRealm=usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculated=usePrestigeRealmStatsCalculatedStore()
 
 const isSuperPrestigeChallengesToggled = ref(true)
 const isSuperPrestigeMilestonesToggled = ref(false)

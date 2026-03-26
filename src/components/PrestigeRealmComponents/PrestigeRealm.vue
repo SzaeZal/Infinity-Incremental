@@ -1,37 +1,37 @@
 <template>
     <div>
         <Points
-            v-show="UIShown.prestigeRealm.points"
+            v-show="UIShown.points"
             class="element prestigeRealmLayer points"
-            :style="UIPositions.prestigeRealm.points"
+            :style="UIPositions.points"
         />
         <svg
             width="10px"
             height="250px"
             class="element prestigeLayerConnector"
-            :style="UIPositions.prestigeRealm.pointsPrestigeConnector"
-            v-show="UIShown.prestigeRealm.points || UIShown.prestigeRealm.prestige"
+            :style="UIPositions.pointsPrestigeConnector"
+            v-show="UIShown.points || UIShown.prestige"
         >
             <line x1="5" y1="0" x2="5" y2="250" />
         </svg>
         <Prestige
-            v-show="UIShown.prestigeRealm.prestige"
+            v-show="UIShown.prestige"
             class="element prestigeRealmLayer prestige"
-            :style="UIPositions.prestigeRealm.prestige"
+            :style="UIPositions.prestige"
         />
         <svg
             width="10px"
             height="250px"
             class="element prestigeLayerConnector"
-            :style="UIPositions.prestigeRealm.prestigeSuperPrestigeConnector"
-            v-show="UIShown.prestigeRealm.prestige || UIShown.prestigeRealm.superPrestige"
+            :style="UIPositions.prestigeSuperPrestigeConnector"
+            v-show="prestigeRealmStatsStore.superPrestige.unlocked && (UIShown.prestige || UIShown.superPrestige)"
         >
             <line x1="5" y1="0" x2="5" y2="250" />
         </svg>
         <SuperPrestige
-            v-show="UIShown.prestigeRealm.superPrestige"
+            v-show="UIShown.superPrestige"
             class="element prestigeRealmLayer superPrestige"
-            :style="UIPositions.prestigeRealm.superPrestige"
+            :style="UIPositions.superPrestige"
         />
     </div>
 </template>
@@ -42,47 +42,41 @@ import Points from './PointComponents/PointsMain.vue'
 import Prestige from './PrestigeComponents/PrestigeMain.vue'
 import SuperPrestige from './SuperPrestigeComponents/SuperPrestigeMain.vue'
 
-import { usePlayerStore } from '@/stores/player'
 import { useNavigationStore } from '@/stores/Player/navigation'
 import { useSettingsStore } from '@/stores/Player/settings'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 
-const playerStore=usePlayerStore()
 const navigationStore=useNavigationStore()
 const settingsStore=useSettingsStore()
 const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
 
 const UIShown = ref({
-    prestigeRealm: {
-        points: true,
-        prestige: false,
-        superPrestige: false,
-    },
+    points: true,
+    prestige: false,
+    superPrestige: false,
 })
 
 const UIPositions = ref({
-    prestigeRealm: {
-        points: reactive({
-            left: 0,
-            top: 0,
-        }),
-        pointsPrestigeConnector: reactive({
-            left: 0,
-            top: 0,
-        }),
-        prestige: reactive({
-            left: 0,
-            top: 0,
-        }),
-        prestigeSuperPrestigeConnector: reactive({
-            left: 0,
-            top: 0,
-        }),
-        superPrestige: reactive({
-            left: 0,
-            top: 0,
-        }),
-    },
+    points: reactive({
+        left: 0,
+        top: 0,
+    }),
+    pointsPrestigeConnector: reactive({
+        left: 0,
+        top: 0,
+    }),
+    prestige: reactive({
+        left: 0,
+        top: 0,
+    }),
+    prestigeSuperPrestigeConnector: reactive({
+        left: 0,
+        top: 0,
+    }),
+    superPrestige: reactive({
+        left: 0,
+        top: 0,
+    }),
 })
 
 const UpdateUIPositions = () => {
@@ -100,20 +94,20 @@ const UpdateUIPositions = () => {
             Math.abs(pointsPosition.x) - 200 > loadedUIBorders.x ||
             Math.abs(pointsPosition.y) - 200 > loadedUIBorders.y
         ) {
-            UIShown.value.prestigeRealm.points = false
+            UIShown.value.points = false
         } else {
-            UIShown.value.prestigeRealm.points = true
-            UIPositions.value.prestigeRealm.points.left = screen.width / 2 + pointsPosition.x + 'px'
-            UIPositions.value.prestigeRealm.points.top = screen.height / 2 + pointsPosition.y + 'px'
+            UIShown.value.points = true
+            UIPositions.value.points.left = screen.width / 2 + pointsPosition.x + 'px'
+            UIPositions.value.points.top = screen.height / 2 + pointsPosition.y + 'px'
         }
 
         let pointsPrestigeConnectorPosition = {
             x: - navigationStore.position.x,
             y: 500 - navigationStore.position.y,
         }
-        UIPositions.value.prestigeRealm.pointsPrestigeConnector.left =
+        UIPositions.value.pointsPrestigeConnector.left =
             screen.width / 2 + pointsPrestigeConnectorPosition.x + 'px'
-        UIPositions.value.prestigeRealm.pointsPrestigeConnector.top =
+        UIPositions.value.pointsPrestigeConnector.top =
             screen.height / 2 + pointsPrestigeConnectorPosition.y + 'px'
 
         let prestigePosition = {
@@ -125,12 +119,12 @@ const UpdateUIPositions = () => {
             Math.abs(prestigePosition.x) - 200 > loadedUIBorders.x ||
             Math.abs(prestigePosition.y) - 200 > loadedUIBorders.y
         ) {
-            UIShown.value.prestigeRealm.prestige = false
+            UIShown.value.prestige = false
         } else {
-            UIShown.value.prestigeRealm.prestige = true
-            UIPositions.value.prestigeRealm.prestige.left =
+            UIShown.value.prestige = true
+            UIPositions.value.prestige.left =
                 screen.width / 2 + prestigePosition.x + 'px'
-            UIPositions.value.prestigeRealm.prestige.top =
+            UIPositions.value.prestige.top =
                 screen.height / 2 + prestigePosition.y + 'px'
         }
 
@@ -138,9 +132,9 @@ const UpdateUIPositions = () => {
             x:  - navigationStore.position.x,
             y: 1500 - navigationStore.position.y,
         }
-        UIPositions.value.prestigeRealm.prestigeSuperPrestigeConnector.left =
+        UIPositions.value.prestigeSuperPrestigeConnector.left =
             screen.width / 2 + prestigeSuperPrestigeConnectorPosition.x + 'px'
-        UIPositions.value.prestigeRealm.prestigeSuperPrestigeConnector.top =
+        UIPositions.value.prestigeSuperPrestigeConnector.top =
             screen.height / 2 + prestigeSuperPrestigeConnectorPosition.y + 'px'
 
         let superPrestigePosition = {
@@ -149,22 +143,22 @@ const UpdateUIPositions = () => {
         }
 
         if (
-            playerStore.prestigeRealm.superPrestige.unlocked == false ||
+            prestigeRealmStatsStore.superPrestige.unlocked == false ||
             Math.abs(superPrestigePosition.x) - 200 > loadedUIBorders.x ||
             Math.abs(superPrestigePosition.y) - 200 > loadedUIBorders.y
         ) {
-            UIShown.value.prestigeRealm.superPrestige = false
+            UIShown.value.superPrestige = false
         } else {
-            UIShown.value.prestigeRealm.superPrestige = true
-            UIPositions.value.prestigeRealm.superPrestige.left =
+            UIShown.value.superPrestige = true
+            UIPositions.value.superPrestige.left =
                 screen.width / 2 + superPrestigePosition.x + 'px'
-            UIPositions.value.prestigeRealm.superPrestige.top =
+            UIPositions.value.superPrestige.top =
                 screen.height / 2 + superPrestigePosition.y + 'px'
         }
     } else {
-        UIShown.value.prestigeRealm.points = false
-        UIShown.value.prestigeRealm.prestige = false
-        UIShown.value.prestigeRealm.superPrestige = false
+        UIShown.value.points = false
+        UIShown.value.prestige = false
+        UIShown.value.superPrestige = false
     }
 }
 setInterval(UpdateUIPositions, 15)

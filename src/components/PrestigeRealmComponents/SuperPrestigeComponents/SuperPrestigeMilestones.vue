@@ -13,8 +13,8 @@
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
-import { usePlayerStore } from '@/stores/player'
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 
-const playerStore = usePlayerStore()
-let superPrestige = playerStore.prestigeRealm.superPrestige
+const prestigeRealm=usePrestigeRealmStatsStore()
+let superPrestige = prestigeRealm.superPrestige
 </script>
