@@ -4,7 +4,7 @@
             class="layerResetButton"
             :class="{
                 prestigeResetButton:
-                    prestigePointsOnReset > 0 && playerStore.prestigeRealm.points.amount >= 500,
+                    prestigePointsOnReset > 0 && prestigeRealmStatsStore.points.amount >= 500,
             }"
             @click="PrestigeReset"
         >
@@ -85,7 +85,7 @@
                 <div class="upgradeEffect">
                     currently: x{{
                         FormatNumber(
-                            playerStore.prestigeRealmStatsCalculated.prestige.upgrades.row1
+                            prestigeRealmStatsCalculatedStore.prestige.upgrades.row1
                                 .upgrade5Effects.effectOnPoints,
                         )
                     }}
@@ -161,7 +161,7 @@
                 <div class="upgradeEffect">
                     currently: x{{
                         FormatNumber(
-                            playerStore.prestigeRealmStatsCalculated.prestige.upgrades.row2
+                            prestigeRealmStatsCalculatedStore.prestige.upgrades.row2
                                 .upgrade5Effects.effectOnPoints,
                         )
                     }}
@@ -176,23 +176,26 @@
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
-import { usePlayerStore } from '@/stores/player'
 import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/PrestigeRealmResets/ResetPointsLayer'
-import { useNotificationStore } from '@/stores/notification'
 
-const playerStore = usePlayerStore()
+import { useNotificationStore } from '@/stores/notification'
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
+import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
+
+const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
 const notificationStore = useNotificationStore()
-let prestige = playerStore.prestigeRealm.prestige
-let prestigeStatsCalculated = playerStore.prestigeRealmStatsCalculated.prestige
+let prestige = prestigeRealmStatsStore.prestige
+let prestigeStatsCalculated = prestigeRealmStatsCalculatedStore.prestige
 
 const prestigePointsOnReset = ref(
     Math.floor(
         Math.pow(
-            (Math.pow(playerStore.prestigeRealm.points.amount / 500, 0.5) *
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.multiplier) /
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider,
-            playerStore.prestigeRealmStatsCalculated.prestige.gain.exponent /
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root,
+            (Math.pow(prestigeRealmStatsStore.points.amount / 500, 0.5) *
+                prestigeRealmStatsCalculatedStore.prestige.gain.multiplier) /
+                prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.divider,
+            prestigeRealmStatsCalculatedStore.prestige.gain.exponent /
+                prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.root,
         ),
     ),
 )
@@ -200,17 +203,17 @@ const pointsToPlusOnePrestigePointOnReset = ref(
     Math.pow(
         (Math.pow(
             prestigePointsOnReset.value + 1,
-            playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root /
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.exponent,
+            prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.root /
+                prestigeRealmStatsCalculatedStore.prestige.gain.exponent,
         ) *
-            playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider) /
-            playerStore.prestigeRealmStatsCalculated.prestige.gain.multiplier,
+            prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.divider) /
+            prestigeRealmStatsCalculatedStore.prestige.gain.multiplier,
         2,
     ) * 500,
 )
 
 const PrestigeReset = () => {
-    if (prestigePointsOnReset.value > 0 && playerStore.prestigeRealm.points.amount >= 500) {
+    if (prestigePointsOnReset.value > 0 && prestigeRealmStatsStore.points.amount >= 500) {
         prestige.amount += prestigePointsOnReset.value
         CheckForPrestigeMilestones()
         ResetPointsLayer(1)
@@ -240,7 +243,7 @@ const CheckForPrestigeMilestones = () => {
     }
     if (prestige.amount >= 1e5 && prestige.milestones.milestone5Unlocked == false) {
         prestige.milestones.milestone5Unlocked = true
-        playerStore.prestigeRealm.superPrestige.unlocked = true
+        prestigeRealmStatsStore.superPrestige.unlocked = true
         //prestige.milestones.milestone6Unlocked=false
         notificationStore.NewNotification('Milestone unlocked', '1e5 PP', 'prestigeMilestone')
     }
@@ -249,11 +252,11 @@ const CheckForPrestigeMilestones = () => {
 setInterval(() => {
     prestigePointsOnReset.value = Math.floor(
         Math.pow(
-            (Math.pow(playerStore.prestigeRealm.points.amount / 500, 0.5) *
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.multiplier) /
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider,
-            playerStore.prestigeRealmStatsCalculated.prestige.gain.exponent /
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root,
+            (Math.pow(prestigeRealmStatsStore.points.amount / 500, 0.5) *
+                prestigeRealmStatsCalculatedStore.prestige.gain.multiplier) /
+                prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.divider,
+            prestigeRealmStatsCalculatedStore.prestige.gain.exponent /
+                prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.root,
         ),
     )
 
@@ -261,11 +264,11 @@ setInterval(() => {
         Math.pow(
             (Math.pow(
                 prestigePointsOnReset.value + 1,
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root /
-                    playerStore.prestigeRealmStatsCalculated.prestige.gain.exponent,
+                prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.root /
+                    prestigeRealmStatsCalculatedStore.prestige.gain.exponent,
             ) *
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider) /
-                playerStore.prestigeRealmStatsCalculated.prestige.gain.multiplier,
+                prestigeRealmStatsCalculatedStore.prestige.gain.challengeNerfs.divider) /
+                prestigeRealmStatsCalculatedStore.prestige.gain.multiplier,
             2,
         ) * 500
 }, 25)
@@ -307,7 +310,7 @@ const PurchasePrestigeUpgradeR1C5 = () => {
         prestige.amount -= 25
         prestige.upgrades.row1.upgrade5Bought = true
         prestigeStatsCalculated.upgrades.row1.upgrade5Effects.effectOnPoints =
-            1 + Math.log10(playerStore.prestigeRealm.points.amount)
+            1 + Math.log10(prestigeRealmStatsStore.points.amount)
     }
 }
 

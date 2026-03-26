@@ -1,20 +1,23 @@
 import { usePlayerStore } from '@/stores/player'
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
+import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 
 const ResetPointsLayer = (rowReset) => {
-    const player = usePlayerStore()
-    player.prestigeRealm.points.amount = 0
-    ResetPointBuyables(player, rowReset)
+    const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+    const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
+    prestigeRealm.points.amount = 0
+    ResetPointBuyables(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, rowReset)
 }
 
-const ResetPointBuyables = (player, rowReset) => {
-    let pointBuyables = player.prestigeRealm.points.buyables
-    let pointBuyableStatsCalculated = player.prestigeRealmStatsCalculated.points.buyables
+const ResetPointBuyables = (prestigeRealm, prestigeRealmStatsCalculated, rowReset) => {
+    let pointBuyables = prestigeRealm.points.buyables
+    let pointBuyableStatsCalculated = prestigeRealmStatsCalculated.points.buyables
 
     pointBuyables.buyable1Amount = 0
     pointBuyableStatsCalculated.buyable1.cost = 10
     pointBuyableStatsCalculated.buyable1.effects.effectOnPoints.multiplier = 1
 
-    if (!(player.prestigeRealm.prestige.milestones.milestone2Unlocked == true && rowReset == 1)) {
+    if (!(prestigeRealm.prestige.milestones.milestone2Unlocked == true && rowReset == 1)) {
         pointBuyables.buyable2Amount = 0
         pointBuyableStatsCalculated.buyable2.cost = 25
         pointBuyableStatsCalculated.buyable2.effects.effectOnPoints.multiplier = 1
@@ -22,7 +25,7 @@ const ResetPointBuyables = (player, rowReset) => {
 
     if (
         pointBuyables.buyable3Amount != undefined &&
-        !(player.prestigeRealm.prestige.milestones.milestone3Unlocked == true && rowReset == 1)
+        !(prestigeRealm.prestige.milestones.milestone3Unlocked == true && rowReset == 1)
     ) {
         pointBuyables.buyable3Amount = 0
         pointBuyableStatsCalculated.buyable3.cost = 1000

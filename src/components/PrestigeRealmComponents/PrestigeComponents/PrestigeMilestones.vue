@@ -45,8 +45,9 @@
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
-import { usePlayerStore } from '@/stores/player'
 
-const playerStore = usePlayerStore()
-let prestige = playerStore.prestigeRealm.prestige
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
+
+const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+let prestige = prestigeRealmStatsStore.prestige
 </script>

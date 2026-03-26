@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="mainCurrencyDisplay">
-            You have {{ FormatNumber(playerStore.prestigeRealm.prestige.amount) }} Prestige Points
+            You have {{ FormatNumber(prestigeRealmStatsStore.prestige.amount) }} Prestige Points
         </h2>
         <div class="layerMenu">
             <div class="layerSubMenu">
@@ -34,8 +34,9 @@ import { FormatNumber } from '@/components/Scripts/formatters'
 import { usePlayerStore } from '@/stores/player'
 import PrestigeUpgrades from './PrestigeUpgrades.vue'
 import PrestigeMilestones from './PrestigeMilestones.vue'
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 
-const playerStore = usePlayerStore()
+const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
 
 const isPrestigeUpgradesToggled = ref(true)
 const isPrestigeMilestonesToggled = ref(false)

@@ -40,7 +40,7 @@ const Tick = (ms) => {
     }
 
     if(prestigeRealmStatsStore.prestige.amount!=Infinity){
-        GainPrestigePoints(playerStore, ms)
+        GainPrestigePoints(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, ms)
     }
 }
 
