@@ -36,14 +36,21 @@
     </div>
 </template>
 <script setup>
-import { usePlayerStore } from '@/stores/player'
+import { ref, reactive } from 'vue'
+
 import Points from './PointComponents/PointsMain.vue'
 import Prestige from './PrestigeComponents/PrestigeMain.vue'
 import SuperPrestige from './SuperPrestigeComponents/SuperPrestigeMain.vue'
-import { ref, reactive } from 'vue'
+
+import { usePlayerStore } from '@/stores/player'
+import { useNavigationStore } from '@/stores/Player/navigation'
+import { useSettingsStore } from '@/stores/Player/settings'
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 
 const playerStore=usePlayerStore()
-
+const navigationStore=useNavigationStore()
+const settingsStore=useSettingsStore()
+const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
 
 const UIShown = ref({
     prestigeRealm: {
@@ -80,13 +87,13 @@ const UIPositions = ref({
 
 const UpdateUIPositions = () => {
     let loadedUIBorders = {
-        x: playerStore.UISettings.screenSizeX / 2,
-        y: playerStore.UISettings.screenSizeY / 2,
+        x: settingsStore.UISettings.screenSizeX / 2,
+        y: settingsStore.UISettings.screenSizeY / 2,
     }
-    if (playerStore.navigation.realm == 'prestige') {
+    if (navigationStore.currentRealm == 'prestige') {        
         let pointsPosition = {
-            x: -25 - playerStore.navigation.positionX,
-            y: -150 - playerStore.navigation.positionY,
+            x:  - navigationStore.position.x,
+            y:  - navigationStore.position.y,
         }
 
         if (
@@ -101,8 +108,8 @@ const UpdateUIPositions = () => {
         }
 
         let pointsPrestigeConnectorPosition = {
-            x: -25 - playerStore.navigation.positionX,
-            y: 350 - playerStore.navigation.positionY,
+            x: - navigationStore.position.x,
+            y: 500 - navigationStore.position.y,
         }
         UIPositions.value.prestigeRealm.pointsPrestigeConnector.left =
             screen.width / 2 + pointsPrestigeConnectorPosition.x + 'px'
@@ -110,8 +117,8 @@ const UpdateUIPositions = () => {
             screen.height / 2 + pointsPrestigeConnectorPosition.y + 'px'
 
         let prestigePosition = {
-            x: -25 - playerStore.navigation.positionX,
-            y: 850 - playerStore.navigation.positionY,
+            x:  - navigationStore.position.x,
+            y: 1000 - navigationStore.position.y,
         }
 
         if (
@@ -128,8 +135,8 @@ const UpdateUIPositions = () => {
         }
 
         let prestigeSuperPrestigeConnectorPosition = {
-            x: -25 - playerStore.navigation.positionX,
-            y: 1350 - playerStore.navigation.positionY,
+            x:  - navigationStore.position.x,
+            y: 1500 - navigationStore.position.y,
         }
         UIPositions.value.prestigeRealm.prestigeSuperPrestigeConnector.left =
             screen.width / 2 + prestigeSuperPrestigeConnectorPosition.x + 'px'
@@ -137,8 +144,8 @@ const UpdateUIPositions = () => {
             screen.height / 2 + prestigeSuperPrestigeConnectorPosition.y + 'px'
 
         let superPrestigePosition = {
-            x: -25 - playerStore.navigation.positionX,
-            y: 1850 - playerStore.navigation.positionY,
+            x:  - navigationStore.position.x,
+            y: 2000 - navigationStore.position.y,
         }
 
         if (

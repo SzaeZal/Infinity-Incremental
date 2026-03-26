@@ -1,14 +1,15 @@
 <template>
     <div>
-        <p>X: {{ Math.floor(playerStore.navigation.positionX / 20) }}</p>
-        <p>Y: {{ Math.floor(playerStore.navigation.positionY / 20) }}</p>
+        <p>X: {{ Math.floor(navigationStore.position.x / 20) }}</p>
+        <p>Y: {{ Math.floor(navigationStore.position.y / 20) }}</p>
     </div>
 </template>
 <script setup>
 import { ref } from 'vue'
-import { usePlayerStore } from '@/stores/player'
 
-const playerStore = usePlayerStore()
+import { useNavigationStore } from '@/stores/Player/navigation'
+
+const navigationStore=useNavigationStore()
 
 let startX = 0,
     startY = 0,
@@ -22,8 +23,8 @@ const MouseDown = (e) => {
 }
 
 const MouseMove = (e) => {
-    playerStore.navigation.positionX += startX - e.clientX
-    playerStore.navigation.positionY += startY - e.clientY
+    navigationStore.position.x += startX - e.clientX
+    navigationStore.position.y += startY - e.clientY
     startX = e.clientX
     startY = e.clientY
 }
@@ -36,19 +37,19 @@ container.on('mousedown', MouseDown)
 container.on('mouseup', MouseUp)
 
 const MoveDown = () => {
-    playerStore.navigation.positionY += 20
+    navigationStore.position.y += 20
 }
 
 const MoveUp = () => {
-    playerStore.navigation.positionY -= 20
+    navigationStore.position.y -= 20
 }
 
 const MoveLeft = () => {
-    playerStore.navigation.positionX -= 20
+    navigationStore.position.x -= 20
 }
 
 const MoveRight = () => {
-    playerStore.navigation.positionX += 20
+    navigationStore.position.x += 20
 }
 const activeMoveDirections = ref({
     Down: false,

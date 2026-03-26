@@ -11,10 +11,10 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import Positions from './components/Positions.vue'
-import MainMenu from './components/MainMenu.vue'
 import { usePlayerStore } from './stores/player'
 
+import Positions from './components/Positions.vue'
+import MainMenu from './components/MainMenu.vue'
 import DialogBox from './components/DialogBox.vue'
 import Notifications from './components/Notifications.vue'
 import PrestigeRealm from './components/PrestigeRealmComponents/PrestigeRealm.vue'
@@ -24,15 +24,22 @@ import { useSettingsStore } from './stores/Player/settings'
 
 import GainPoints from './components/Scripts/PrestigeRealm/PrestigeRealmGains/GainPoints'
 import GainPrestigePoints from './components/Scripts/PrestigeRealm/PrestigeRealmGains/GainPrestigePoints'
+import { usePrestigeRealmStatsStore } from './stores/Player/PrestigeRealm/prestigeRealmStats'
+import { usePrestigeRealmStatsCalculatedStore } from './stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 
 const playerStore = usePlayerStore()
 
 const navigationStore=useNavigationStore()
 const settingsStore=useSettingsStore()
+const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
 
 const Tick = (ms) => {
-    if (playerStore.prestigeRealm.points.amount != Infinity) {
-        GainPoints(playerStore, ms)
+    if (prestigeRealmStatsStore.points.amount != Infinity) {
+        GainPoints(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, ms)
+    }
+
+    if(prestigeRealmStatsStore.prestige.amount!=Infinity){
         GainPrestigePoints(playerStore, ms)
     }
 }
@@ -112,7 +119,7 @@ Load()
 //#endregion
 
 let hardResetChecker = setInterval(() => {
-    if (playerStore.hardResetActivate == true) {
+    if (settingsStore.hardResetActivate == true) {
         clearInterval(autoSaveInterval)
         localStorage.setItem('InfinityIncSave', '')
         clearInterval(hardResetChecker)

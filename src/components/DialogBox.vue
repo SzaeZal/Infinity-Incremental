@@ -19,20 +19,21 @@
     </div>
 </template>
 <script setup>
-import { useDialogBoxStore } from '@/stores/dialogBox'
-import { usePlayerStore } from '@/stores/player'
 import { reactive, ref } from 'vue'
 
+import { useDialogBoxStore } from '@/stores/dialogBox'
+import { useSettingsStore } from '@/stores/Player/settings'
+
 const dialogBoxStore = useDialogBoxStore()
-const playerStore = usePlayerStore()
-const isDialogBoxTypeDanger = ref()
+const settingsStore=useSettingsStore()
+const isDialogBoxTypeDanger=ref()
 
 const CloseDialogBox = () => {
     dialogBoxStore.isDialogBoxShown = false
 }
 
 const HardReset = () => {
-    playerStore.hardResetActivate = true
+    settingsStore.hardResetActivate = true
 }
 
 setInterval(() => {

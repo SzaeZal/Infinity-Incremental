@@ -107,7 +107,7 @@
         </div>
         <div
             class="buyable"
-            v-show="playerStore.prestigeRealm.prestige.milestones.milestone1Unlocked == true"
+            v-show="prestigeRealmStatsStore.prestige.milestones.milestone1Unlocked == true"
         >
             <h4 class="buyableAmount">
                 {{ points.buyables.buyable3Amount }} /
@@ -167,11 +167,15 @@
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
-import { usePlayerStore } from '@/stores/player'
 
-const playerStore = usePlayerStore()
-let points = playerStore.prestigeRealm.points
-let pointsStatsCalculated = playerStore.prestigeRealmStatsCalculated.points
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
+import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
+
+const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
+
+let points = prestigeRealmStatsStore.points
+let pointsStatsCalculated = prestigeRealmStatsCalculatedStore.points
 
 const Buyable1BuyOnce = () => {
     if (points.amount >= pointsStatsCalculated.buyables.buyable1.cost) {

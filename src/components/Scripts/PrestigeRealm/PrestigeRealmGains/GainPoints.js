@@ -1,44 +1,44 @@
-const CalculatePointGain = (player) => {
-    player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints =
-        player.prestigeRealm.prestige.upgrades.row1.upgrade5Bought == true
-            ? Math.max(1, 1 + Math.log10(player.prestigeRealm.points.amount)) 
+const CalculatePointGain = (prestigeRealm, prestigeRealmStatsCalculated) => {
+    prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints =
+        prestigeRealm.prestige.upgrades.row1.upgrade5Bought == true
+            ? Math.max(1, 1 + Math.log10(prestigeRealm.points.amount)) 
             : 1
 
-    player.prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade5Effects.effectOnPoints =
-        player.prestigeRealm.prestige.upgrades.row2.upgrade5Bought == true
-            ? Math.max(1, 1 + Math.log10(player.prestigeRealm.prestige.amount)) 
+    prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade5Effects.effectOnPoints =
+        prestigeRealm.prestige.upgrades.row2.upgrade5Bought == true
+            ? Math.max(1, 1 + Math.log10(prestigeRealm.prestige.amount)) 
             : 1
 
-    player.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints = 
-        1 + Math.pow(player.prestigeRealm.superPrestige.amount, 2)
+    prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints = 
+        1 + Math.pow(prestigeRealm.superPrestige.amount, 2)
 
-    player.prestigeRealmStatsCalculated.points.gain.multiplier =
+    prestigeRealmStatsCalculated.points.gain.multiplier =
         1 *
-        player.prestigeRealmStatsCalculated.points.buyables.buyable1.effects.effectOnPoints
+        prestigeRealmStatsCalculated.points.buyables.buyable1.effects.effectOnPoints
             .multiplier *
-        player.prestigeRealmStatsCalculated.points.buyables.buyable2.effects.effectOnPoints
+        prestigeRealmStatsCalculated.points.buyables.buyable2.effects.effectOnPoints
             .multiplier *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade1Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade2Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade4Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade1Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade3Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade4Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade5Effects.effectOnPoints *
-        player.prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints
+        prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade1Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade2Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade4Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade1Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade3Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade4Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade5Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints
 
-    player.prestigeRealmStatsCalculated.points.gain.exponent = 1
+    prestigeRealmStatsCalculated.points.gain.exponent = 1
 }
 
-const GainPoints = (player, ms) => {
-    CalculatePointGain(player)
-    player.prestigeRealm.points.amount +=
+const GainPoints = (prestigeRealm, prestigeRealmStatsCalculated, ms) => {
+    CalculatePointGain(prestigeRealm, prestigeRealmStatsCalculated)
+    prestigeRealm.points.amount +=
         (Math.pow(
-            player.prestigeRealmStatsCalculated.points.gain.multiplier /
-                player.prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider,
-            player.prestigeRealmStatsCalculated.points.gain.exponent /
-                player.prestigeRealmStatsCalculated.points.gain.challengeNerfs.root,
+            prestigeRealmStatsCalculated.points.gain.multiplier /
+                prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider,
+            prestigeRealmStatsCalculated.points.gain.exponent /
+                prestigeRealmStatsCalculated.points.gain.challengeNerfs.root,
         ) *
             ms) /
         1000
