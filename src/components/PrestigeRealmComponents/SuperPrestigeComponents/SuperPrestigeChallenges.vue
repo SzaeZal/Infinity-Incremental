@@ -4,8 +4,7 @@
             class="layerResetButton"
             :class="{
                 superPrestigeResetButton:
-                    superPrestigePointsOnReset > 0 &&
-                    prestigeRealm.prestige.amount >= 1e5,
+                    superPrestigePointsOnReset > 0 && prestigeRealm.prestige.amount >= 1e5,
             }"
             @click="SuperPrestigeReset"
         >
@@ -26,10 +25,7 @@
                 @click="ToggleSuperPrestigeChallenge1"
             >
                 <div class="challengeTitle">Slowed points</div>
-                <div
-                    class="challengeEntered"
-                    v-show="prestigeRealm.enteredChallenge == 'SPC1'"
-                >
+                <div class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC1'">
                     (In Challenge)
                 </div>
                 <div class="challengeNerfs">
@@ -62,15 +58,15 @@
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
 
-import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/PrestigeRealmResets/ResetPointsLayer'
-import ResetPrestigePointsLayer from '@/components/Scripts/PrestigeRealm/PrestigeRealmResets/ResetPrestigeLayer'
+import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/Points/ResetPointsLayer'
+import ResetPrestigePointsLayer from '@/components/Scripts/PrestigeRealm/Prestige/ResetPrestigeLayer'
 
 import { useNotificationStore } from '@/stores/notification'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 
-const prestigeRealm=usePrestigeRealmStatsStore()
-const prestigeRealmStatsCalculated=usePrestigeRealmStatsCalculatedStore()
+const prestigeRealm = usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculated = usePrestigeRealmStatsCalculatedStore()
 const notificationStore = useNotificationStore()
 let superPrestige = prestigeRealm.superPrestige
 
@@ -133,8 +129,7 @@ setInterval(() => {
                 prestigeRealmStatsCalculated.superPrestige.gain.challengeNerfs.root /
                     prestigeRealmStatsCalculated.superPrestige.gain.exponent,
             ) *
-                prestigeRealmStatsCalculated.superPrestige.gain.challengeNerfs
-                    .divider) /
+                prestigeRealmStatsCalculated.superPrestige.gain.challengeNerfs.divider) /
                 prestigeRealmStatsCalculated.superPrestige.gain.multiplier,
             4,
         ) * 1e5

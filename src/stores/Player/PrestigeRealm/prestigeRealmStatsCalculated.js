@@ -110,6 +110,6 @@ export const usePrestigeRealmStatsCalculatedStore = defineStore('PrestigeRealmSt
     return {
         points,
         prestige,
-        superPrestige
+        superPrestige,
     }
 })

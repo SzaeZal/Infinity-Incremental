@@ -11,7 +11,7 @@
                 Points
             </h4>
             <h4 class="statAmount">
-                {{ FormatNumber(playerStore.prestigeRealm.points.amount) }}
+                {{ FormatNumber(prestigeRealm.points.amount) }}
             </h4>
             <div class="automationToggler">
 
@@ -25,7 +25,7 @@
                 Prestige Points
             </h4>
             <h4 class="statAmount">
-                {{ FormatNumber(playerStore.prestigeRealm.prestige.amount) }}
+                {{ FormatNumber(prestigeRealm.prestige.amount) }}
             </h4>
             <div class="automationToggler">
 
@@ -37,12 +37,13 @@
     </div>
 </template>
 <script setup>
-import { FormatNumber } from '@/components/Scripts/formatters';
-import { usePlayerStore } from '@/stores/player';
 import { ref } from 'vue';
+import { FormatNumber } from '@/components/Scripts/formatters';
+import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats';
 
 
-const playerStore=usePlayerStore()
+
+const prestigeRealm=usePrestigeRealmStatsStore()
 const statGroupsToggled=ref([true])
 
 const ToggleStatGroup=(index)=>{

@@ -85,8 +85,8 @@
                 <div class="upgradeEffect">
                     currently: x{{
                         FormatNumber(
-                            prestigeRealmStatsCalculatedStore.prestige.upgrades.row1
-                                .upgrade5Effects.effectOnPoints,
+                            prestigeRealmStatsCalculatedStore.prestige.upgrades.row1.upgrade5Effects
+                                .effectOnPoints,
                         )
                     }}
                 </div>
@@ -161,8 +161,8 @@
                 <div class="upgradeEffect">
                     currently: x{{
                         FormatNumber(
-                            prestigeRealmStatsCalculatedStore.prestige.upgrades.row2
-                                .upgrade5Effects.effectOnPoints,
+                            prestigeRealmStatsCalculatedStore.prestige.upgrades.row2.upgrade5Effects
+                                .effectOnPoints,
                         )
                     }}
                 </div>
@@ -176,14 +176,14 @@
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
-import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/PrestigeRealmResets/ResetPointsLayer'
+import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/Points/ResetPointsLayer'
 
 import { useNotificationStore } from '@/stores/notification'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 
-const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
-const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
+const prestigeRealmStatsStore = usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculatedStore = usePrestigeRealmStatsCalculatedStore()
 const notificationStore = useNotificationStore()
 let prestige = prestigeRealmStatsStore.prestige
 let prestigeStatsCalculated = prestigeRealmStatsCalculatedStore.prestige

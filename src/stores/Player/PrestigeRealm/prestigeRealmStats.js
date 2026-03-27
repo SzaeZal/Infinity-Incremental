@@ -47,10 +47,35 @@ export const usePrestigeRealmStatsStore = defineStore('PrestigeRealmStats', () =
         },
     })
 
+    const zip=()=>{
+        let PrestigeRealmStats={
+            enteredChallenge: enteredChallenge.value,
+            points: points.value,
+            prestige: prestige.value,
+            superPrestige: superPrestige.value
+        }
+        return PrestigeRealmStats
+    }
+
+    const unzip=(object)=>{
+        try{
+            points.value=object.points
+            prestige.value=object.prestige
+            if(object.superPrestige.unlocked){
+                superPrestige.value=object.superPrestige
+            }
+        }
+        catch(e){
+            console.error(e)
+        }
+    }
+
     return {
         enteredChallenge,
         points,
         prestige,
-        superPrestige
+        superPrestige,
+        zip,
+        unzip
     }
 })

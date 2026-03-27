@@ -5,35 +5,35 @@
             <div class="settingOptions">
                 <div
                     class="option"
-                    :class="{ selectedOption: playerStore.saveSettings.autoSaveInterval == 0 }"
+                    :class="{ selectedOption: settingsStore.saveSettings.autoSaveInterval == 0 }"
                     @click="SetAutoSaveInterval(0)"
                 >
                     Disabled
                 </div>
                 <div
                     class="option"
-                    :class="{ selectedOption: playerStore.saveSettings.autoSaveInterval == 1000 }"
+                    :class="{ selectedOption: settingsStore.saveSettings.autoSaveInterval == 1000 }"
                     @click="SetAutoSaveInterval(1000)"
                 >
                     1 second
                 </div>
                 <div
                     class="option"
-                    :class="{ selectedOption: playerStore.saveSettings.autoSaveInterval == 2000 }"
+                    :class="{ selectedOption: settingsStore.saveSettings.autoSaveInterval == 2000 }"
                     @click="SetAutoSaveInterval(2000)"
                 >
                     2 seconds
                 </div>
                 <div
                     class="option"
-                    :class="{ selectedOption: playerStore.saveSettings.autoSaveInterval == 5000 }"
+                    :class="{ selectedOption: settingsStore.saveSettings.autoSaveInterval == 5000 }"
                     @click="SetAutoSaveInterval(5000)"
                 >
                     5 seconds
                 </div>
                 <div
                     class="option"
-                    :class="{ selectedOption: playerStore.saveSettings.autoSaveInterval == 15000 }"
+                    :class="{ selectedOption: settingsStore.saveSettings.autoSaveInterval == 15000 }"
                     @click="SetAutoSaveInterval(15000)"
                 >
                     15 seconds
@@ -60,14 +60,14 @@
 </template>
 <script setup>
 import { useDialogBoxStore } from '@/stores/dialogBox'
-import { usePlayerStore } from '@/stores/player'
+import { useSettingsStore } from '@/stores/Player/settings'
 import { ref } from 'vue'
 
-const playerStore = usePlayerStore()
+const settingsStore=useSettingsStore()
 const dialogBoxStore = useDialogBoxStore()
 
 const SetAutoSaveInterval = (newms) => {
-    playerStore.saveSettings.autoSaveInterval = newms
+    settingsStore.saveSettings.autoSaveInterval = newms
 }
 
 const ShowHardResetDialogBox = () => {

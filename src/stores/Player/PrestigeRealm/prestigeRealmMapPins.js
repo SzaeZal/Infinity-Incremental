@@ -6,10 +6,20 @@ export const usePrestigeRealmMapPinsStore = defineStore('PrestigeRealmMapPins', 
     const prestigeMapPin=ref(false)
     const superPrestigeMapPin=ref(false)
 
+    const zip=()=>{
+        let PrestigeRealmMapPins={
+            pointsMapPin: pointsMapPin.value,
+            prestigeMapPin: prestigeMapPin.value,
+            superPrestigeMapPin: superPrestigeMapPin.value
+        }
+        return  PrestigeRealmMapPins
+    }
+
 
     return {
         pointsMapPin,
         prestigeMapPin,
-        superPrestigeMapPin
+        superPrestigeMapPin,
+        zip
     }
 })

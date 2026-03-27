@@ -31,7 +31,6 @@
 <script setup>
 import { ref } from 'vue'
 import { FormatNumber } from '@/components/Scripts/formatters'
-import { usePlayerStore } from '@/stores/player'
 import PrestigeUpgrades from './PrestigeUpgrades.vue'
 import PrestigeMilestones from './PrestigeMilestones.vue'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'

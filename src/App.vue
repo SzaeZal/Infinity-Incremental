@@ -11,7 +11,6 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
-import { usePlayerStore } from './stores/player'
 
 import Positions from './components/Positions.vue'
 import MainMenu from './components/MainMenu.vue'
@@ -21,18 +20,20 @@ import PrestigeRealm from './components/PrestigeRealmComponents/PrestigeRealm.vu
 
 import { useNavigationStore } from './stores/Player/navigation'
 import { useSettingsStore } from './stores/Player/settings'
-
-import GainPoints from './components/Scripts/PrestigeRealm/PrestigeRealmGains/GainPoints'
-import GainPrestigePoints from './components/Scripts/PrestigeRealm/PrestigeRealmGains/GainPrestigePoints'
 import { usePrestigeRealmStatsStore } from './stores/Player/PrestigeRealm/prestigeRealmStats'
 import { usePrestigeRealmStatsCalculatedStore } from './stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
+import { usePrestigeRealmMapPinsStore } from './stores/Player/PrestigeRealm/prestigeRealmMapPins'
 
-const playerStore = usePlayerStore()
+import GainPoints from './components/Scripts/PrestigeRealm/Points/GainPoints'
+import GainPrestigePoints from './components/Scripts/PrestigeRealm/Prestige/GainPrestigePoints'
+import Save from './components/Scripts/save'
+import Load from './components/Scripts/load'
 
 const navigationStore=useNavigationStore()
 const settingsStore=useSettingsStore()
 const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
 const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
+const prestigeRealmMapPinsStore=usePrestigeRealmMapPinsStore()
 
 const Tick = (ms) => {
     if (prestigeRealmStatsStore.points.amount != Infinity) {
@@ -72,49 +73,53 @@ $(window).on('focus', () => {
 let currentAutoSaveInterval = ref(5000)
 let msSinceSave = 0
 
-const Save = () => {
-    const playerParsedToJson = playerStore.CreateJson()
-    let jwt = CreatePartialJWT(playerParsedToJson)
-    localStorage.setItem('InfinityIncSave', jwt)
+const TriggerSave = () => {
+    let player={
+        stats:{
+            prestigeRealm: prestigeRealmStatsStore.zip(),
+        },
+        mapPins:{
+            prestigeRealm: prestigeRealmMapPinsStore.zip()
+        },
+        navigation: navigationStore.zip(),
+        settings: settingsStore.zip()
+    }
+    try{
+        let playerParsed=JSON.stringify(player)
+        Save(playerParsed)
+    }
+    catch(e){
+        console.error(e)
+    }
+    
 }
 
 const SaveChecker = () => {
     msSinceSave += currentAutoSaveInterval.value == 0 ? 0 : 25
-    if (currentAutoSaveInterval.value != playerStore.saveSettings.autoSaveInterval) {
-        currentAutoSaveInterval.value = playerStore.saveSettings.autoSaveInterval
+    if (currentAutoSaveInterval.value != settingsStore.saveSettings.autoSaveInterval) {
+        currentAutoSaveInterval.value = settingsStore.saveSettings.autoSaveInterval
         msSinceSave = 0
-        Save()
+        TriggerSave()
     } else if (msSinceSave >= currentAutoSaveInterval.value && currentAutoSaveInterval.value != 0) {
-        Save()
+        TriggerSave()
         msSinceSave -= currentAutoSaveInterval.value
     }
 }
 
 let autoSaveInterval = setInterval(SaveChecker, 25)
 
-const CreatePartialJWT = (payloadInJson) => {
-    let payloadInBase64 = btoa(payloadInJson)
-    let jwt = payloadInBase64
-    return jwt
-}
 
-const DecodePartialJwt = () => {
-    let jwt = localStorage.getItem('InfinityIncSave')
-    if (jwt != null || jwt != '') {
-        return atob(jwt)
-    }
-    return null
-}
-const Load = () => {
-    let playerSaveJson = DecodePartialJwt()
-    try {
-        playerStore.Load(playerSaveJson)
-    } catch (e) {
-        console.log(e)
+const TriggerLoad = () => {
+    let playerSaveJson=Load()
+    if(playerSaveJson!=''){
+        let player=JSON.parse(playerSaveJson)
+        prestigeRealmStatsStore.unzip(player.stats.prestigeRealm)
+        navigationStore.unzip(player.navigation)
+        settingsStore.unzip(player.settings)
     }
 }
 
-Load()
+TriggerLoad()
 
 //#endregion
 

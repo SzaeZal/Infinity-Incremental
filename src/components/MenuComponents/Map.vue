@@ -6,12 +6,12 @@
                 <img
                     src="@/components/icons/MapIcons/pin.png"
                     alt="pin"
-                    v-show="!playerStore.prestigeRealmMapPins.points"
+                    v-show="!prestigeRealmMapPinsStore.pointsMapPin"
                 />
                 <img
                     src="@/components/icons/MapIcons/pinOff.png"
                     alt="pinOff"
-                    v-show="playerStore.prestigeRealmMapPins.points"
+                    v-show="prestigeRealmMapPinsStore.pointsMapPin"
                 />
             </div>
         </div>
@@ -21,12 +21,12 @@
                 <img
                     src="@/components/icons/MapIcons/pin.png"
                     alt="pin"
-                    v-show="!playerStore.prestigeRealmMapPins.prestige"
+                    v-show="!prestigeRealmMapPinsStore.prestigeMapPin"
                 />
                 <img
                     src="@/components/icons/MapIcons/pinOff.png"
                     alt="pinOff"
-                    v-show="playerStore.prestigeRealmMapPins.prestige"
+                    v-show="prestigeRealmMapPinsStore.prestigeMapPin"
                 />
             </div>
         </div>
@@ -34,7 +34,8 @@
 </template>
 
 <script setup>
-import { usePlayerStore } from '@/stores/player'
+import { usePrestigeRealmMapPinsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmMapPins';
 
-const playerStore = usePlayerStore()
+
+const prestigeRealmMapPinsStore=usePrestigeRealmMapPinsStore()
 </script>
