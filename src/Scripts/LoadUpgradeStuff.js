@@ -1,4 +1,4 @@
-import LoadPrestigeLayerUpgrades from "./PrestigeRealm/Prestige/LoadPrestigeLayerUpgrades"
+import LoadPrestigeLayerUpgrades from './PrestigeRealm/Prestige/LoadPrestigeLayerUpgrades'
 
 const LoadUpgrades = (prestigeRealm, prestigeRealmStatsCalculated) => {
     LoadPrestigeRealmUpgrades(prestigeRealm, prestigeRealmStatsCalculated)

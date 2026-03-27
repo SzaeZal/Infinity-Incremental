@@ -44,10 +44,10 @@
 
 <script setup>
 import { ref } from 'vue'
-import { FormatNumber } from '@/components/Scripts/formatters'
+import { FormatNumber } from '@/Scripts/formatters'
 
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 
-const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+const prestigeRealmStatsStore = usePrestigeRealmStatsStore()
 let prestige = prestigeRealmStatsStore.prestige
 </script>

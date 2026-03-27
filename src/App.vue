@@ -3,10 +3,15 @@
     <MainMenu />
     <DialogBox />
     <Notifications />
-    <div class="container" v-bind:style="{'width':settingsStore.UISettings.screenSizeX+'px', 'height': settingsStore.UISettings.screenSizeY+'px'}">
-        <PrestigeRealm v-show="navigationStore.currentRealm=='prestige'" />
+    <div
+        class="container"
+        v-bind:style="{
+            width: settingsStore.UISettings.screenSizeX + 'px',
+            height: settingsStore.UISettings.screenSizeY + 'px',
+        }"
+    >
+        <PrestigeRealm v-show="navigationStore.currentRealm == 'prestige'" />
     </div>
-    
 </template>
 
 <script setup>
@@ -24,23 +29,23 @@ import { usePrestigeRealmStatsStore } from './stores/Player/PrestigeRealm/presti
 import { usePrestigeRealmStatsCalculatedStore } from './stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 import { usePrestigeRealmMapPinsStore } from './stores/Player/PrestigeRealm/prestigeRealmMapPins'
 
-import GainPoints from './components/Scripts/PrestigeRealm/Points/GainPoints'
-import GainPrestigePoints from './components/Scripts/PrestigeRealm/Prestige/GainPrestigePoints'
-import Save from './components/Scripts/save'
-import Load from './components/Scripts/load'
+import GainPoints from './Scripts/PrestigeRealm/Points/GainPoints'
+import GainPrestigePoints from './Scripts/PrestigeRealm/Prestige/GainPrestigePoints'
+import Save from './Scripts/save'
+import Load from './Scripts/load'
 
-const navigationStore=useNavigationStore()
-const settingsStore=useSettingsStore()
-const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
-const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
-const prestigeRealmMapPinsStore=usePrestigeRealmMapPinsStore()
+const navigationStore = useNavigationStore()
+const settingsStore = useSettingsStore()
+const prestigeRealmStatsStore = usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculatedStore = usePrestigeRealmStatsCalculatedStore()
+const prestigeRealmMapPinsStore = usePrestigeRealmMapPinsStore()
 
 const Tick = (ms) => {
     if (prestigeRealmStatsStore.points.amount != Infinity) {
         GainPoints(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, ms)
     }
 
-    if(prestigeRealmStatsStore.prestige.amount!=Infinity){
+    if (prestigeRealmStatsStore.prestige.amount != Infinity) {
         GainPrestigePoints(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, ms)
     }
 }
@@ -74,24 +79,22 @@ let currentAutoSaveInterval = ref(5000)
 let msSinceSave = 0
 
 const TriggerSave = () => {
-    let player={
-        stats:{
+    let player = {
+        stats: {
             prestigeRealm: prestigeRealmStatsStore.zip(),
         },
-        mapPins:{
-            prestigeRealm: prestigeRealmMapPinsStore.zip()
+        mapPins: {
+            prestigeRealm: prestigeRealmMapPinsStore.zip(),
         },
         navigation: navigationStore.zip(),
-        settings: settingsStore.zip()
+        settings: settingsStore.zip(),
     }
-    try{
-        let playerParsed=JSON.stringify(player)
+    try {
+        let playerParsed = JSON.stringify(player)
         Save(playerParsed)
-    }
-    catch(e){
+    } catch (e) {
         console.error(e)
     }
-    
 }
 
 const SaveChecker = () => {
@@ -108,11 +111,10 @@ const SaveChecker = () => {
 
 let autoSaveInterval = setInterval(SaveChecker, 25)
 
-
 const TriggerLoad = () => {
-    let playerSaveJson=Load()
-    if(playerSaveJson!=''){
-        let player=JSON.parse(playerSaveJson)
+    let playerSaveJson = Load()
+    if (playerSaveJson != '') {
+        let player = JSON.parse(playerSaveJson)
         prestigeRealmStatsStore.unzip(player.stats.prestigeRealm)
         navigationStore.unzip(player.navigation)
         settingsStore.unzip(player.settings)
@@ -131,5 +133,4 @@ let hardResetChecker = setInterval(() => {
         location.reload()
     }
 }, 25)
-
 </script>

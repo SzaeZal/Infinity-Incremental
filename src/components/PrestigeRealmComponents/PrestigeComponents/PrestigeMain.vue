@@ -30,12 +30,12 @@
 
 <script setup>
 import { ref } from 'vue'
-import { FormatNumber } from '@/components/Scripts/formatters'
+import { FormatNumber } from '@/Scripts/formatters'
 import PrestigeUpgrades from './PrestigeUpgrades.vue'
 import PrestigeMilestones from './PrestigeMilestones.vue'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 
-const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+const prestigeRealmStatsStore = usePrestigeRealmStatsStore()
 
 const isPrestigeUpgradesToggled = ref(true)
 const isPrestigeMilestonesToggled = ref(false)

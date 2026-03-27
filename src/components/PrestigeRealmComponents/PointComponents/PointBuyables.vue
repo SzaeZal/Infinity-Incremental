@@ -166,13 +166,13 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { FormatNumber } from '@/components/Scripts/formatters'
+import { FormatNumber } from '@/Scripts/formatters'
 
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 
-const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
-const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
+const prestigeRealmStatsStore = usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculatedStore = usePrestigeRealmStatsCalculatedStore()
 
 let points = prestigeRealmStatsStore.points
 let pointsStatsCalculated = prestigeRealmStatsCalculatedStore.points

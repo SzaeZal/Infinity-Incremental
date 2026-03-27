@@ -56,10 +56,10 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { FormatNumber } from '@/components/Scripts/formatters'
+import { FormatNumber } from '@/Scripts/formatters'
 
-import ResetPointsLayer from '@/components/Scripts/PrestigeRealm/Points/ResetPointsLayer'
-import ResetPrestigePointsLayer from '@/components/Scripts/PrestigeRealm/Prestige/ResetPrestigeLayer'
+import ResetPointsLayer from '@/Scripts/PrestigeRealm/Points/ResetPointsLayer'
+import ResetPrestigePointsLayer from '@/Scripts/PrestigeRealm/Prestige/ResetPrestigeLayer'
 
 import { useNotificationStore } from '@/stores/notification'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'

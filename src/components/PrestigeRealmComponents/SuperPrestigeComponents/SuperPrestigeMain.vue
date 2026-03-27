@@ -1,13 +1,17 @@
 <template>
     <div>
         <h2 class="mainCurrencyDisplay">
-            You have {{ FormatNumber(prestigeRealm.superPrestige.amount) }} Super
-            Prestige Points 
-            <img src="../icons/Arrows/arrowRight.png" alt="->">
+            You have {{ FormatNumber(prestigeRealm.superPrestige.amount) }} Super Prestige Points
+            <img src="../icons/Arrows/arrowRight.png" alt="->" />
             x{{
                 FormatNumber(prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints)
             }}
-            points, x{{FormatNumber(prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints)}} prestige points
+            points, x{{
+                FormatNumber(
+                    prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints,
+                )
+            }}
+            prestige points
         </h2>
         <div class="layerMenu">
             <div class="layerSubMenu">
@@ -30,10 +34,8 @@
                     :class="{ selectedSubMenuItem: isPrestigePowerToggled }"
                     @click="TogglePrestigePower"
                     v-show="
-                        prestigeRealm.superPrestige.challenges.challenge3 !=
-                            undefined &&
-                        prestigeRealm.superPrestige.challenges.challenge3.completed ==
-                            true
+                        prestigeRealm.superPrestige.challenges.challenge3 != undefined &&
+                        prestigeRealm.superPrestige.challenges.challenge3.completed == true
                     "
                 >
                     <h2>Power</h2>
@@ -50,7 +52,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { FormatNumber } from '@/components/Scripts/formatters'
+import { FormatNumber } from '@/Scripts/formatters'
 
 import SuperPrestigeMilestones from './SuperPrestigeMilestones.vue'
 import SuperPrestigeChallenges from './SuperPrestigeChallenges.vue'
@@ -59,8 +61,8 @@ import PrestigePower from './PrestigePower.vue'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
 import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
 
-const prestigeRealm=usePrestigeRealmStatsStore()
-const prestigeRealmStatsCalculated=usePrestigeRealmStatsCalculatedStore()
+const prestigeRealm = usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculated = usePrestigeRealmStatsCalculatedStore()
 
 const isSuperPrestigeChallengesToggled = ref(true)
 const isSuperPrestigeMilestonesToggled = ref(false)
