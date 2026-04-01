@@ -1,11 +1,11 @@
 .menuButtons{
     position: absolute;
     left: 20px;
-    top: 0;
-    height: 100vh;
+    top: 50%;
+    transform: translateY(-50%);
     min-width: 100px;
     max-width: fit-content;
-    max-height: 100vh;
+    max-height: fit-content;
     display: flex;
     flex-direction: column;
     overflow: visible;

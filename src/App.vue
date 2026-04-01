@@ -33,6 +33,9 @@ import GainPoints from './Scripts/PrestigeRealm/Points/GainPoints'
 import GainPrestigePoints from './Scripts/PrestigeRealm/Prestige/GainPrestigePoints'
 import Save from './Scripts/save'
 import Load from './Scripts/load'
+import LoadBuyables from './Scripts/LoadBuyableStuff'
+import LoadUpgrades from './Scripts/LoadUpgradeStuff'
+import LoadChallenges from './Scripts/LoadChallengeStuff'
 
 const navigationStore = useNavigationStore()
 const settingsStore = useSettingsStore()
@@ -118,6 +121,9 @@ const TriggerLoad = () => {
         prestigeRealmStatsStore.unzip(player.stats.prestigeRealm)
         navigationStore.unzip(player.navigation)
         settingsStore.unzip(player.settings)
+        LoadBuyables(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
+        LoadUpgrades(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
+        LoadChallenges(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
     }
 }
 

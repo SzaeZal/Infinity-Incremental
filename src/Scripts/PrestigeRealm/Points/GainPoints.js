@@ -4,6 +4,14 @@ const CalculatePointGain = (prestigeRealm, prestigeRealmStatsCalculated) => {
             ? Math.max(1, 1 + Math.log10(prestigeRealm.points.amount)) 
             : 1
 
+    if(prestigeRealm.superPrestige.challenges.challenge1Completed==true){
+        prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints =
+             Math.pow(
+                prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints
+                , 2
+            )
+    }
+
     prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade5Effects.effectOnPoints =
         prestigeRealm.prestige.upgrades.row2.upgrade5Bought == true
             ? Math.max(1, 1 + Math.log10(prestigeRealm.prestige.amount)) 

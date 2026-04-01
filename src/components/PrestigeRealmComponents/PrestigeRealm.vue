@@ -42,13 +42,29 @@ import Points from './PointComponents/PointsMain.vue'
 import Prestige from './PrestigeComponents/PrestigeMain.vue'
 import SuperPrestige from './SuperPrestigeComponents/SuperPrestigeMain.vue'
 
+import { CompleteSPC1 } from '@/Scripts/PrestigeRealm/SuperPrestige/completeSPChallenge'
+
 import { useNavigationStore } from '@/stores/Player/navigation'
 import { useSettingsStore } from '@/stores/Player/settings'
 import { usePrestigeRealmStatsStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStats'
+import { usePrestigeRealmStatsCalculatedStore } from '@/stores/Player/PrestigeRealm/prestigeRealmStatsCalculated'
+import { useNotificationStore } from '@/stores/notification'
+
 
 const navigationStore=useNavigationStore()
+const notificationStore=useNotificationStore()
 const settingsStore=useSettingsStore()
 const prestigeRealmStatsStore=usePrestigeRealmStatsStore()
+const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
+
+const ChallengeChecker=()=>{
+    if(prestigeRealmStatsStore.enteredChallenge=="SPC1" && prestigeRealmStatsStore.points.amount>=1e4){
+        CompleteSPC1(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
+        notificationStore.NewNotification("Challenge complete", "SPC 1", "superPrestigeMilestone")
+    }
+}
+
+setInterval(ChallengeChecker, 25)
 
 const UIShown = ref({
     points: true,

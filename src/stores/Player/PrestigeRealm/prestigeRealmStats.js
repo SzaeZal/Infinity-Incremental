@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const usePrestigeRealmStatsStore = defineStore('PrestigeRealmStats', () => {
-    const enteredChallenge=ref('')
+    const enteredChallenge=ref("")
     
     const points=ref({
         amount: 0,
@@ -59,6 +59,7 @@ export const usePrestigeRealmStatsStore = defineStore('PrestigeRealmStats', () =
 
     const unzip=(object)=>{
         try{
+            enteredChallenge.value=object.enteredChallenge
             points.value=object.points
             prestige.value=object.prestige
             if(object.superPrestige.unlocked){
