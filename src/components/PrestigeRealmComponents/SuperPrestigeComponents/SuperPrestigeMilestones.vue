@@ -11,11 +11,22 @@
         </div>
         <div
             class="milestone"
+            v-show="superPrestige.milestones.milestone2Unlocked!=undefined"
             :class="{ unlockedMilestone: superPrestige.milestones.milestone2Unlocked }"
         >
             <div class="milestoneRequirement">100 Super Prestige Points</div>
             <div class="milestoneEffect">
                 Keep the 2nd row of prestige upgrades on super prestige resets
+            </div>
+        </div>
+        <div
+            class="milestone"
+            v-show="superPrestige.milestones.milestone3Unlocked!=undefined"
+            :class="{ unlockedMilestone: superPrestige.milestones.milestone3Unlocked }"
+        >
+            <div class="milestoneRequirement">250 Super Prestige Points</div>
+            <div class="milestoneEffect">
+                Unlock the erd row of prestige upgrades
             </div>
         </div>
     </div>

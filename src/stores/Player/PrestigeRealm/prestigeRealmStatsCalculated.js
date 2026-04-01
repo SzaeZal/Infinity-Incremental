@@ -88,6 +88,23 @@ export const usePrestigeRealmStatsCalculatedStore = defineStore('PrestigeRealmSt
                     effectOnPoints: 1,
                 },
             },
+            row3: {
+                upgrade1Effects: {
+                    effectOnPoints: 1,
+                },
+                upgrade2Effects: {
+                    effectOnPoints: 1,
+                },
+                upgrade3Effects: {
+                    effectOnPrestigePoints: 1,
+                },
+                upgrade4Effects: {
+                    effectOnSuperPrestigePoints: 1,
+                },
+                upgrade5Effects: {
+                    effectOnPrestigePoints: 1,
+                },
+            },
         },
     })
 

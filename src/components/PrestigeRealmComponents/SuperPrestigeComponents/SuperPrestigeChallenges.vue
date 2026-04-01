@@ -154,6 +154,19 @@ const CheckForSuperPrestigeMilestones = () => {
         superPrestige.milestones.milestone3Unlocked = false
         notificationStore.NewNotification('Milestone unlocked', '100 SP', 'superPrestigeMilestone')
     }
+    if (superPrestige.amount >= 250 && superPrestige.milestones.milestone3Unlocked == false) {
+        superPrestige.milestones.milestone3Unlocked = true
+        prestigeRealm.prestige.upgrades.
+            row3= {
+                upgrade1Bought: false,
+                upgrade2Bought: false,
+                upgrade3Bought: false,
+                upgrade4Bought: false,
+                upgrade5Bought: false,
+            };
+        superPrestige.milestones.milestone4Unlocked = false
+        notificationStore.NewNotification('Milestone unlocked', '250 SP', 'superPrestigeMilestone')
+    }
 }
 
 setInterval(() => {
