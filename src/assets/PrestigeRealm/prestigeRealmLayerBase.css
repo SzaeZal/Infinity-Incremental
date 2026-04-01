@@ -226,6 +226,7 @@
 .challenges{
     width: 100%;
     margin: 5px;
+    gap: 25px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

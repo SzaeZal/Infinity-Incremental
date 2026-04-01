@@ -65,6 +65,7 @@ export const usePrestigeRealmStatsStore = defineStore('PrestigeRealmStats', () =
             if(object.superPrestige.unlocked){
                 superPrestige.value=object.superPrestige
             }
+            
         }
         catch(e){
             console.error(e)

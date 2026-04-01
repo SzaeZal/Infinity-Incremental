@@ -7,7 +7,8 @@ const LoadPrestigeRealmChallengeEffects=(prestigeRealm, prestigeRealmStatsCalcul
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=100
     }
     else if(prestigeRealm.enteredChallenge=="SPC2"){
-        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=100
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=1000
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=10
     }
     else if(prestigeRealm.enteredChallenge=="SPC3"){
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=100

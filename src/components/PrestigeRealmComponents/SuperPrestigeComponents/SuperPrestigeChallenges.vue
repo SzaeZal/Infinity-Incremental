@@ -42,7 +42,27 @@
             <div
                 class="challenge"
                 v-show="superPrestige.challenges.challenge2Completed != undefined"
-            ></div>
+                :class="{ completedChallenge: superPrestige.challenges.challenge2Completed }"
+                @click="ToggleSuperPrestigeChallenge2"
+            >
+                <div class="challengeTitle">Double trouble</div>
+                <div class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC2'">
+                    (In Challenge)
+                </div>
+                <div class="challengeNerfs">
+                    <div class="challengeNerf">
+                        /1000 points <br>
+                        /10 prestige points
+                    </div>
+                </div>
+                <div class="challengeGoal">Goal: 1e5 Prestige Points</div>
+                <div class="challengeRewards">
+                    <div class="challengeReward">
+                        Reward: Square the effect of prestige upgrade 2-5
+                    </div>
+                </div>
+                <div class="challengeBoxInfo">click to enter/exit challenge</div>
+            </div>
             <div
                 class="challenge"
                 v-show="superPrestige.challenges.challenge3Completed != undefined"
@@ -109,6 +129,11 @@ const CheckForSuperPrestigeMilestones = () => {
         superPrestige.milestones.milestone2Unlocked = false
         notificationStore.NewNotification('Milestone unlocked', '15 SP', 'superPrestigeMilestone')
     }
+    if (superPrestige.amount >= 100 && superPrestige.milestones.milestone2Unlocked == false) {
+        superPrestige.milestones.milestone2Unlocked = true
+        superPrestige.milestones.milestone3Unlocked = false
+        notificationStore.NewNotification('Milestone unlocked', '100 SP', 'superPrestigeMilestone')
+    }
 }
 
 setInterval(() => {
@@ -146,4 +171,20 @@ const ToggleSuperPrestigeChallenge1 = () => {
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1
     }
 }
+
+
+const ToggleSuperPrestigeChallenge2 = () => {
+    if (prestigeRealm.enteredChallenge != 'SPC2') {
+        ResetPrestigePointsLayer(2)
+        ResetPointsLayer(2)
+        prestigeRealm.enteredChallenge = 'SPC2'
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1000
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=10
+    } else {
+        prestigeRealm.enteredChallenge = ''
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=1
+    }
+}
+
 </script>

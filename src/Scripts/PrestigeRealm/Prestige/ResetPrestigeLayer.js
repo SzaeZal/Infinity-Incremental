@@ -26,7 +26,8 @@ const ResetPrestigeUpgrades = (prestigeRealm, prestigeRealmStatsCalculated, rowR
         prestigeRealm.prestige.upgrades.row1.upgrade5Bought = false
         prestigeRealmStatsCalculated.prestige.upgrades.row1.upgrade5Effects.effectOnPoints = 1
     }
-    if (true) {
+
+    if (!(prestigeRealm.superPrestige.milestones.milestone2Unlocked && rowReset == 2)) {
         prestigeRealm.prestige.upgrades.row2.upgrade1Bought = false
         prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade1Effects.effectOnPoints = 1
 

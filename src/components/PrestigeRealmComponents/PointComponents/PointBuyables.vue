@@ -9,7 +9,7 @@
             <p class="buyableDescription">Each level doubles point gain</p>
             <p class="buyableEffect">
                 Currently: x{{
-                    pointsStatsCalculated.buyables.buyable1.effects.effectOnPoints.multiplier
+                    FormatNumber(pointsStatsCalculated.buyables.buyable1.effects.effectOnPoints.multiplier)
                 }}
             </p>
             <p
@@ -63,7 +63,7 @@
             </p>
             <p class="buyableEffect">
                 Currently: x{{
-                    pointsStatsCalculated.buyables.buyable2.effects.effectOnPoints.multiplier
+                    FormatNumber(pointsStatsCalculated.buyables.buyable2.effects.effectOnPoints.multiplier)
                 }}
             </p>
             <p
@@ -119,8 +119,8 @@
             </p>
             <p class="buyableEffect">
                 Currently: x{{
-                    pointsStatsCalculated.buyables.buyable3.effects.effectOnPrestigePoints
-                        .multiplier
+                    FormatNumber(pointsStatsCalculated.buyables.buyable3.effects.effectOnPrestigePoints
+                        .multiplier)
                 }}
             </p>
             <p

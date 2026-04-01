@@ -238,9 +238,9 @@ const CheckForPrestigeMilestones = () => {
     }
     if (prestige.amount >= 150 && prestige.milestones.milestone4Unlocked == false) {
         prestige.milestones.milestone4Unlocked = true
-        prestige.milestones.milestone5Unlocked = false
+        prestige.milestones.milestone5Unlocked = prestige.milestones.milestone5Unlocked==true ? true : false
         notificationStore.NewNotification('Milestone unlocked', '150 PP', 'prestigeMilestone')
-    }
+    }    
     if (prestige.amount >= 1e5 && prestige.milestones.milestone5Unlocked == false) {
         prestige.milestones.milestone5Unlocked = true
         prestigeRealmStatsStore.superPrestige.unlocked = true
