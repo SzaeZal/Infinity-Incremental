@@ -44,13 +44,32 @@ const ResetPrestigeUpgrades = (prestigeRealm, prestigeRealmStatsCalculated, rowR
         prestigeRealm.prestige.upgrades.row2.upgrade5Bought = false
         prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade5Effects.effectOnPoints = 1
     }
+
+    if (prestigeRealm.superPrestige.milestones.milestone3Unlocked==true && !(prestigeRealm.superPrestige.milestones.milestone5Unlocked==true && rowReset == 2)) {
+        prestigeRealm.prestige.upgrades.row3.upgrade1Bought = false
+        prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade1Effects.effectOnPoints = 1
+
+        prestigeRealm.prestige.upgrades.row3.upgrade2Bought = false
+        prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade2Effects.effectOnPoints = 1
+
+        prestigeRealm.prestige.upgrades.row3.upgrade3Bought = false
+        prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade3Effects.effectOnPrestigePoints = 1
+
+        prestigeRealm.prestige.upgrades.row3.upgrade4Bought = false
+        prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade4Effects.effectOnSuperPrestigePoints = 1
+
+        prestigeRealm.prestige.upgrades.row3.upgrade5Bought = false
+        prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade5Effects.effectOnPrestigePoints = 1
+    }
 }
 
 const ResetPrestigeMilestones = (prestigeRealm, prestigeRealmStatsCalculated, rowReset) => {
-    prestigeRealm.prestige.milestones.milestone1Unlocked = false
-    prestigeRealm.prestige.milestones.milestone2Unlocked = false
-    prestigeRealm.prestige.milestones.milestone3Unlocked = false
-    prestigeRealm.prestige.milestones.milestone4Unlocked = false
+    if(!(prestigeRealm.superPrestige.milestones.milestone4Unlocked==true && rowReset==2)){
+        prestigeRealm.prestige.milestones.milestone1Unlocked = false
+        prestigeRealm.prestige.milestones.milestone2Unlocked = false
+        prestigeRealm.prestige.milestones.milestone3Unlocked = false
+        prestigeRealm.prestige.milestones.milestone4Unlocked = false
+    }
 }
 
 export default ResetPrestigePointsLayer

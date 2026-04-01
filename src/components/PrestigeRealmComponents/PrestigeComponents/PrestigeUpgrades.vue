@@ -174,59 +174,59 @@
             <div
                 class="upgrade"
                 :class="{
-                    upgradePurchaseable: prestige.amount >= 1e11,
+                    upgradePurchaseable: prestige.amount >= 5e11,
                     purchasedUpgrade: prestige.upgrades.row3.upgrade1Bought,
                 }"
                 @click="PurchasePrestigeUpgradeR3C1"
             >
                 <div class="upgradeTitle">Super row</div>
                 <div class="upgradeDescription">x100 points</div>
-                <div class="upgradeCost">Cost: 1e11 prestige point</div>
+                <div class="upgradeCost">Cost: 5e11 prestige point</div>
                 <div class="upgradeNumber">3-1</div>
             </div>
             <div
                 class="upgrade"
                 :class="{
-                    upgradePurchaseable: prestige.amount >= 1e12,
+                    upgradePurchaseable: prestige.amount >= 1e13,
                     purchasedUpgrade: prestige.upgrades.row3.upgrade2Bought,
                 }"
                 @click="PurchasePrestigeUpgradeR3C2"
             >
                 <div class="upgradeTitle">Super points</div>
                 <div class="upgradeDescription">x5000 points</div>
-                <div class="upgradeCost">Cost: 1e12 prestige points</div>
+                <div class="upgradeCost">Cost: 1e13 prestige points</div>
                 <div class="upgradeNumber">3-2</div>
             </div>
             <div
                 class="upgrade"
                 :class="{
-                    upgradePurchaseable: prestige.amount >= 1e14,
+                    upgradePurchaseable: prestige.amount >= 1e16,
                     purchasedUpgrade: prestige.upgrades.row3.upgrade3Bought,
                 }"
                 @click="PurchasePrestigeUpgradeR3C3"
             >
                 <div class="upgradeTitle">Super prestige</div>
                 <div class="upgradeDescription">x50 prestige points</div>
-                <div class="upgradeCost">Cost: 1e14 prestige points</div>
+                <div class="upgradeCost">Cost: 1e16 prestige points</div>
                 <div class="upgradeNumber">3-3</div>
             </div>
             <div
                 class="upgrade"
                 :class="{
-                    upgradePurchaseable: prestige.amount >= 1e17,
+                    upgradePurchaseable: prestige.amount >= 1e20,
                     purchasedUpgrade: prestige.upgrades.row3.upgrade4Bought,
                 }"
                 @click="PurchasePrestigeUpgradeR3C4"
             >
                 <div class="upgradeTitle">Super<sup>2</sup> prestige</div>
                 <div class="upgradeDescription">x4 super prestige points</div>
-                <div class="upgradeCost">Cost: 1e17 prestige points</div>
+                <div class="upgradeCost">Cost: 1e20 prestige points</div>
                 <div class="upgradeNumber">3-4</div>
             </div>
             <div
                 class="upgrade"
                 :class="{
-                    upgradePurchaseable: prestige.amount >= 1e20,
+                    upgradePurchaseable: prestige.amount >= 1e50,
                     purchasedUpgrade: prestige.upgrades.row3.upgrade5Bought,
                 }"
                 @click="PurchasePrestigeUpgradeR3C5"
@@ -242,7 +242,7 @@
                         )
                     }}
                 </div>
-                <div class="upgradeCost">Cost: 1e20 prestige points</div>
+                <div class="upgradeCost">Cost: 1e50 prestige points</div>
                 <div class="upgradeNumber">3-5</div>
             </div>
         </div>
@@ -435,43 +435,42 @@ const PurchasePrestigeUpgradeR2C5 = () => {
 }
 
 const PurchasePrestigeUpgradeR3C1 = () => {
-    if (prestige.amount >= 400) {
-        prestige.amount -= 400
-        prestige.upgrades.row2.upgrade1Bought = true
-        prestigeStatsCalculated.upgrades.row2.upgrade1Effects.effectOnPoints = 5
+    if (prestige.amount >= 1e11) {
+        prestige.amount -= 1e11
+        prestige.upgrades.row3.upgrade1Bought = true
+        prestigeStatsCalculated.upgrades.row3.upgrade1Effects.effectOnPoints = 100
     }
 }
 
 const PurchasePrestigeUpgradeR3C2 = () => {
-    if (prestige.amount >= 1000) {
-        prestige.amount -= 1000
-        prestige.upgrades.row2.upgrade2Bought = true
-        prestigeStatsCalculated.upgrades.row2.upgrade2Effects.effectOnPrestigePoints = 2
+    if (prestige.amount >= 1e12) {
+        prestige.amount -= 1e12
+        prestige.upgrades.row3.upgrade2Bought = true
+        prestigeStatsCalculated.upgrades.row3.upgrade2Effects.effectOnPoints = 5000
     }
 }
 
 const PurchasePrestigeUpgradeR3C3 = () => {
-    if (prestige.amount >= 2500) {
-        prestige.amount -= 2500
-        prestige.upgrades.row2.upgrade3Bought = true
-        prestigeStatsCalculated.upgrades.row2.upgrade3Effects.effectOnPoints = 3
-        prestigeStatsCalculated.upgrades.row2.upgrade3Effects.effectOnPrestigePoints = 1.5
+    if (prestige.amount >= 1e16) {
+        prestige.amount -= 1e16
+        prestige.upgrades.row3.upgrade3Bought = true
+        prestigeStatsCalculated.upgrades.row3.upgrade3Effects.effectOnPrestigePoints = 50
     }
 }
 
 const PurchasePrestigeUpgradeR3C4 = () => {
-    if (prestige.amount >= 7500) {
-        prestige.amount -= 7500
-        prestige.upgrades.row2.upgrade4Bought = true
-        prestigeStatsCalculated.upgrades.row2.upgrade4Effects.effectOnPoints = 10
+    if (prestige.amount >= 1e20) {
+        prestige.amount -= 1e20
+        prestige.upgrades.row3.upgrade4Bought = true
+        prestigeStatsCalculated.upgrades.row3.upgrade4Effects.effectOnSuperPrestigePoints = 4
     }
 }
 
 const PurchasePrestigeUpgradeR3C5 = () => {
-    if (prestige.amount >= 5e4) {
-        prestige.amount -= 5e4
-        prestige.upgrades.row2.upgrade5Bought = true
-        prestigeStatsCalculated.upgrades.row2.upgrade5Effects.effectOnPrestigePoints = Math.max(
+    if (prestige.amount >= 1e50) {
+        prestige.amount -= 1e50
+        prestige.upgrades.row3.upgrade5Bought = true
+        prestigeStatsCalculated.upgrades.row3.upgrade5Effects.effectOnPrestigePoints = Math.max(
             1 + Math.log10(prestige.amount),
             1,
         )

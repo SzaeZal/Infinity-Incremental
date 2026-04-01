@@ -1,11 +1,16 @@
 const CalculatePrestigePointGain = (prestigeRealm, prestigeRealmStatsCalculated) => {
+    prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade5Effects.effectOnPrestigePoints =
+        prestigeRealm.prestige.upgrades.row3.upgrade5Bought == true
+            ? Math.max(1, 1 + Math.log10(prestigeRealm.prestige.amount)) 
+            : 1
+    
     prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints = 
         1 + Math.sqrt(prestigeRealm.superPrestige.amount)
     if(prestigeRealm.superPrestige.challenges.challenge3Completed==true){
         prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints =
              Math.pow(
                 prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints
-                , 2
+                , 1.5
             )
     }
 
@@ -18,6 +23,10 @@ const CalculatePrestigePointGain = (prestigeRealm, prestigeRealmStatsCalculated)
         * prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade2Effects
             .effectOnPrestigePoints
         * prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade3Effects
+            .effectOnPrestigePoints
+        * prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade3Effects
+            .effectOnPrestigePoints
+        * prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade5Effects
             .effectOnPrestigePoints
         * prestigeRealmStatsCalculated.superPrestige.effects.effectOnPrestigePoints
 

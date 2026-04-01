@@ -29,7 +29,7 @@ const CalculatePointGain = (prestigeRealm, prestigeRealmStatsCalculated) => {
         prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints =
              Math.pow(
                 prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints
-                , 2
+                , 1.5
             )
     }
 
@@ -47,6 +47,8 @@ const CalculatePointGain = (prestigeRealm, prestigeRealmStatsCalculated) => {
         prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade3Effects.effectOnPoints *
         prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade4Effects.effectOnPoints *
         prestigeRealmStatsCalculated.prestige.upgrades.row2.upgrade5Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade1Effects.effectOnPoints *
+        prestigeRealmStatsCalculated.prestige.upgrades.row3.upgrade2Effects.effectOnPoints *
         prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints
 
     prestigeRealmStatsCalculated.points.gain.exponent = 1

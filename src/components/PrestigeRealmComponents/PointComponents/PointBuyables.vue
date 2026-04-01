@@ -178,7 +178,7 @@ let points = prestigeRealmStatsStore.points
 let pointsStatsCalculated = prestigeRealmStatsCalculatedStore.points
 
 const Buyable1BuyOnce = () => {
-    if (points.amount >= pointsStatsCalculated.buyables.buyable1.cost) {
+    if (points.amount >= pointsStatsCalculated.buyables.buyable1.cost && points.buyables.buyable1Amount<50) {
         points.amount -= pointsStatsCalculated.buyables.buyable1.cost
         points.buyables.buyable1Amount++
         pointsStatsCalculated.buyables.buyable1.cost =
@@ -195,7 +195,7 @@ const Buyable1BuyOnce = () => {
 }
 
 const Buyable1BuyMax = () => {
-    while (points.amount >= pointsStatsCalculated.buyables.buyable1.cost) {
+    while (points.amount >= pointsStatsCalculated.buyables.buyable1.cost && points.buyables.buyable1Amount<50) {
         points.amount -= pointsStatsCalculated.buyables.buyable1.cost
         points.buyables.buyable1Amount++
         pointsStatsCalculated.buyables.buyable1.cost =
@@ -212,7 +212,7 @@ const Buyable1BuyMax = () => {
 }
 
 const Buyable2BuyOnce = () => {
-    if (points.amount >= pointsStatsCalculated.buyables.buyable2.cost) {
+    if (points.amount >= pointsStatsCalculated.buyables.buyable2.cost && points.buyables.buyable2Amount<250) {
         points.amount -= pointsStatsCalculated.buyables.buyable2.cost
         points.buyables.buyable2Amount++
         pointsStatsCalculated.buyables.buyable2.cost =
@@ -228,7 +228,7 @@ const Buyable2BuyOnce = () => {
 }
 
 const Buyable2BuyMax = () => {
-    while (points.amount >= pointsStatsCalculated.buyables.buyable2.cost) {
+    while (points.amount >= pointsStatsCalculated.buyables.buyable2.cost && points.buyables.buyable2Amount<250) {
         points.amount -= pointsStatsCalculated.buyables.buyable2.cost
         points.buyables.buyable2Amount++
         pointsStatsCalculated.buyables.buyable2.cost =
@@ -244,7 +244,7 @@ const Buyable2BuyMax = () => {
 }
 
 const Buyable3BuyOnce = () => {
-    if (points.amount >= pointsStatsCalculated.buyables.buyable3.cost) {
+    if (points.amount >= pointsStatsCalculated.buyables.buyable3.cost && points.buyables.buyable3Amount<50) {
         points.amount -= pointsStatsCalculated.buyables.buyable3.cost
         points.buyables.buyable3Amount++
         pointsStatsCalculated.buyables.buyable3.cost =
@@ -259,7 +259,7 @@ const Buyable3BuyOnce = () => {
 }
 
 const Buyable3BuyMax = () => {
-    while (points.amount >= pointsStatsCalculated.buyables.buyable3.cost) {
+    while (points.amount >= pointsStatsCalculated.buyables.buyable3.cost && points.buyables.buyable3Amount<50) {
         points.amount -= pointsStatsCalculated.buyables.buyable3.cost
         points.buyables.buyable3Amount++
         pointsStatsCalculated.buyables.buyable3.cost =

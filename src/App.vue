@@ -36,6 +36,7 @@ import Load from './Scripts/load'
 import LoadBuyables from './Scripts/LoadBuyableStuff'
 import LoadUpgrades from './Scripts/LoadUpgradeStuff'
 import LoadChallenges from './Scripts/LoadChallengeStuff'
+import GainSuperPrestigePoints from './Scripts/PrestigeRealm/SuperPrestige/GainSuperPrestigePoints'
 
 const navigationStore = useNavigationStore()
 const settingsStore = useSettingsStore()
@@ -50,6 +51,10 @@ const Tick = (ms) => {
 
     if (prestigeRealmStatsStore.prestige.amount != Infinity) {
         GainPrestigePoints(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, ms)
+    }
+
+    if(prestigeRealmStatsStore.superPrestige.amount != Infinity){
+        GainSuperPrestigePoints(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore, ms)
     }
 }
 

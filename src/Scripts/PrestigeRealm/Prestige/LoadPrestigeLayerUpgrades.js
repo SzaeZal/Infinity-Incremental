@@ -24,6 +24,19 @@ const LoadPrestigeLayerUpgrades = (prestige, prestigeStatsCalculated) => {
     
     prestigeStatsCalculated.upgrades.row2.upgrade4Effects.effectOnPoints =
         prestige.upgrades.row2.upgrade4Bought == true ? 10 : 1
+
+    
+    prestigeStatsCalculated.upgrades.row3.upgrade1Effects.effectOnPoints =
+        prestige.upgrades.row3.upgrade1Bought == true ? 100 : 1
+
+    prestigeStatsCalculated.upgrades.row3.upgrade2Effects.effectOnPoints =
+        prestige.upgrades.row3.upgrade2Bought == true ? 5000 : 1
+
+    prestigeStatsCalculated.upgrades.row3.upgrade3Effects.effectOnPrestigePoints =
+        prestige.upgrades.row3.upgrade3Bought == true ? 50 : 1
+    
+    prestigeStatsCalculated.upgrades.row3.upgrade4Effects.effectOnSuperPrestigePoints =
+        prestige.upgrades.row3.upgrade4Bought == true ? 4 : 1
 }
 
 export default LoadPrestigeLayerUpgrades

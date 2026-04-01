@@ -240,6 +240,7 @@
     width: fit-content;
     height: auto;
     min-height: 250px;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

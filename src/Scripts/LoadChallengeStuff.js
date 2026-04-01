@@ -11,10 +11,12 @@ const LoadPrestigeRealmChallengeEffects=(prestigeRealm, prestigeRealmStatsCalcul
         prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=10
     }
     else if(prestigeRealm.enteredChallenge=="SPC3"){
-        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=100
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root=2.5
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root=2
     }
     else if(prestigeRealm.enteredChallenge=="SPC4"){
-        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider=100
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 10
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 10
     }
 }
 

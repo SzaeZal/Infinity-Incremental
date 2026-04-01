@@ -26,7 +26,27 @@
         >
             <div class="milestoneRequirement">250 Super Prestige Points</div>
             <div class="milestoneEffect">
-                Unlock the erd row of prestige upgrades
+                Unlock the 3rd row of prestige upgrades
+            </div>
+        </div>
+        <div
+            class="milestone"
+            v-show="superPrestige.milestones.milestone4Unlocked!=undefined"
+            :class="{ unlockedMilestone: superPrestige.milestones.milestone4Unlocked }"
+        >
+            <div class="milestoneRequirement">1e4 Super Prestige Points</div>
+            <div class="milestoneEffect">
+                Keep prestige milestones on super prestige resets
+            </div>
+        </div>
+        <div
+            class="milestone"
+            v-show="superPrestige.milestones.milestone5Unlocked!=undefined"
+            :class="{ unlockedMilestone: superPrestige.milestones.milestone5Unlocked }"
+        >
+            <div class="milestoneRequirement">1e10 Super Prestige Points</div>
+            <div class="milestoneEffect">
+                Keep the 3rd row of prestige upgrades on super prestige resets
             </div>
         </div>
     </div>

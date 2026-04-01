@@ -66,7 +66,7 @@ const ChallengeChecker=()=>{
         completeSPChallenge.CompleteSPC2(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
         notificationStore.NewNotification("Challenge complete", "SPC 2", "superPrestigeMilestone")
     }
-    else if(prestigeRealmStatsStore.enteredChallenge=="SPC3" && prestigeRealmStatsStore.prestige.amount>=1e6){
+    else if(prestigeRealmStatsStore.enteredChallenge=="SPC3" && prestigeRealmStatsStore.prestige.amount>=1e4){
         completeSPChallenge.CompleteSPC3(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
         notificationStore.NewNotification("Challenge complete", "SPC 3", "superPrestigeMilestone")
     }

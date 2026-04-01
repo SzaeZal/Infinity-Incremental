@@ -79,10 +79,10 @@
                         ^0.5 prestige points
                     </div>
                 </div>
-                <div class="challengeGoal">Goal: 1e6 Prestige Points</div>
+                <div class="challengeGoal">Goal: 1e4 Prestige Points</div>
                 <div class="challengeRewards">
                     <div class="challengeReward">
-                        Reward: Square the effects super prestige points
+                        Reward: Raise the effects super prestige points to ^1.5
                     </div>
                 </div>
                 <div class="challengeBoxInfo">click to enter/exit challenge</div>
@@ -90,7 +90,27 @@
             <div
                 class="challenge"
                 v-show="superPrestige.challenges.challenge4Completed != undefined"
-            ></div>
+                :class="{ completedChallenge: superPrestige.challenges.challenge4Completed }"
+                @click="ToggleSuperPrestigeChallenge4"
+            >
+                <div class="challengeTitle">Unpower</div>
+                <div class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC4'">
+                    (In Challenge)
+                </div>
+                <div class="challengeNerfs">
+                    <div class="challengeNerf">
+                        ^0.1 points <br>
+                        ^0.1 prestige points
+                    </div>
+                </div>
+                <div class="challengeGoal">Goal: 250 Prestige Points</div>
+                <div class="challengeRewards">
+                    <div class="challengeReward">
+                        Reward: Unlock prestige power
+                    </div>
+                </div>
+                <div class="challengeBoxInfo">click to enter/exit challenge</div>
+            </div>
         </div>
     </div>
 </template>
@@ -167,6 +187,16 @@ const CheckForSuperPrestigeMilestones = () => {
         superPrestige.milestones.milestone4Unlocked = false
         notificationStore.NewNotification('Milestone unlocked', '250 SP', 'superPrestigeMilestone')
     }
+    if (superPrestige.amount >= 1e4 && superPrestige.milestones.milestone4Unlocked == false) {
+        superPrestige.milestones.milestone4Unlocked = true
+        superPrestige.milestones.milestone5Unlocked = false
+        notificationStore.NewNotification('Milestone unlocked', '1e4 SP', 'superPrestigeMilestone')
+    }
+    if (superPrestige.amount >= 1e10 && superPrestige.milestones.milestone5Unlocked == false) {
+        superPrestige.milestones.milestone5Unlocked = true
+        superPrestige.milestones.milestone6Unlocked = false
+        notificationStore.NewNotification('Milestone unlocked', '1e10 SP', 'superPrestigeMilestone')
+    }
 }
 
 setInterval(() => {
@@ -234,6 +264,22 @@ const ToggleSuperPrestigeChallenge3 = () => {
         prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=1
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 2.5
         prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 2
+    } else {
+        prestigeRealm.enteredChallenge = ''
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 1
+    }
+}
+
+const ToggleSuperPrestigeChallenge4 = () => {
+    if (prestigeRealm.enteredChallenge != 'SPC4') {
+        ResetPrestigePointsLayer(2)
+        ResetPointsLayer(2)
+        prestigeRealm.enteredChallenge = 'SPC4'
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=1
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 10
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 10
     } else {
         prestigeRealm.enteredChallenge = ''
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 1
