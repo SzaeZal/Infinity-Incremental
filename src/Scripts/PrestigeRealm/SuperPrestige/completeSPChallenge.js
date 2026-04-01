@@ -13,4 +13,12 @@ const CompleteSPC2=(prestigeRealm, prestigeRealmStats)=>{
     prestigeRealmStats.prestige.gain.challengeNerfs.divider/=10
 }
 
-export {CompleteSPC1, CompleteSPC2}
+const CompleteSPC3=(prestigeRealm, prestigeRealmStats)=>{
+    prestigeRealm.enteredChallenge=""
+    prestigeRealm.superPrestige.challenges.challenge3Completed=true
+    prestigeRealm.superPrestige.challenges.challenge4Completed=false
+    prestigeRealmStats.points.gain.challengeNerfs.root/=2.5
+    prestigeRealmStats.prestige.gain.challengeNerfs.root/=2
+}
+
+export {CompleteSPC1, CompleteSPC2, CompleteSPC3}

@@ -42,7 +42,7 @@ import Points from './PointComponents/PointsMain.vue'
 import Prestige from './PrestigeComponents/PrestigeMain.vue'
 import SuperPrestige from './SuperPrestigeComponents/SuperPrestigeMain.vue'
 
-import { CompleteSPC1, CompleteSPC2 } from '@/Scripts/PrestigeRealm/SuperPrestige/completeSPChallenge'
+import * as completeSPChallenge from '@/Scripts/PrestigeRealm/SuperPrestige/completeSPChallenge'
 
 import { useNavigationStore } from '@/stores/Player/navigation'
 import { useSettingsStore } from '@/stores/Player/settings'
@@ -59,12 +59,16 @@ const prestigeRealmStatsCalculatedStore=usePrestigeRealmStatsCalculatedStore()
 
 const ChallengeChecker=()=>{
     if(prestigeRealmStatsStore.enteredChallenge=="SPC1" && prestigeRealmStatsStore.points.amount>=1e4){
-        CompleteSPC1(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
+        completeSPChallenge.CompleteSPC1(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
         notificationStore.NewNotification("Challenge complete", "SPC 1", "superPrestigeMilestone")
     }
     else if(prestigeRealmStatsStore.enteredChallenge=="SPC2" && prestigeRealmStatsStore.prestige.amount>=1e5){
-        CompleteSPC2(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
+        completeSPChallenge.CompleteSPC2(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
         notificationStore.NewNotification("Challenge complete", "SPC 2", "superPrestigeMilestone")
+    }
+    else if(prestigeRealmStatsStore.enteredChallenge=="SPC3" && prestigeRealmStatsStore.prestige.amount>=1e6){
+        completeSPChallenge.CompleteSPC3(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
+        notificationStore.NewNotification("Challenge complete", "SPC 3", "superPrestigeMilestone")
     }
 }
 

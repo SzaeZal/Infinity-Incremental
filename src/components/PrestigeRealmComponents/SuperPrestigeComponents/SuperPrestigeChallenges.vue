@@ -66,7 +66,27 @@
             <div
                 class="challenge"
                 v-show="superPrestige.challenges.challenge3Completed != undefined"
-            ></div>
+                :class="{ completedChallenge: superPrestige.challenges.challenge3Completed }"
+                @click="ToggleSuperPrestigeChallenge3"
+            >
+                <div class="challengeTitle">Rooted trouble</div>
+                <div class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC3'">
+                    (In Challenge)
+                </div>
+                <div class="challengeNerfs">
+                    <div class="challengeNerf">
+                        ^0.4 points <br>
+                        ^0.5 prestige points
+                    </div>
+                </div>
+                <div class="challengeGoal">Goal: 1e6 Prestige Points</div>
+                <div class="challengeRewards">
+                    <div class="challengeReward">
+                        Reward: Square the effects super prestige points
+                    </div>
+                </div>
+                <div class="challengeBoxInfo">click to enter/exit challenge</div>
+            </div>
             <div
                 class="challenge"
                 v-show="superPrestige.challenges.challenge4Completed != undefined"
@@ -165,6 +185,9 @@ const ToggleSuperPrestigeChallenge1 = () => {
         ResetPrestigePointsLayer(2)
         ResetPointsLayer(2)
         prestigeRealm.enteredChallenge = 'SPC1'
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=1
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 100
     } else {
         prestigeRealm.enteredChallenge = ''
@@ -178,12 +201,30 @@ const ToggleSuperPrestigeChallenge2 = () => {
         ResetPrestigePointsLayer(2)
         ResetPointsLayer(2)
         prestigeRealm.enteredChallenge = 'SPC2'
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 1
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1000
         prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=10
     } else {
         prestigeRealm.enteredChallenge = ''
         prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1
         prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=1
+    }
+}
+
+const ToggleSuperPrestigeChallenge3 = () => {
+    if (prestigeRealm.enteredChallenge != 'SPC3') {
+        ResetPrestigePointsLayer(2)
+        ResetPointsLayer(2)
+        prestigeRealm.enteredChallenge = 'SPC3'
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.divider = 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.divider=1
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 2.5
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 2
+    } else {
+        prestigeRealm.enteredChallenge = ''
+        prestigeRealmStatsCalculated.points.gain.challengeNerfs.root = 1
+        prestigeRealmStatsCalculated.prestige.gain.challengeNerfs.root= 1
     }
 }
 
