@@ -30,6 +30,13 @@ export const usePrestigeRealmStatsStore = defineStore('PrestigeRealmStats', () =
                 upgrade4Bought: false,
                 upgrade5Bought: false,
             },
+            row3:{
+                upgrade1Bought: false,
+                upgrade2Bought: false,
+                upgrade3Bought: false,
+                upgrade4Bought: false,
+                upgrade5Bought: false,
+            },
         },
         milestones: {
             milestone1Unlocked: false,
@@ -64,6 +71,13 @@ export const usePrestigeRealmStatsStore = defineStore('PrestigeRealmStats', () =
             prestige.value=object.prestige
             if(object.superPrestige.unlocked){
                 superPrestige.value=object.superPrestige
+            }
+            prestige.value.upgrades.row3={
+                upgrade1Bought: false,
+                upgrade2Bought: false,
+                upgrade3Bought: false,
+                upgrade4Bought: false,
+                upgrade5Bought: false,
             }
             
         }

@@ -25,13 +25,6 @@ const CalculatePointGain = (prestigeRealm, prestigeRealmStatsCalculated) => {
 
     prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints = 
         1 + Math.pow(prestigeRealm.superPrestige.amount, 2)
-    if(prestigeRealm.superPrestige.challenges.challenge3Completed==true){
-        prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints =
-             Math.pow(
-                prestigeRealmStatsCalculated.superPrestige.effects.effectOnPoints
-                , 1.5
-            )
-    }
 
     prestigeRealmStatsCalculated.points.gain.multiplier =
         1 *
