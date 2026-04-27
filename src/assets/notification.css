@@ -47,3 +47,16 @@
 .notificationDisappear{
     animation: fadeOut 0.5s forwards;
 }
+
+.notificationSuccess{
+    border-color: #4CAF50;
+    background-color: #4CAF50;
+}
+.notificationError{
+    border-color: #f44336;
+    background-color: #f44336;
+}
+.notificationInfo{
+    border-color: #2196F3;
+    background-color: #2196F3;
+}

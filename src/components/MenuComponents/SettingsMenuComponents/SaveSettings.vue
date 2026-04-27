@@ -44,8 +44,8 @@
             <div class="settingName">Save and export</div>
             <div class="settingOptions">
                 <div class="option">Save</div>
-                <div class="option">Export save to clipboard</div>
-                <div class="option">Export save to file</div>
+                <div class="option" @click="ExportSaveToClipboard">Export save to clipboard</div>
+                <div class="option" @click="ExportSaveToFile">Export save to file</div>
             </div>
         </div>
         <div class="setting">
@@ -60,14 +60,32 @@
 </template>
 <script setup>
 import { useDialogBoxStore } from '@/stores/dialogBox'
+import { useNotificationStore } from '@/stores/notification'
 import { useSettingsStore } from '@/stores/Player/settings'
 import { ref } from 'vue'
 
 const settingsStore=useSettingsStore()
 const dialogBoxStore = useDialogBoxStore()
+const notificationStore=useNotificationStore()
 
 const SetAutoSaveInterval = (newms) => {
     settingsStore.saveSettings.autoSaveInterval = newms
+}
+
+const ExportSaveToClipboard=()=>{
+    let save=localStorage.getItem("InfinityIncSave") 
+    navigator.clipboard.writeText(save)
+    notificationStore.NewNotification("Info","Save copied to clipboard", "Info")
+}
+
+const ExportSaveToFile=()=>{
+    let save=localStorage.getItem("InfinityIncSave") 
+    let blob=new Blob([save], {type: "text/plain"})
+    let fileUrl=URL.createObjectURL(blob)
+    const link=document.createElement('a')
+    link.download="InfinityIncrementalSave.txt"
+    link.href=fileUrl
+    link.click()
 }
 
 const ShowHardResetDialogBox = () => {

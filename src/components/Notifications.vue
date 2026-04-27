@@ -8,12 +8,13 @@
                 notificationDisappear: notification.hidden,
                 prestigeMilestone: notification.style == 'prestigeMilestone',
                 superPrestigeMilestone: notification.style == 'superPrestigeMilestone',
+                notificationInfo: notification.style=='Info'
             }"
         >
             <div class="notificationTitle">
                 {{ notification.title }}
             </div>
-            <div class="notificationDescription">
+            <div class="notificationDescription" v-show='notification.description!=""'>
                 {{ notification.description }}
             </div>
         </div>
