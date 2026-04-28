@@ -51,8 +51,8 @@
         <div class="setting">
             <div class="settingName">Save importing</div>
             <div class="settingOptions">
-                <div class="option">Import via text</div>
-                <div class="option">Import via file</div>
+                <div class="option" @click="ShowImportViaTextDialogBox">Import via text</div>
+                <input type="file" accept="text/txt" class="option" @change="ImportSaveViaFile">
             </div>
         </div>
         <div class="hardReset" @click="ShowHardResetDialogBox">Hard Reset</div>
@@ -86,6 +86,28 @@ const ExportSaveToFile=()=>{
     link.download="InfinityIncrementalSave.txt"
     link.href=fileUrl
     link.click()
+}
+
+const ShowImportViaTextDialogBox=()=>{
+    dialogBoxStore.isDialogBoxShown = true
+    dialogBoxStore.dialogBoxType = 'primary'
+    dialogBoxStore.dialogBoxTitle = 'Import save via text'
+    dialogBoxStore.dialogBoxContent = `<input type="text" placeholder="input your save file here" id="saveText"></input>
+                                    `
+    dialogBoxStore.dialogBoxActions = 'Import'
+}
+
+const ImportSaveViaFile=(e)=>{
+    let file=e.target.files[0]
+    let reader=new FileReader()
+    reader.onload=()=>{
+        SetAutoSaveInterval(0)
+        localStorage.setItem("InfinityIncSave", reader.result)
+        location.reload()
+    }
+    reader.readAsText(file)
+    
+    
 }
 
 const ShowHardResetDialogBox = () => {
