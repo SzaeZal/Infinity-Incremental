@@ -5,9 +5,9 @@
         </h2>
         <div class="layerMenu">
             <div class="layerSubMenu">
-                <div class="subMenuItem selectedSubMenuItem">
+                <button class="subMenuItem selectedSubMenuItem">
                     <h2>Buyables</h2>
-                </div>
+                </button>
             </div>
             <div class="main">
                 <PointBuyables />

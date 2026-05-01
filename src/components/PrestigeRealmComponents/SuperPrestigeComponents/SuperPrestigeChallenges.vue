@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div
+        <button
             class="layerResetButton"
             :class="{
                 superPrestigeResetButton:
@@ -17,76 +17,76 @@
             <span v-else>
                 <h3 class="currencyOnReset">+ {{ FormatNumber(superPrestigePointsOnReset) }} SP</h3>
             </span>
-        </div>
+        </button>
         <div class="challenges">
-            <div
+            <button
                 class="challenge"
                 :class="{ completedChallenge: superPrestige.challenges.challenge1Completed }"
                 @click="ToggleSuperPrestigeChallenge1"
             >
-                <div class="challengeTitle">Slowed points</div>
-                <div class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC1'">
+                <h2 class="challengeTitle">Slowed points</h2>
+                <span class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC1'">
                     (In Challenge)
-                </div>
+                </span>
                 <div class="challengeNerfs">
                     <div class="challengeNerf">/100 points</div>
                 </div>
-                <div class="challengeGoal">Goal: 10000 points</div>
+                <p class="challengeGoal">Goal: 10000 points</p>
                 <div class="challengeRewards">
                     <div class="challengeReward">
                         Reward: Square the effect of prestige upgrade 1-5
                     </div>
                 </div>
-                <div class="challengeBoxInfo">click to enter/exit challenge</div>
-            </div>
-            <div
+                <span class="challengeBoxInfo">click to enter/exit challenge</span>
+            </button>
+            <button
                 class="challenge"
                 v-show="superPrestige.challenges.challenge2Completed != undefined"
                 :class="{ completedChallenge: superPrestige.challenges.challenge2Completed }"
                 @click="ToggleSuperPrestigeChallenge2"
             >
-                <div class="challengeTitle">Double trouble</div>
-                <div class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC2'">
+                <h2 class="challengeTitle">Double trouble</h2>
+                <span class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC2'">
                     (In Challenge)
-                </div>
+                </span>
                 <div class="challengeNerfs">
                     <div class="challengeNerf">
                         /1000 points <br>
                         /10 prestige points
                     </div>
                 </div>
-                <div class="challengeGoal">Goal: 1e5 Prestige Points</div>
+                <p class="challengeGoal">Goal: 1e5 Prestige Points</p>
                 <div class="challengeRewards">
                     <div class="challengeReward">
                         Reward: Square the effect of prestige upgrade 2-5
                     </div>
                 </div>
-                <div class="challengeBoxInfo">click to enter/exit challenge</div>
-            </div>
-            <div
+                <span class="challengeBoxInfo">click to enter/exit challenge</span>
+            </button>
+            <button
                 class="challenge"
                 v-show="superPrestige.challenges.challenge3Completed != undefined"
                 :class="{ completedChallenge: superPrestige.challenges.challenge3Completed }"
                 @click="ToggleSuperPrestigeChallenge3"
             >
-                <div class="challengeTitle">Unpower</div>
-                <div class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC3'">
+                <h2 class="challengeTitle">Unpower</h2>
+                <span class="challengeEntered" v-show="prestigeRealm.enteredChallenge == 'SPC3'">
                     (In Challenge)
-                </div>
+                </span>
                 <div class="challengeNerfs">
                     <div class="challengeNerf">
                         ^0.4 points <br>
                         ^0.5 prestige points
                     </div>
                 </div>
-                <div class="challengeGoal">Goal: 1e10 Prestige Points</div>
+                <p class="challengeGoal">Goal: 1e10 Prestige Points</p>
                 <div class="challengeRewards">
                     <div class="challengeReward">
                         Reward: Unlock prestige power
                     </div>
                 </div>
-                <div class="challengeBoxInfo">click to enter/exit challenge</div>
-            </div>
+                <span class="challengeBoxInfo">click to enter/exit challenge</span>
+            </button>
         </div>
     </div>
 </template>

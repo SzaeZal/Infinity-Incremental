@@ -5,20 +5,20 @@
         </h2>
         <div class="layerMenu">
             <div class="layerSubMenu">
-                <div
+                <button
                     class="subMenuItem"
                     :class="{ selectedSubMenuItem: isPrestigeUpgradesToggled }"
                     @click="TogglePrestigeUpgrades"
                 >
                     <h2>Upgrades</h2>
-                </div>
-                <div
+                </button>
+                <button
                     class="subMenuItem"
                     :class="{ selectedSubMenuItem: isPrestigeMilestonesToggled }"
                     @click="TogglePrestigeMilestones"
                 >
                     <h2>Milestones</h2>
-                </div>
+                </button>
             </div>
             <div class="main">
                 <PrestigeUpgrades v-show="isPrestigeUpgradesToggled" />
@@ -43,14 +43,14 @@ const isPrestigeMilestonesToggled = ref(false)
 const TogglePrestigeUpgrades = () => {
     if (isPrestigeUpgradesToggled.value == false) {
         isPrestigeMilestonesToggled.value = false
+        isPrestigeUpgradesToggled.value = !isPrestigeUpgradesToggled.value
     }
-    isPrestigeUpgradesToggled.value = !isPrestigeUpgradesToggled.value
 }
 
 const TogglePrestigeMilestones = () => {
     if (isPrestigeMilestonesToggled.value == false) {
         isPrestigeUpgradesToggled.value = false
+        isPrestigeMilestonesToggled.value = !isPrestigeMilestonesToggled.value
     }
-    isPrestigeMilestonesToggled.value = !isPrestigeMilestonesToggled.value
 }
 </script>

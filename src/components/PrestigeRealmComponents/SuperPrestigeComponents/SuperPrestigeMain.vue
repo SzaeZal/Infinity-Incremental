@@ -15,21 +15,21 @@
         </h2>
         <div class="layerMenu">
             <div class="layerSubMenu">
-                <div
+                <button
                     class="subMenuItem"
                     :class="{ selectedSubMenuItem: isSuperPrestigeChallengesToggled }"
                     @click="ToggleSuperPrestigeChallenges"
                 >
                     <h2>Challenges</h2>
-                </div>
-                <div
+                </button>
+                <button
                     class="subMenuItem"
                     :class="{ selectedSubMenuItem: isSuperPrestigeMilestonesToggled }"
                     @click="ToggleSuperPrestigeMilestones"
                 >
                     <h2>Milestones</h2>
-                </div>
-                <div
+                </button>
+                <button
                     class="subMenuItem"
                     :class="{ selectedSubMenuItem: isPrestigePowerToggled }"
                     @click="TogglePrestigePower"
@@ -39,7 +39,7 @@
                     "
                 >
                     <h2>Power</h2>
-                </div>
+                </button>
             </div>
             <div class="main">
                 <SuperPrestigeChallenges v-show="isSuperPrestigeChallengesToggled" />
@@ -72,23 +72,23 @@ const ToggleSuperPrestigeChallenges = () => {
     if (isSuperPrestigeChallengesToggled.value == false) {
         isSuperPrestigeMilestonesToggled.value = false
         isPrestigePowerToggled.value = false
+        isSuperPrestigeChallengesToggled.value = true
     }
-    isSuperPrestigeChallengesToggled.value = !isSuperPrestigeChallengesToggled.value
 }
 
 const ToggleSuperPrestigeMilestones = () => {
     if (isSuperPrestigeMilestonesToggled.value == false) {
         isSuperPrestigeChallengesToggled.value = false
         isPrestigePowerToggled.value = false
+        isSuperPrestigeMilestonesToggled.value = true
     }
-    isSuperPrestigeMilestonesToggled.value = !isSuperPrestigeMilestonesToggled.value
 }
 
 const TogglePrestigePower = () => {
     if (isPrestigePowerToggled.value == false) {
         isSuperPrestigeChallengesToggled.value = false
         isSuperPrestigeMilestonesToggled.value = false
+        isPrestigePowerToggled.value = !isPrestigePowerToggled.value
     }
-    isPrestigePowerToggled.value = !isPrestigePowerToggled.value
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div
+        <button
             class="layerResetButton"
             :class="{
                 prestigeResetButton:
@@ -17,9 +17,9 @@
             <span v-else>
                 <h3 class="currencyOnReset">+ {{ FormatNumber(prestigePointsOnReset) }} PP</h3>
             </span>
-        </div>
+        </button>
         <div class="upgradeRow">
-            <div
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 1,
@@ -27,12 +27,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR1C1"
             >
-                <div class="upgradeTitle">Point doubler</div>
-                <div class="upgradeDescription">x2 points</div>
-                <div class="upgradeCost">Cost: 1 prestige point</div>
-                <div class="upgradeNumber">1-1</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Point doubler</h4>
+                <p class="upgradeDescription">x2 points</p>
+                <p class="upgradeCost">Cost: 1 prestige point</p>
+                <h3 class="upgradeNumber">1-1</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 3,
@@ -40,12 +40,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR1C2"
             >
-                <div class="upgradeTitle">Point tripler</div>
-                <div class="upgradeDescription">x3 points</div>
-                <div class="upgradeCost">Cost: 3 prestige points</div>
-                <div class="upgradeNumber">1-2</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Point tripler</h4>
+                <p class="upgradeDescription">x3 points</p>
+                <p class="upgradeCost">Cost: 3 prestige points</p>
+                <h3 class="upgradeNumber">1-2</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 5,
@@ -53,12 +53,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR1C3"
             >
-                <div class="upgradeTitle">Prestige booster</div>
-                <div class="upgradeDescription">x1.5 prestige points</div>
-                <div class="upgradeCost">Cost: 5 prestige points</div>
-                <div class="upgradeNumber">1-3</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Prestige booster</h4>
+                <p class="upgradeDescription">x1.5 prestige points</p>
+                <p class="upgradeCost">Cost: 5 prestige points</p>
+                <h3 class="upgradeNumber">1-3</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 10,
@@ -66,12 +66,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR1C4"
             >
-                <div class="upgradeTitle">Even more points</div>
-                <div class="upgradeDescription">x5 points</div>
-                <div class="upgradeCost">Cost: 10 prestige points</div>
-                <div class="upgradeNumber">1-4</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Even more points</h4>
+                <p class="upgradeDescription">x5 points</p>
+                <p class="upgradeCost">Cost: 10 prestige points</p>
+                <h3 class="upgradeNumber">1-4</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 25,
@@ -79,23 +79,23 @@
                 }"
                 @click="PurchasePrestigeUpgradeR1C5"
             >
-                <div class="upgradeTitle">Pointed self synergy</div>
-                <div class="upgradeDescription">points boost themselves</div>
-                <div class="upgradeFormula">formula: 1 + log<sub>10</sub>(points)</div>
-                <div class="upgradeEffect">
+                <h4 class="upgradeTitle">Pointed self synergy</h4>
+                <p class="upgradeDescription">points boost themselves</p>
+                <p class="upgradeFormula">formula: 1 + log<sub>10</sub>(points)</p>
+                <p class="upgradeEffect">
                     currently: x{{
                         FormatNumber(
                             prestigeRealmStatsCalculatedStore.prestige.upgrades.row1.upgrade5Effects
                                 .effectOnPoints,
                         )
                     }}
-                </div>
-                <div class="upgradeCost">Cost: 25 prestige points</div>
-                <div class="upgradeNumber">1-5</div>
-            </div>
+                </p>
+                <p class="upgradeCost">Cost: 25 prestige points</p>
+                <h3 class="upgradeNumber">1-5</h3>
+            </button>
         </div>
         <div class="upgradeRow" v-show="prestige.milestones.milestone4Unlocked">
-            <div
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 400,
@@ -103,12 +103,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR2C1"
             >
-                <div class="upgradeTitle">Duplicate upgrade</div>
-                <div class="upgradeDescription">x5 points</div>
-                <div class="upgradeCost">Cost: 400 prestige point</div>
-                <div class="upgradeNumber">2-1</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Duplicate upgrade</h4>
+                <p class="upgradeDescription">x5 points</p>
+                <p class="upgradeCost">Cost: 400 prestige point</p>
+                <h3 class="upgradeNumber">2-1</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 1000,
@@ -116,12 +116,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR2C2"
             >
-                <div class="upgradeTitle">Prestige doubler</div>
-                <div class="upgradeDescription">x2 prestige points</div>
-                <div class="upgradeCost">Cost: 1000 prestige points</div>
-                <div class="upgradeNumber">2-2</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Prestige doubler</h4>
+                <p class="upgradeDescription">x2 prestige points</p>
+                <p class="upgradeCost">Cost: 1000 prestige points</p>
+                <h3 class="upgradeNumber">2-2</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 2500,
@@ -129,12 +129,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR2C3"
             >
-                <div class="upgradeTitle">2 in 1 upgrade</div>
-                <div class="upgradeDescription">x3 points <br />x1.5 prestige points</div>
-                <div class="upgradeCost">Cost: 2500 prestige points</div>
-                <div class="upgradeNumber">2-3</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">2 in 1 upgrade</h4>
+                <p class="upgradeDescription">x3 points <br />x1.5 prestige points</p>
+                <p class="upgradeCost">Cost: 2500 prestige points</p>
+                <h3 class="upgradeNumber">2-3</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 7500,
@@ -142,12 +142,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR2C4"
             >
-                <div class="upgradeTitle">Points tenfold</div>
-                <div class="upgradeDescription">x10 points</div>
-                <div class="upgradeCost">Cost: 7500 prestige points</div>
-                <div class="upgradeNumber">2-4</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Points tenfold</h4>
+                <p class="upgradeDescription">x10 points</p>
+                <p class="upgradeCost">Cost: 7500 prestige points</p>
+                <h3 class="upgradeNumber">2-4</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 5e4,
@@ -155,23 +155,23 @@
                 }"
                 @click="PurchasePrestigeUpgradeR2C5"
             >
-                <div class="upgradeTitle">Prestiged points</div>
-                <div class="upgradeDescription">prestige points boost points</div>
-                <div class="upgradeFormula">formula: 1 + log<sub>10</sub>(prestige points)</div>
-                <div class="upgradeEffect">
+                <h4 class="upgradeTitle">Prestiged points</h4>
+                <p class="upgradeDescription">prestige points boost points</p>
+                <p class="upgradeFormula">formula: 1 + log<sub>10</sub>(prestige points)</p>
+                <p class="upgradeEffect">
                     currently: x{{
                         FormatNumber(
                             prestigeRealmStatsCalculatedStore.prestige.upgrades.row2.upgrade5Effects
                                 .effectOnPoints,
                         )
                     }}
-                </div>
-                <div class="upgradeCost">Cost: 5e4 prestige points</div>
-                <div class="upgradeNumber">2-5</div>
-            </div>
+                </p>
+                <p class="upgradeCost">Cost: 5e4 prestige points</p>
+                <h3 class="upgradeNumber">2-5</h3>
+            </button>
         </div>
         <div class="upgradeRow" v-show="prestigeRealmStatsStore.superPrestige.milestones.milestone3Unlocked">
-            <div
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 5e11,
@@ -179,12 +179,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR3C1"
             >
-                <div class="upgradeTitle">Super row</div>
-                <div class="upgradeDescription">x100 points</div>
-                <div class="upgradeCost">Cost: 5e11 prestige point</div>
-                <div class="upgradeNumber">3-1</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Super row</h4>
+                <p class="upgradeDescription">x100 points</p>
+                <p class="upgradeCost">Cost: 5e11 prestige point</p>
+                <h3 class="upgradeNumber">3-1</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 1e13,
@@ -192,12 +192,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR3C2"
             >
-                <div class="upgradeTitle">Super points</div>
-                <div class="upgradeDescription">x5000 points</div>
-                <div class="upgradeCost">Cost: 1e13 prestige points</div>
-                <div class="upgradeNumber">3-2</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Super points</h4>
+                <p class="upgradeDescription">x5000 points</p>
+                <p class="upgradeCost">Cost: 1e13 prestige points</p>
+                <h3 class="upgradeNumber">3-2</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 1e16,
@@ -205,12 +205,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR3C3"
             >
-                <div class="upgradeTitle">Super prestige</div>
-                <div class="upgradeDescription">x50 prestige points</div>
-                <div class="upgradeCost">Cost: 1e16 prestige points</div>
-                <div class="upgradeNumber">3-3</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Super prestige</h4>
+                <p class="upgradeDescription">x50 prestige points</p>
+                <p class="upgradeCost">Cost: 1e16 prestige points</p>
+                <h3 class="upgradeNumber">3-3</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 1e20,
@@ -218,12 +218,12 @@
                 }"
                 @click="PurchasePrestigeUpgradeR3C4"
             >
-                <div class="upgradeTitle">Super<sup>2</sup> prestige</div>
-                <div class="upgradeDescription">x4 super prestige points</div>
-                <div class="upgradeCost">Cost: 1e20 prestige points</div>
-                <div class="upgradeNumber">3-4</div>
-            </div>
-            <div
+                <h4 class="upgradeTitle">Super<sup>2</sup> prestige</h4>
+                <p class="upgradeDescription">x4 super prestige points</p>
+                <p class="upgradeCost">Cost: 1e20 prestige points</p>
+                <h3 class="upgradeNumber">3-4</h3>
+            </button>
+            <button
                 class="upgrade"
                 :class="{
                     upgradePurchaseable: prestige.amount >= 1e50,
@@ -231,20 +231,20 @@
                 }"
                 @click="PurchasePrestigeUpgradeR3C5"
             >
-                <div class="upgradeTitle">Prestiged prestige</div>
-                <div class="upgradeDescription">prestige points boost themselves</div>
-                <div class="upgradeFormula">formula: 1 + log<sub>10</sub>(prestige points)</div>
-                <div class="upgradeEffect">
+                <h4 class="upgradeTitle">Prestiged prestige</h4>
+                <p class="upgradeDescription">prestige points boost themselves</p>
+                <p class="upgradeFormula">formula: 1 + log<sub>10</sub>(prestige points)</p>
+                <p class="upgradeEffect">
                     currently: x{{
                         FormatNumber(
                             prestigeRealmStatsCalculatedStore.prestige.upgrades.row3.upgrade5Effects
                                 .effectOnPrestigePoints,
                         )
                     }}
-                </div>
-                <div class="upgradeCost">Cost: 1e50 prestige points</div>
-                <div class="upgradeNumber">3-5</div>
-            </div>
+                </p>
+                <p class="upgradeCost">Cost: 1e50 prestige points</p>
+                <h3 class="upgradeNumber">3-5</h3>
+            </button>
         </div>
     </div>
 </template>
