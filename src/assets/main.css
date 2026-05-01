@@ -5,6 +5,10 @@
     user-select: none;
     z-index: 1;
 }
+button{
+    cursor: pointer;
+    background-color: transparent;
+}
 h2,h3,h4,h5,h6{
     font-weight: normal;
 }

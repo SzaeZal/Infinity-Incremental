@@ -13,6 +13,7 @@ export const useSettingsStore = defineStore('settings', () => {
     })
 
     const hardResetActivate = ref(false)
+    const forceSave=ref(false)
 
     const zip = () => {
         let settings = {
@@ -31,6 +32,7 @@ export const useSettingsStore = defineStore('settings', () => {
         UISettings,
         saveSettings,
         hardResetActivate,
+        forceSave,
         zip,
         unzip
     }

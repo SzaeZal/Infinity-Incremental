@@ -1,18 +1,18 @@
 <template>
     <div class="hasSubMenu">
         <div class="subMenu">
-            <div class="subMenuButton" @click="ToggleUISettings">
-                <svg width="150px" height="35px" class="element subMenuSvg">
-                    <path d="M20 2 L140 2 L130 33  L10 33 Z" />
-                    <text x="30" y="24">UI Settings</text>
+            <button class="subMenuButton" @click="ToggleUISettings">
+                <svg width="175px" height="35px" class="element subMenuSvg">
+                    <path d="M20 2 L165 2 L155 33  L10 33 Z" />
+                    <text x="37" y="24">UI Settings</text>
                 </svg>
-            </div>
-            <div class="subMenuButton" @click="ToggleSaveSettings">
-                <svg width="150px" height="35px" class="element subMenuSvg">
-                    <path d="M20 2 L140 2 L130 33  L10 33 Z" />
-                    <text x="20" y="24">Save Settings</text>
+            </button>
+            <button class="subMenuButton" @click="ToggleSaveSettings">
+                <svg width="175px" height="35px" class="element subMenuSvg">
+                    <path d="M20 2 L165 2 L155 33  L10 33 Z" />
+                    <text x="25" y="24">Save Settings</text>
                 </svg>
-            </div>
+            </button>
         </div>
         <div class="subContent">
             <UISettings v-show="isUISettingsToggled" />

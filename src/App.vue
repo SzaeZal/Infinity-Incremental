@@ -106,6 +106,10 @@ const TriggerSave = () => {
 }
 
 const SaveChecker = () => {
+    if(settingsStore.forceSave==true){
+        TriggerSave()
+    }
+
     msSinceSave += currentAutoSaveInterval.value == 0 ? 0 : 25
     if (currentAutoSaveInterval.value != settingsStore.saveSettings.autoSaveInterval) {
         currentAutoSaveInterval.value = settingsStore.saveSettings.autoSaveInterval

@@ -8,15 +8,16 @@
                 notificationDisappear: notification.hidden,
                 prestigeMilestone: notification.style == 'prestigeMilestone',
                 superPrestigeMilestone: notification.style == 'superPrestigeMilestone',
-                notificationInfo: notification.style=='Info'
+                notificationInfo: notification.style=='Info',
+                notificationSuccess: notification.style=='Success'
             }"
         >
-            <div class="notificationTitle">
+            <h2 class="notificationTitle">
                 {{ notification.title }}
-            </div>
-            <div class="notificationDescription" v-show='notification.description!=""'>
+            </h2>
+            <p class="notificationDescription" v-show='notification.description!=""'>
                 {{ notification.description }}
-            </div>
+            </p>
         </div>
     </div>
 </template>
@@ -27,5 +28,7 @@ const notificationStore = useNotificationStore()
 
 const HideNotification = (id) => {
     notificationStore.notifications[id].hidden = true
+    console.log(notificationStore.notifications[id].description=="");
+    
 }
 </script>

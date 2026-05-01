@@ -1,3 +1,6 @@
+.dialogBoxMain button{
+    background-color: unset;
+}
 .dialogBoxContainer{
     position: absolute;
     width: 100vw;

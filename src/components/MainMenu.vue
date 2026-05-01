@@ -3,59 +3,59 @@
         class="menuButtons mainMenuButtons"
         :class="{ menuButtonDisappear: isMenuClosed, menuButtonAppear: isMenuOpen }"
     >
-        <div class="menuButton" @click="ToggleSettings">
+        <button class="menuButton" @click="ToggleSettings">
             <img
                 src="./icons/MainMenuIcons/settings.png"
                 alt="settings"
                 class="menuIcon openSettings"
             />
             <p class="menuButtonText">Settings</p>
-        </div>
-        <div class="menuButton" @click="ToggleInformation">
+        </button>
+        <button class="menuButton" @click="ToggleInformation">
             <img
                 src="./icons/MainMenuIcons/information.png"
                 alt="information"
                 class="menuIcon openInformation"
             />
             <p class="menuButtonText">Information</p>
-        </div>
-        <div class="menuButton" @click="ToggleStory">
+        </button>
+        <button class="menuButton" @click="ToggleStory">
             <img src="./icons/MainMenuIcons/story.png" alt="story" class="menuIcon openStory" />
             <p class="menuButtonText">Story</p>
-        </div>
-        <div class="menuButton" @click="ToggleInfinities">
+        </button>
+        <button class="menuButton" @click="ToggleInfinities">
             <img
                 src="./icons/MainMenuIcons/infinity.png"
                 alt="story"
                 class="menuIcon openInfinities"
             />
             <p class="menuButtonText">Infinities</p>
-        </div>
-        <div class="menuButton" @click="ToggleMap">
+        </button>
+        <button class="menuButton" @click="ToggleMap">
             <img src="./icons/MainMenuIcons/map.png" alt="map" class="menuIcon openMap" />
             <p class="menuButtonText">Map</p>
-        </div>
-        <div class="menuButton" @click="ToggleStats">
+        </button>
+        <button class="menuButton" @click="ToggleStats">
             <img
                 src="./icons/MainMenuIcons/stats.png"
                 alt="menu close"
                 class="menuIcon openStats"
             />
             <p class="menuButtonText">Stats</p>
-        </div>
-        <div class="menuButton" @click="CloseMenu">
+        </button>
+        <button class="menuButton" @click="CloseMenu">
             <img src="./icons/menuClose.png" alt="menu close" class="menuIcon closeMenu" />
             <p class="menuButtonText">Close Menu</p>
-        </div>
+        </button>
     </div>
     <div
         class="menuButtons"
         :class="{ menuButtonDisappear: isMenuOpen, menuButtonAppear: isMenuClosed }"
     >
-        <div class="menuButton" @click="OpenMenu">
+        <button class="menuButton" @click="OpenMenu">
             <img src="./icons/menuOpen.png" alt="menu open" class="menuIcon openMenu" />
             <p class="menuButtonText">Open Menu</p>
-        </div>
+        </button>
     </div>
     <div
         class="menu"
