@@ -66,9 +66,13 @@ const ChallengeChecker=()=>{
         completeSPChallenge.CompleteSPC2(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
         notificationStore.NewNotification("Challenge complete", "SPC 2", "superPrestigeMilestone")
     }
-    else if(prestigeRealmStatsStore.enteredChallenge=="SPC3" && prestigeRealmStatsStore.prestige.amount>=1e4){
+    else if(prestigeRealmStatsStore.enteredChallenge=="SPC3" && prestigeRealmStatsStore.prestige.amount>=1e3){
         completeSPChallenge.CompleteSPC3(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
         notificationStore.NewNotification("Challenge complete", "SPC 3", "superPrestigeMilestone")
+    }
+    else if(prestigeRealmStatsStore.enteredChallenge=="SPC4" && prestigeRealmStatsStore.points.amount>=1e10){
+        completeSPChallenge.CompleteSPC4(prestigeRealmStatsStore, prestigeRealmStatsCalculatedStore)
+        notificationStore.NewNotification("Challenge complete", "SPC 4", "superPrestigeMilestone")
     }
 }
 

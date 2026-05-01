@@ -33,10 +33,7 @@
                     class="subMenuItem"
                     :class="{ selectedSubMenuItem: isPrestigePowerToggled }"
                     @click="TogglePrestigePower"
-                    v-show="
-                        prestigeRealm.superPrestige.challenges.challenge3 != undefined &&
-                        prestigeRealm.superPrestige.challenges.challenge3.completed == true
-                    "
+                    v-show="prestigeRealm.superPrestige.challenges.challenge3Completed == true "
                 >
                     <h2>Power</h2>
                 </button>
